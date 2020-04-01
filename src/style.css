@@ -1,0 +1,36 @@
+@font-face {
+    font-family: Raleway;
+    src: url('fonts/Raleway-Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: Gotu;
+    src: url('fonts/Gotu-Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: Streetbrush;
+    src: url('fonts/Streetbrush.otf') format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    font-family: Streetbrush, Gotu, Raleway;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+}
+
+.home img {
+    width: 15%;
+    margin: 15% 0 16%;
+}
+

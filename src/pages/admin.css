@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 722px;
+    background: #2C2C2C;
+}
+.admin{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 500px;
+    height: 250px;
+    border: 1px solid #454545;
+    border-radius: 50px;
+}
+input{
+    border: 1px solid #454545;
+    border-radius: 25px;
+    background: transparent;
+    font-family: Raleway, Gotu;
+    font-size: 15px;
+    color: #F5F5DC;
+    outline: none;
+    cursor: pointer;
+}
+.admin-input{
+    width: 300px;
+    height: 35px;
+    padding-left: 20px;
+}
+.remember{
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+}
+.admin-checkbox{
+    font-family: Raleway, Gotu;
+    font-size: 15px;
+    color: #F5F5DC;
+    cursor: pointer;
+}
+#remember-check{
+    margin-left: 15px;
+    cursor: pointer;
+}
+.admin-submit{
+    width: 125px;
+    height: 35px;
+}
+.admin-submit:hover{
+    background: #F5F5DC;
+    color: #2C2C2C;
+
+}
