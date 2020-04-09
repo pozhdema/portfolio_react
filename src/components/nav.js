@@ -16,8 +16,11 @@ function Nav(){
                 <Link to="/contacts" className="link">
                     <li>Contacts</li>
                 </Link>
-                <Link to="admin" className="link">
-                    <li>Admin</li>
+                <Link to="/signIn" className="link">
+                    <li>Sign In</li>
+                </Link>
+                <Link to="/signUp" className="link">
+                    <li>Sign Up</li>
                 </Link>
             </ul>
         </nav>

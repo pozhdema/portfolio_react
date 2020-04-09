@@ -3,7 +3,8 @@ import './style.css';
 import Nav from './components/nav';
 import Gallery from './pages/gallery';
 import Contacts from './pages/contacts';
-import Admin from './pages/admin';
+import SignIn from './pages/signIn';
+import SignUp from "./pages/signUp";
 import Footer from "./components/footer";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import  logo from './images/crow-new.png'
@@ -23,7 +24,8 @@ function App() {
                     <Route path="/" exact component={Home}/>
                     <Route path="/gallery" component={Gallery}/>
                     <Route path="/contacts" component={Contacts}/>
-                    <Route path="/admin" component={Admin}/>
+                    <Route path="/signIn" component={SignIn}/>
+                    <Route path="/signUp" component={SignUp}/>
                 </Switch>
                 <Footer/>
             </div>

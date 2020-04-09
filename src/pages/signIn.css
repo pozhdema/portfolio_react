@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,8 @@
     height: 722px;
     background: #2C2C2C;
 }
-.admin{
+
+.admin {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -18,42 +19,50 @@
     border: 1px solid #454545;
     border-radius: 50px;
 }
-input{
+
+input {
     border: 1px solid #454545;
     border-radius: 25px;
     background: transparent;
-    font-family: Raleway, Gotu;
-    font-size: 15px;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
     color: #F5F5DC;
     outline: none;
     cursor: pointer;
 }
-.admin-input{
+
+.wrapper-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-input {
     width: 300px;
     height: 35px;
     padding-left: 20px;
+    margin-bottom: 5px;
 }
-.remember{
+
+.admin-btn {
     display: flex;
     justify-content: space-between;
-    font-size: 25px;
 }
-.admin-checkbox{
-    font-family: Raleway, Gotu;
-    font-size: 15px;
-    color: #F5F5DC;
-    cursor: pointer;
-}
-#remember-check{
-    margin-left: 15px;
-    cursor: pointer;
-}
-.admin-submit{
+
+.admin-submit {
     width: 125px;
     height: 35px;
 }
-.admin-submit:hover{
+
+.admin-submit:hover {
     background: #F5F5DC;
     color: #2C2C2C;
 
+}
+
+.admin-btn a {
+    text-decoration: none;
+    color: #F5F5DC;
+    margin-top: 5px;
 }

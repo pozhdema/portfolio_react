@@ -1,16 +1,16 @@
 @font-face {
-    font-family: Raleway;
-    src: url('fonts/Raleway-Regular.ttf') format("truetype");
+    font-family: Caveat;
+    src: url('fonts/Caveat-Regular.ttf') format("truetype");
 }
 
 @font-face {
-    font-family: Gotu;
-    src: url('fonts/Gotu-Regular.ttf') format("truetype");
+    font-family: CormorantInfant;
+    src: url('fonts/CormorantInfant-LightItalic.ttf') format("truetype");
 }
 
 @font-face {
-    font-family: Streetbrush;
-    src: url('fonts/Streetbrush.otf') format("truetype");
+    font-family: SourceSansPro;
+    src: url('fonts/SourceSansPro-LightItalic.ttf') format("truetype");
 }
 
 * {
@@ -21,7 +21,8 @@
 
 body {
     position: relative;
-    font-family: Streetbrush, Gotu, Raleway;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    color: #F5F5DC;
 }
 
 .home {
