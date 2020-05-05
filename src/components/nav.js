@@ -23,6 +23,7 @@ function Nav(){
                     <li>Sign Up</li>
                 </Link>
             </ul>
+            <button>Login In</button>
         </nav>
     )
 }

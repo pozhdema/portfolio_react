@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './style.css';
 import Nav from './components/nav';
 import Gallery from './pages/gallery';
@@ -15,22 +15,25 @@ import image4 from './images/20190303165950_IMG_2463-compressor.jpg';
 import image5 from './images/20180922062108_IMG_1751-compressor.jpg';
 import BackgroundSlider from 'react-background-slider'
 
-function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Nav/>
-                <Switch>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/gallery" component={Gallery}/>
-                    <Route path="/contacts" component={Contacts}/>
-                    <Route path="/signIn" component={SignIn}/>
-                    <Route path="/signUp" component={SignUp}/>
-                </Switch>
-                <Footer/>
-            </div>
-        </Router>
-    )
+class App extends Component{
+
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <Nav/>
+                    <Switch>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/gallery" component={Gallery}/>
+                        <Route path="/contacts" component={Contacts}/>
+                        <Route path="/signIn" component={SignIn}/>
+                        <Route path="/signUp" component={SignUp}/>
+                    </Switch>
+                    <Footer/>
+                </div>
+            </Router>
+        )
+    }
 }
 
 const Home = () => (
