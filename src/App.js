@@ -14,6 +14,8 @@ import image3 from './images/IMG_0437-compressor.jpg';
 import image4 from './images/20190303165950_IMG_2463-compressor.jpg';
 import image5 from './images/20180922062108_IMG_1751-compressor.jpg';
 import BackgroundSlider from 'react-background-slider'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component{
 
@@ -29,6 +31,7 @@ class App extends Component{
                         <Route path="/signIn" component={SignIn}/>
                         <Route path="/signUp" component={SignUp}/>
                     </Switch>
+                    <ToastContainer />
                     <Footer/>
                 </div>
             </Router>

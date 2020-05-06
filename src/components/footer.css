@@ -17,7 +17,7 @@ footer li a {
     text-align: center;
     font-size: 150%;
     line-height: 100px;
-    color: #F5F5DC;
+    color: #e5dac3;
     transition: all .5s ease;
     transform-origin: left;
     transform: rotateY(-30deg);
@@ -26,7 +26,7 @@ footer li a {
 
 footer li a:hover {
     /*color: #202020;*/
-    color: #FAD7A0;
+    color: #ffccbb;
     transform: rotate(0deg);
     text-shadow: 0px 0px 1px #131313, 0px 0px 1px #070707, 0px 0px 1px black, 0px 0px 1px black;
 }

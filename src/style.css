@@ -22,7 +22,8 @@
 body {
     position: relative;
     font-family: Caveat, CormorantInfant, SourceSansPro;
-    color: #F5F5DC;
+    color: #e5dac3;
+    background: #2e2b29;
 }
 
 .home {

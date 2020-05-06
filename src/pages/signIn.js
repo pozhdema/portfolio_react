@@ -1,107 +1,152 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import './signIn.css';
+import Input from "../components/input";
+import Button from "../components/btn";
+import { toast } from 'react-toastify';
 
-const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-const validateForm = (errors) => {
-    let valid = true;
-    Object.values(errors).forEach(
-        (val) => val.length > 0 && (valid = false)
-    );
-    return valid;
-};
 
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: null,
-            password: null,
-            errors: {
+            newUser: {
                 email: "",
-                password: ""
+                password: "",
             },
+            isDisabled:true
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    validateEmail(email){
+        const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+        const result = pattern.test(email);
+        if(result===true){
+            this.setState({
+                emailError:false,
+                email:email
+            })
+        } else{
+            this.setState({
+                emailError:true
+            })
+        }
+    }
 
-    handleChange = (e) => {
-        e.preventDefault();
-        const {name, value} = e.target;
-        let errors = this.state.errors;
+    validatePassword(password){
+        const pattern = /^(?=.*[a-z])(?=.*[A-Z])((?=.*[0-9])|(?=.*[!@#$%\^&\*]))(?=.{8,20})/;
+        const result = pattern.test(password);
+        if(result===true){
+            this.setState({
+                passwordError:false,
+                password:password
+            })
+        } else{
+            this.setState({
+                passwordError:true
+            })
+        }
+    }
 
-        switch (name) {
-            case 'email':
-                errors.email =
-                    validEmailRegex.test(value)
-                        ? ''
-                        : 'Email is not valid!';
-                break;
-            case 'password':
-                errors.password =
-                    value.length < 8
-                        ? 'Password must be 8 characters long!'
-                        : '';
-                break;
-            default:
-                break;
+    handleInput = (e) => {
+
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        let newUser = this.state.newUser;
+        newUser[name] = value;
+
+
+        if(e.target.name==='email'){
+            this.validateEmail(e.target.value);
+        }
+        if(e.target.name==='password'){
+            this.validatePassword(e.target.value);
+        }
+        if(this.state.emailError===false && this.state.passwordError===false){
+            this.setState({
+                isDisabled:false
+            })
         }
 
-        this.setState({errors, [name]: value});
+
+
+
+        this.setState(prevState => {
+                return {
+                    newUser: {
+                        ...prevState.newUser, [name]: value
+                    }
+                }
+            }
+        )
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (validateForm(this.state.errors)) {
-            console.info('Valid Form')
-        } else {
-            console.error('Invalid Form')
-        }
+        let form = e.target;
+
+        fetch('http://qwe.loc/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state.newUser)
+        })
+            .then(response => response.json())
+            .then((data) => {
+                if(data["status"]==="success"){
+                    this.props.history.push('/gallery')
+                }else{
+                    toast("Login or password incorrect", {
+                        autoClose: 5000,
+                        closeButton: true ,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+                })
+            .catch(error => console.error(error));
+        form.reset();
     };
 
     render() {
-        const {errors} = this.state;
         return (
             <div className="container">
                 <form
                     onSubmit={this.handleSubmit}
-                    noValidate
-                    className="admin">
+                    className="admin"
+                    id="signIn-form">
                     <div className="wrapper-input">
-                        <input
-                            type="text"
-                            placeholder="Your email"
-                            className="admin-input"
-                            id="email"
-                            name="email"
+                        <Input
+                            id={"email"}
+                            name={"email"}
+                            type={"email"}
+                            placeholder={"Your email"}
                             value={this.state.email}
-                            onChange={this.handleChange}
-                            noValidate
+                            required
+                            handleChange={this.handleInput}
                         />
-                        {errors.email.length > 0 &&
-                        <span>{errors.email}</span>}
+                        {this.state.emailError ? <span style={{color: "#f87956"}}>Please Enter valid email address</span> : ''}
                     </div>
                     <div className="wrapper-input">
-                        <input
-                            type="password"
-                            placeholder="Your password"
-                            className="admin-input"
-                            name="password"
+                        <Input
+                            id={"password"}
+                            name={"password"}
+                            type={"password"}
+                            placeholder={"Your password"}
                             value={this.state.password}
-                            onChange={this.handleChange}
-                            noValidate
+                            required
+                            handleChange={this.handleInput}
                         />
-                        {errors.password.length > 0 &&
-                        <span>{errors.password}</span>}
+                        {this.state.passwordError ? <span style={{color: "#f87956"}}>Please enter some   value</span> : ''}
                     </div>
                     <div className="admin-btn">
-                        <input
-                            type="submit"
-                            value="Sign in"
-                            className="admin-submit"
+                        <Button
+                            action={this.handleSubmit}
+                            title={"Sign in"}
                         />
                         <Link to="/signUp">Create an account</Link>
                     </div>

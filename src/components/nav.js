@@ -19,11 +19,7 @@ function Nav(){
                 <Link to="/signIn" className="link">
                     <li>Sign In</li>
                 </Link>
-                <Link to="/signUp" className="link">
-                    <li>Sign Up</li>
-                </Link>
             </ul>
-            <button>Login In</button>
         </nav>
     )
 }

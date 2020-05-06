@@ -35,11 +35,12 @@ h1 span {
     text-decoration: none;
     font-size: 30px;
     font-weight: 100;
-    color: #F5F5DC;
+    color: #e5dac3;
 }
 
 .link:hover {
     /*color: #202020;*/
-    color: #FAD7A0;
+    /*color: #FAD7A0;*/
+    color:#ffccbb;
 }
 
