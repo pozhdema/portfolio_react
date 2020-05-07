@@ -1,9 +1,11 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import './signIn.css';
+import '../styles/pages/signIn.css';
 import Input from "../components/input";
 import Button from "../components/btn";
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
+import ValidateEmail from "../components/validationEmail";
+import ValidatePassword from "../components/validatePassword";
 
 
 class SignIn extends React.Component {
@@ -15,41 +17,15 @@ class SignIn extends React.Component {
                 email: "",
                 password: "",
             },
-            isDisabled:true
+            isDisabled: true
         };
 
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    validateEmail(email){
-        const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
-        const result = pattern.test(email);
-        if(result===true){
-            this.setState({
-                emailError:false,
-                email:email
-            })
-        } else{
-            this.setState({
-                emailError:true
-            })
-        }
-    }
 
-    validatePassword(password){
-        const pattern = /^(?=.*[a-z])(?=.*[A-Z])((?=.*[0-9])|(?=.*[!@#$%\^&\*]))(?=.{8,20})/;
-        const result = pattern.test(password);
-        if(result===true){
-            this.setState({
-                passwordError:false,
-                password:password
-            })
-        } else{
-            this.setState({
-                passwordError:true
-            })
-        }
-    }
+    validateEmail = ValidateEmail;
+    validatePassword = ValidatePassword;
 
     handleInput = (e) => {
 
@@ -59,21 +35,17 @@ class SignIn extends React.Component {
         let newUser = this.state.newUser;
         newUser[name] = value;
 
-
-        if(e.target.name==='email'){
+        if (e.target.name === 'email') {
             this.validateEmail(e.target.value);
         }
-        if(e.target.name==='password'){
+        if (e.target.name === 'password') {
             this.validatePassword(e.target.value);
         }
-        if(this.state.emailError===false && this.state.passwordError===false){
+        if (this.state.emailError === false && this.state.passwordError === false) {
             this.setState({
-                isDisabled:false
+                isDisabled: false
             })
         }
-
-
-
 
         this.setState(prevState => {
                 return {
@@ -98,16 +70,16 @@ class SignIn extends React.Component {
         })
             .then(response => response.json())
             .then((data) => {
-                if(data["status"]==="success"){
+                if (data["status"] === "success") {
                     this.props.history.push('/gallery')
-                }else{
+                } else {
                     toast("Login or password incorrect", {
                         autoClose: 5000,
-                        closeButton: true ,
+                        closeButton: true,
                         type: toast.TYPE.ERROR,
                     });
                 }
-                })
+            })
             .catch(error => console.error(error));
         form.reset();
     };
@@ -129,7 +101,8 @@ class SignIn extends React.Component {
                             required
                             handleChange={this.handleInput}
                         />
-                        {this.state.emailError ? <span style={{color: "#f87956"}}>Please Enter valid email address</span> : ''}
+                        {this.state.emailError ?
+                            <span className="error">Please Enter valid email address</span> : ''}
                     </div>
                     <div className="wrapper-input">
                         <Input
@@ -141,7 +114,8 @@ class SignIn extends React.Component {
                             required
                             handleChange={this.handleInput}
                         />
-                        {this.state.passwordError ? <span style={{color: "#f87956"}}>Please enter some   value</span> : ''}
+                        {this.state.passwordError ?
+                            <span className="error">Please enter some   value</span> : ''}
                     </div>
                     <div className="admin-btn">
                         <Button

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import './signIn.css';
-import './signUp.css'
+import '../styles/pages/signIn.css';
+import '../styles/pages/signUp.css'
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {

@@ -1,16 +1,16 @@
 @font-face {
     font-family: Caveat;
-    src: url('fonts/Caveat-Regular.ttf') format("truetype");
+    src: url('../fonts/Caveat-Regular.ttf') format("truetype");
 }
 
 @font-face {
     font-family: CormorantInfant;
-    src: url('fonts/CormorantInfant-LightItalic.ttf') format("truetype");
+    src: url('../fonts/CormorantInfant-LightItalic.ttf') format("truetype");
 }
 
 @font-face {
     font-family: SourceSansPro;
-    src: url('fonts/SourceSansPro-LightItalic.ttf') format("truetype");
+    src: url('../fonts/SourceSansPro-LightItalic.ttf') format("truetype");
 }
 
 * {

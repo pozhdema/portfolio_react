@@ -1,0 +1,17 @@
+input {
+    border: 1px solid #454545;
+    border-radius: 25px;
+    background: transparent;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+    color: #F5F5DC;
+    outline: none;
+    cursor: pointer;
+}
+
+.admin-input {
+    width: 300px;
+    height: 35px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style.css';
+import './styles/style.css';
 import Nav from './components/nav';
 import Gallery from './pages/gallery';
 import Contacts from './pages/contacts';
