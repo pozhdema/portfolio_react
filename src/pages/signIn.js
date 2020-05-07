@@ -13,10 +13,8 @@ class SignIn extends React.Component {
         super(props);
 
         this.state = {
-            newUser: {
-                email: "",
-                password: "",
-            },
+            email: "",
+            password:"",
             isDisabled: true
         };
 
@@ -27,13 +25,15 @@ class SignIn extends React.Component {
     validateEmail = ValidateEmail;
     validatePassword = ValidatePassword;
 
-    handleInput = (e) => {
+
+    handleInput =(e) => {
 
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        let newUser = this.state.newUser;
-        newUser[name] = value;
+
+        this.state[name] = value;
+
 
         if (e.target.name === 'email') {
             this.validateEmail(e.target.value);
@@ -47,10 +47,11 @@ class SignIn extends React.Component {
             })
         }
 
+
         this.setState(prevState => {
                 return {
                     newUser: {
-                        ...prevState.newUser, [name]: value
+                        ...prevState, [name]: value
                     }
                 }
             }
@@ -66,7 +67,7 @@ class SignIn extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(this.state.newUser)
+            body: JSON.stringify({email:this.state.email, password:this.state.password})
         })
             .then(response => response.json())
             .then((data) => {
