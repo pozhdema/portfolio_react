@@ -21,6 +21,7 @@
 
 body {
     position: relative;
+    height: 100vh;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     color: #e5dac3;
     background: #2e2b29;

@@ -35,11 +35,11 @@ class SignIn extends React.Component {
         this.state[name] = value;
 
 
-        if (e.target.name === 'email') {
-            this.validateEmail(e.target.value);
+        if (target.name === 'email') {
+            this.validateEmail(target.value);
         }
-        if (e.target.name === 'password') {
-            this.validatePassword(e.target.value);
+        if (target.name === 'password') {
+            this.validatePassword(target.value);
         }
         if (this.state.emailError === false && this.state.passwordError === false) {
             this.setState({
