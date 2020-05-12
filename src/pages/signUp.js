@@ -92,7 +92,7 @@ handleSubmitUp = (e) => {
 render()
 {
     return (
-        <div className="container">
+        <div className="container sign">
             <form
                 onSubmit={this.handleSubmit}
                 className="admin admin-up"
