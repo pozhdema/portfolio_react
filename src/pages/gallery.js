@@ -49,7 +49,7 @@ class Gallery extends Component {
         }
         if (categories !== []) {
             return (
-                <div className="container">
+                <div className="container filter">
                     <Filter
                         categories={categories}
                         onFilterChange={this.onFilterChange}

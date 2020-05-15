@@ -1,0 +1,31 @@
+body > div.ui.page.modals.dimmer.transition.visible.active {
+    width: 25%;
+    height: 200px;
+    background: #2e2b29;
+    margin-left: 45%;
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > div.header {
+    display: flex;
+    justify-content: center;
+    background: #2e2b29;
+    color: #e5dac3;
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > div.content > form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: #2e2b29;
+    color: #e5dac3;
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div {
+    background: #2e2b29;
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > span:before {
+    color: #e5dac3;
+}
+

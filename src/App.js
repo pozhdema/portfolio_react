@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/home";
-import Settings from "./settings";
+import Settings from "./pages/settings";
 
 class App extends Component{
 
@@ -25,7 +25,7 @@ class App extends Component{
                         <Route path="/contacts" component={Contacts}/>
                         <Route path="/signIn" component={SignIn}/>
                         <Route path="/signUp" component={SignUp}/>
-                        <Route path="/signUp" component={Settings}/>
+                        <Route path="/settings" component={Settings}/>
                     </Switch>
                     <ToastContainer />
                     <Footer/>
