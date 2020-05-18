@@ -40,7 +40,7 @@ class Add extends Component{
         const { title_ua, title_en } = this.state.form;
 
         return (
-            <Modal className="modal" trigger={<Button content="Add  New Category" />} closeIcon={<FontAwesome name="window-close" className="fas fa-window-close"/>}>
+            <Modal  trigger={<Button className="admin-submit add" content="Add  New Category" />} closeIcon={<FontAwesome name="window-close" className="fas fa-window-close"/>}>
                 <Modal.Header>Add New Category</Modal.Header>
                 <Modal.Content>
                     <Form onSubmit={this.handleSubmit}>

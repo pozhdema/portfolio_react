@@ -64,7 +64,7 @@ class Settings extends Component {
         const data = categories.length === 0? []: categories;
 
         return (
-            <Container className="container settings">
+            <Container className=" settings">
                 <Add addRow={this.addRow}/>
                 <View
                     data={data}
