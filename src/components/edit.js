@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Modal, Button } from 'semantic-ui-react'
-import FontAwesome from "react-fontawesome";
+import '../styles/components/add.css'
 
 class Edit extends Component {
     initialState = {
@@ -56,16 +56,17 @@ class Edit extends Component {
             <Modal
                 open={isOpen}
                 onClose={onClose}
-                closeIcon={<FontAwesome name="window-close" className="fas fa-window-close"/>}
+                id="modal-edit-category"
             >
-                <Modal.Header>Edit User</Modal.Header>
-                <Modal.Content>
+                <Modal.Header id="modal-edit-category-header">Edit User</Modal.Header>
+                <Modal.Content id="modal-edit-category-header">
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Field>
                             <Form.Input
                                 name="title_ua"
                                 value={title_ua}
                                 onChange={this.handleChange}
+                                id="modal-edit-category-inputOne"
                             />
                         </Form.Field>
                         <Form.Field>
@@ -73,12 +74,14 @@ class Edit extends Component {
                                 name="title_en"
                                 value={title_en}
                                 onChange={this.handleChange}
+                                id="modal-edit-category-inputOne"
                             />
                         </Form.Field>
                         <Button
                             type="submit"
                             content="Submit"
                             className="btn-input"
+                            id="modal-edit-category-btn"
                         />
                     </Form>
                 </Modal.Content>

@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import {Container} from 'semantic-ui-react'
-import '../styles/pages/settings.css';
+import {Tab} from 'semantic-ui-react'
 import Add from "../components/add";
 import View from "../components/view";
 import {toast} from "react-toastify";
 import CardPhoto from "../components/cardPhoto";
-
+import '../styles/pages/settings.css'
 
 class Settings extends Component {
     initialState = {
@@ -173,29 +172,45 @@ class Settings extends Component {
     render() {
         const {categories, isOpen, images} = this.state;
         const data = categories.length === 0 ? [] : categories;
+        const panes = [
+            {
+                menuItem: 'Category',
+                render: () => <Tab.Pane attached={false} className="settings">
+                    <div className="settings-category">
+                        <Add
+                            isOpen={isOpen}
+                            addRow={this.addRow}
+                            onClose={this.onClose}
+                            onOpen={this.onOpen}
+                        />
+                        <View
+                            data={data}
+                            deleteRow={this.deleteRow}
+                            updateRow={this.updateRow}
+                            getCategoryById={this.getCategoryById}
+                        />
+                    </div>
+                </Tab.Pane>,
+            },
+            {
+                menuItem: 'Photo',
+                render: () => <Tab.Pane attached={false} className="settings">
+                    <div className="settings-photo">
+                        <CardPhoto
+                            images={images}
+                        />
+                    </div>
+                </Tab.Pane>,
+            },
+
+        ];
+
+        const TabExampleSecondaryPointing = () => (
+            <Tab menu={{secondary: true, pointing: true }} panes={panes}/>
+        );
 
         return (
-            <Container className=" settings">
-                <div className="settings-category">
-                    <Add
-                        isOpen={isOpen}
-                        addRow={this.addRow}
-                        onClose={this.onClose}
-                        onOpen={this.onOpen}
-                    />
-                    <View
-                        data={data}
-                        deleteRow={this.deleteRow}
-                        updateRow={this.updateRow}
-                        getCategoryById={this.getCategoryById}
-                    />
-                </div>
-                <div className="settings-photo">
-                    <CardPhoto
-                        images={images}
-                    />
-                </div>
-            </Container>
+            <TabExampleSecondaryPointing/>
         )
     }
 }

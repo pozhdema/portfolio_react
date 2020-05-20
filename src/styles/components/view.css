@@ -1,33 +1,34 @@
 .table-container {
-    width: 50%;
-    margin: 20px 0;
-    text-align: center;
+    margin-top: 20px;
 }
 
-.table-view {
+#table-view {
     width: 100%;
     height: 170px;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 25px;
     color: #F5F5DC;
+    background: #2e2b29;
+    text-align: center;
 }
 
-.table-view-header {
+#table-view-header:nth-child(1),#table-view-header:nth-child(2),#table-view-header:nth-child(3) {
     color: #ffccbb;
+    background: #2e2b29;
+    text-align: center;
 }
 
-.table-view-action {
-    width: 250px;
-}
-
-.action {
-    width: 100px;
+#action-edit, #action-delete {
+    border: 1px solid #454545;
+    border-radius: 25px;
+    background: transparent;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 20px;
+    font-weight: 100;
     color: #F5F5DC;
 }
 
-.action:hover {
+#action-edit:hover, #action-delete:hover {
     background: #c6baba;
     color: #2e2b29;
 }

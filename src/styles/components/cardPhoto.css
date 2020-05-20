@@ -1,15 +1,19 @@
-.card {
-    width: 100%;
-    height: 255px;
+#card {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    height: 550px;
+    background: #2e2b29;
     overflow-y: scroll;
 }
 
-.card-container {
+#card-container {
     display: flex;
-    width: 25%;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 300px;
 }
 
 .card-photo {
@@ -18,14 +22,17 @@
     margin: 10px 0;
 }
 
-.card-btn {
+#card-btn-edit, #card-btn-delete {
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 20px;
     color: #F5F5DC;
+    background: transparent;
+    border: 1px solid #454545;
+    border-radius: 25px;
     cursor: pointer;
 }
 
-.card-btn:hover {
+#card-btn-edit:hover, #card-btn-delete:hover {
     background: #c6baba;
     color: #2e2b29;
 }

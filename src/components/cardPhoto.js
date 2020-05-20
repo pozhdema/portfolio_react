@@ -7,7 +7,7 @@ class CardPhoto extends Component {
 
     render() {
         const {images, isLoading, error} = this.props;
-        console.log(images)
+
         if (isLoading) {
             return <p>Loading...</p>;
         }
@@ -15,21 +15,21 @@ class CardPhoto extends Component {
             return <p>{error.message}</p>;
         }
         return (
-            <Card className="card">
+            <Card id="card">
                 {images.map(card => (
-                    <Card.Content extra key={card.id} className="card-container">
+                    <Card.Content key={card.id} id="card-container">
+                        < Image
+                            src={card.path}
+                            id={card.id}
+                            className="card-photo"
+                        />
                         <div className='ui two buttons'>
-                            <Button className="btn-input card-btn">
+                            <Button id="card-btn-edit">
                                 Edit
                             </Button>
-                            <Button className="btn-input card-btn">
+                            <Button id="card-btn-delete">
                                 Delete
                             </Button>
-                            < Image
-                                src={card.path}
-                                id={card.id}
-                                className="card-photo"
-                            />
                         </div>
                     </Card.Content>
                 ))}

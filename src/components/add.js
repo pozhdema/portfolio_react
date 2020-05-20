@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Form, Modal, Button} from 'semantic-ui-react'
 import "../styles/components/add.css"
-import FontAwesome from "react-fontawesome";
 
 class Add extends Component {
     initialState = {
@@ -43,18 +42,18 @@ class Add extends Component {
         return (
             <Modal
                 trigger={<Button
-                    className="admin-submit add"
+                    id="add-btn"
                     content="Add  New Category"
                     onClick={() => {
                         onOpen();
                     }}
                 />}
-                closeIcon={<FontAwesome name="window-close" className="fas fa-window-close"/>}
                 open={isOpen}
                 onClose={onClose}
+                id="modal-add-category"
             >
-                <Modal.Header>Add New Category</Modal.Header>
-                <Modal.Content>
+                <Modal.Header id="modal-add-category-header">Add New Category</Modal.Header>
+                <Modal.Content id="modal-add-category-content">
                     <Form
                         onSubmit={this.handleSubmit}
                     >
@@ -64,7 +63,7 @@ class Add extends Component {
                                 name="title_ua"
                                 value={this.state.title_ua}
                                 onChange={this.handleChange}
-                                autoFocus={true}
+                                id="modal-add-category-inputOne"
                             />
                         </Form.Field>
                         <Form.Field>
@@ -73,12 +72,13 @@ class Add extends Component {
                                 name="title_en"
                                 value={this.state.title_en}
                                 onChange={this.handleChange}
+                                id="modal-add-category-inputTwo"
                             />
                         </Form.Field>
                         <Button
                             type="submit"
-                            className="btn-input"
                             content="Submit"
+                            id="modal-add-category-btn"
                             disabled={!title_ua || !title_en}
                             onClick={this.handleSubmit}
                         />

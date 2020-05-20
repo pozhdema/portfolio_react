@@ -25,12 +25,12 @@ class View extends Component {
                     updateRow={updateRow}
                     getCategoryById={getCategoryById}
                 />
-                <Table className="table-view" sortable celled fixed>
-                    <Table.Header className="table-view-header">
+                <Table id="table-view" sortable celled fixed>
+                    <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Title_ua</Table.HeaderCell>
-                            <Table.HeaderCell>Title_en</Table.HeaderCell>
-                            <Table.HeaderCell>Actions</Table.HeaderCell>
+                            <Table.HeaderCell id="table-view-header">Title_ua</Table.HeaderCell>
+                            <Table.HeaderCell id="table-view-header">Title_en</Table.HeaderCell>
+                            <Table.HeaderCell id="table-view-header">Actions</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -38,10 +38,10 @@ class View extends Component {
                             <Table.Row key={row.id}>
                                 <Table.Cell>{row.title_ua}</Table.Cell>
                                 <Table.Cell>{row.title_en}</Table.Cell>
-                                <Table.Cell className="table-view-action">
+                                <Table.Cell>
                                     <Button
                                         content="Edit"
-                                        className="btn-input action"
+                                        id="action-edit"
                                         onClick={() => {
                                             this.setState({
                                                 isOpen: true,
@@ -51,7 +51,7 @@ class View extends Component {
                                     />
                                     <Button
                                         content="Delete"
-                                        className="btn-input action"
+                                        id="action-delete"
                                         onClick={() => {
                                             deleteRow(row.id)
                                         }}
