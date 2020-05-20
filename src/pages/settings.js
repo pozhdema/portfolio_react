@@ -4,6 +4,7 @@ import '../styles/pages/settings.css';
 import Add from "../components/add";
 import View from "../components/view";
 import {toast} from "react-toastify";
+import CardPhoto from "../components/cardPhoto";
 
 
 class Settings extends Component {
@@ -15,21 +16,24 @@ class Settings extends Component {
             }
         ],
         categories: [],
-        isOpen: false
+        isOpen: false,
+        images: [],
+        isLoading: false,
+        error: null
     };
 
     state = this.initialState;
 
     onClose = () => {
-        this.setState({ isOpen: false })
+        this.setState({isOpen: false})
     };
 
     onOpen = () => {
-        this.setState({ isOpen: true})
+        this.setState({isOpen: true})
     };
 
     getCategoryById = id => {
-        const { categories } = this.state;
+        const {categories} = this.state;
 
         const u = categories.filter(item => item.id === id);
 
@@ -148,26 +152,49 @@ class Settings extends Component {
                 }
             })
             .catch(error => this.setState({error, isLoading: false}));
+
+        fetch('http://qwe.loc/photo/list')
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                if (response["status"] === "success") {
+                    this.setState({images: response["data"], isLoading: false});
+                } else {
+                    toast(response["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => this.setState({error, isLoading: false}));
     }
 
     render() {
-        const {categories, isOpen} = this.state;
+        const {categories, isOpen, images} = this.state;
         const data = categories.length === 0 ? [] : categories;
 
         return (
             <Container className=" settings">
-                <Add
-                    isOpen={isOpen}
-                    addRow={this.addRow}
-                    onClose={this.onClose}
-                    onOpen={this.onOpen}
-                />
-                <View
-                    data={data}
-                    deleteRow={this.deleteRow}
-                    updateRow={this.updateRow}
-                    getCategoryById={this.getCategoryById}
-                />
+                <div className="settings-category">
+                    <Add
+                        isOpen={isOpen}
+                        addRow={this.addRow}
+                        onClose={this.onClose}
+                        onOpen={this.onOpen}
+                    />
+                    <View
+                        data={data}
+                        deleteRow={this.deleteRow}
+                        updateRow={this.updateRow}
+                        getCategoryById={this.getCategoryById}
+                    />
+                </div>
+                <div className="settings-photo">
+                    <CardPhoto
+                        images={images}
+                    />
+                </div>
             </Container>
         )
     }

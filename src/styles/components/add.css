@@ -45,8 +45,8 @@ body > div.ui.page.modals.dimmer.transition.visible.active > div > div.content >
 }
 
 body > div.ui.page.modals.dimmer.transition.visible.active > div > span {
-    margin-right: auto;
-    padding-left: 40px;
+    margin-left: auto;
+    padding-right: 40px;
 }
 
 body > div.ui.page.modals.dimmer.transition.visible.active > div > span:before {
