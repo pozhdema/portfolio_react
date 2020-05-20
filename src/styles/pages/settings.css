@@ -1,17 +1,6 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 850px;
-    background: #2e2b29;
-}
-
 .settings {
     display: flex;
     justify-content: space-evenly;
-    height: 350px;
-    padding-top: 20%;
 }
 
 

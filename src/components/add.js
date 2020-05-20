@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import { Form, Modal, Button } from 'semantic-ui-react'
+import {Form, Modal, Button} from 'semantic-ui-react'
 import "../styles/components/add.css"
 import FontAwesome from "react-fontawesome";
 
-class Add extends Component{
+class Add extends Component {
     initialState = {
-        form: {
+        category: {
             title_ua: '',
             title_en: '',
         },
@@ -14,18 +14,18 @@ class Add extends Component{
     state = this.initialState;
 
     handleChange = event => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
 
         this.setState({
-            form: { ...this.state.form, [name]: value },
+            category: {...this.state.category, [name]: value},
         })
     };
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleSubmit = e => {
+        e.preventDefault();
 
-        const { title_ua, title_en } = this.state.form;
-        const { addRow } = this.props;
+        const {title_ua, title_en} = this.state.category;
+        const {addRow} = this.props;
 
         const newCategory = {
             title_ua,
@@ -33,21 +33,35 @@ class Add extends Component{
         };
 
         addRow(newCategory);
-        this.setState(this.initialState)
+
+        this.setState(this.initialState);
     };
 
     render() {
-        const { title_ua, title_en } = this.state.form;
-
+        const {title_ua, title_en} = this.state.category;
+        const { isOpen, onClose, onOpen } = this.props;
         return (
-            <Modal  trigger={<Button className="admin-submit add" content="Add  New Category" />} closeIcon={<FontAwesome name="window-close" className="fas fa-window-close"/>}>
+            <Modal
+                trigger={<Button
+                    className="admin-submit add"
+                    content="Add  New Category"
+                    onClick={() => {
+                        onOpen();
+                    }}
+                />}
+                closeIcon={<FontAwesome name="window-close" className="fas fa-window-close"/>}
+                open={isOpen}
+                onClose={onClose}
+            >
                 <Modal.Header>Add New Category</Modal.Header>
                 <Modal.Content>
-                    <Form onSubmit={this.handleSubmit}>
+                    <Form
+                        onSubmit={this.handleSubmit}
+                    >
                         <Form.Field>
                             <Form.Input
                                 placeholder="title_ua"
-                                name="name"
+                                name="title_ua"
                                 value={this.state.title_ua}
                                 onChange={this.handleChange}
                                 autoFocus={true}
@@ -56,12 +70,18 @@ class Add extends Component{
                         <Form.Field>
                             <Form.Input
                                 placeholder="title_en"
-                                name="name"
+                                name="title_en"
                                 value={this.state.title_en}
                                 onChange={this.handleChange}
                             />
                         </Form.Field>
-                        <Button type="submit" className="btn-input" content="Submit" disabled={!title_ua || !title_en} />
+                        <Button
+                            type="submit"
+                            className="btn-input"
+                            content="Submit"
+                            disabled={!title_ua || !title_en}
+                            onClick={this.handleSubmit}
+                        />
                     </Form>
                 </Modal.Content>
             </Modal>

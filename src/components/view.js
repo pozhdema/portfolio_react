@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Table, Button } from 'semantic-ui-react'
+import React, {Component} from 'react'
+import {Table, Button} from 'semantic-ui-react'
 import Edit from "./edit";
 import '../styles/components/view.css'
 
@@ -10,17 +10,12 @@ class View extends Component {
     };
 
     onClose = () => {
-        this.setState({ isOpen: false })
-    };
-
-    onOpen = () => {
-        this.setState({ isOpen: true, id: this.props.id })
+        this.setState({isOpen: false})
     };
 
     render() {
-        const { isOpen, id } = this.state;
-        const { data, deleteRow, updateRow} = this.props;
-
+        const {isOpen, id} = this.state;
+        const {data, deleteRow, updateRow,  getCategoryById} = this.props;
         return (
             <div className="table-container">
                 <Edit
@@ -28,6 +23,7 @@ class View extends Component {
                     isOpen={isOpen}
                     id={id}
                     updateRow={updateRow}
+                    getCategoryById={getCategoryById}
                 />
                 <Table className="table-view" sortable celled fixed>
                     <Table.Header className="table-view-header">
@@ -39,7 +35,7 @@ class View extends Component {
                     </Table.Header>
                     <Table.Body>
                         {data.map(row => (
-                            <Table.Row key={row.name}>
+                            <Table.Row key={row.id}>
                                 <Table.Cell>{row.title_ua}</Table.Cell>
                                 <Table.Cell>{row.title_en}</Table.Cell>
                                 <Table.Cell className="table-view-action">
@@ -47,14 +43,17 @@ class View extends Component {
                                         content="Edit"
                                         className="btn-input action"
                                         onClick={() => {
-                                            this.setState({ isOpen: true, id: row.name })
+                                            this.setState({
+                                                isOpen: true,
+                                                id: row.id,
+                                            });
                                         }}
                                     />
                                     <Button
                                         content="Delete"
                                         className="btn-input action"
                                         onClick={() => {
-                                            deleteRow(row.name)
+                                            deleteRow(row.id)
                                         }}
                                     />
                                 </Table.Cell>
