@@ -1,10 +1,18 @@
+.settings-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 525px;
+    margin-top: 20px;
+}
+
 #card {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    height: 550px;
     background: #2e2b29;
     overflow-y: scroll;
 }
@@ -12,17 +20,26 @@
 #card-container {
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
+    justify-content: center;
+    flex-grow: 0;
+    width: 300px;
     height: 300px;
 }
 
 .card-photo {
-    width: auto;
+    width: 300px;
     height: 200px;
-    margin: 10px 0;
+}
+
+#group-btn-photo {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
 }
 
 #card-btn-edit, #card-btn-delete {
+    width: 100px;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 20px;
     color: #F5F5DC;

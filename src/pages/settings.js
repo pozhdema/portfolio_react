@@ -5,6 +5,7 @@ import View from "../components/view";
 import {toast} from "react-toastify";
 import CardPhoto from "../components/cardPhoto";
 import '../styles/pages/settings.css'
+import AddPhoto from "../components/addPhoto";
 
 class Settings extends Component {
     initialState = {
@@ -16,9 +17,8 @@ class Settings extends Component {
         ],
         categories: [],
         isOpen: false,
-        images: [],
         isLoading: false,
-        error: null
+        error: null,
     };
 
     state = this.initialState;
@@ -38,7 +38,6 @@ class Settings extends Component {
 
         return u[0]
     };
-
 
     addRow = categoryItem => {
         const {categories} = this.state;
@@ -152,25 +151,11 @@ class Settings extends Component {
             })
             .catch(error => this.setState({error, isLoading: false}));
 
-        fetch('http://qwe.loc/photo/list')
-            .then(response => response.json())
-            .then(response => {
-                console.log(response);
-                if (response["status"] === "success") {
-                    this.setState({images: response["data"], isLoading: false});
-                } else {
-                    toast(response["message"], {
-                        autoClose: 5000,
-                        closeButton: true,
-                        type: toast.TYPE.ERROR,
-                    });
-                }
-            })
-            .catch(error => this.setState({error, isLoading: false}));
+
     }
 
     render() {
-        const {categories, isOpen, images} = this.state;
+        const {categories, isOpen} = this.state;
         const data = categories.length === 0 ? [] : categories;
         const panes = [
             {
@@ -195,9 +180,9 @@ class Settings extends Component {
             {
                 menuItem: 'Photo',
                 render: () => <Tab.Pane attached={false} className="settings">
-                    <div className="settings-photo">
+                    <div >
                         <CardPhoto
-                            images={images}
+                            category={data}
                         />
                     </div>
                 </Tab.Pane>,
@@ -206,7 +191,7 @@ class Settings extends Component {
         ];
 
         const TabExampleSecondaryPointing = () => (
-            <Tab menu={{secondary: true, pointing: true }} panes={panes}/>
+            <Tab menu={{secondary: true, pointing: true}} panes={panes}/>
         );
 
         return (

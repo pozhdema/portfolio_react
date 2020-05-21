@@ -6,11 +6,6 @@
     width: 100%;
 }
 
-.settings-photo {
-    width: 100%;
-    margin-top: 20px;
-}
-
 #root > div > div:nth-child(1) > div.ui.pointing.secondary.menu > a.active.item,
 #root > div > div:nth-child(2) > div.ui.pointing.secondary.menu > a.active.item {
     font-size: 25px;
@@ -27,8 +22,6 @@
 
 #root > div > div:nth-child(2) > div.ui.segment.active.tab.settings {
     background: #2e2b29;
-    height: 550px;
-    overflow-y: scroll;
 }
 
 
