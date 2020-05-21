@@ -1,0 +1,27 @@
+.settings-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#root > div > div:nth-child(1) > div.ui.pointing.secondary.menu > a.active.item,
+#root > div > div:nth-child(2) > div.ui.pointing.secondary.menu > a.active.item {
+    font-size: 25px;
+    color: #ffccbb;
+    font-weight: 100;
+}
+
+#root > div > div:nth-child(2) > div.ui.pointing.secondary.menu > a:nth-child(1),
+#root > div > div:nth-child(2) > div.ui.pointing.secondary.menu > a:nth-child(2) {
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    color: #F5F5DC;
+    font-size: 25px;
+}
+
+#root > div > div:nth-child(2) > div.ui.segment.active.tab.settings {
+    background: #2e2b29;
+}
+
+

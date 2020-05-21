@@ -1,107 +1,127 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import './signIn.css';
+import '../styles/pages/signIn.css';
+import Input from "../components/input";
+import Button from "../components/btn";
+import {toast} from 'react-toastify';
+import ValidateEmail from "../components/validationEmail";
+import ValidatePassword from "../components/validatePassword";
 
-const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-const validateForm = (errors) => {
-    let valid = true;
-    Object.values(errors).forEach(
-        (val) => val.length > 0 && (valid = false)
-    );
-    return valid;
-};
 
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: null,
-            password: null,
-            errors: {
-                email: "",
-                password: ""
-            },
+            email: "",
+            password:"",
+            isDisabled: true
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (e) => {
-        e.preventDefault();
-        const {name, value} = e.target;
-        let errors = this.state.errors;
+    validateEmail = ValidateEmail;
+    validatePassword = ValidatePassword;
 
-        switch (name) {
-            case 'email':
-                errors.email =
-                    validEmailRegex.test(value)
-                        ? ''
-                        : 'Email is not valid!';
-                break;
-            case 'password':
-                errors.password =
-                    value.length < 8
-                        ? 'Password must be 8 characters long!'
-                        : '';
-                break;
-            default:
-                break;
+
+    handleInput =(e) => {
+
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.state[name] = value;
+
+
+        if (target.name === 'email') {
+            this.validateEmail(target.value);
+        }
+        if (target.name === 'password') {
+            this.validatePassword(target.value);
+        }
+        if (this.state.emailError === false && this.state.passwordError === false) {
+            this.setState({
+                isDisabled: false
+            })
         }
 
-        this.setState({errors, [name]: value});
+
+        this.setState(prevState => {
+                return {
+                    newUser: {
+                        ...prevState, [name]: value
+                    }
+                }
+            }
+        )
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (validateForm(this.state.errors)) {
-            console.info('Valid Form')
-        } else {
-            console.error('Invalid Form')
-        }
+        let form = e.target;
+
+        fetch('http://qwe.loc/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email:this.state.email, password:this.state.password})
+        })
+            .then(response => response.json())
+            .then((data) => {
+                if (data["status"] === "success") {
+                    this.props.history.push('/gallery')
+                } else {
+                    toast("Login or password incorrect", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => console.error(error));
+        form.reset();
     };
 
     render() {
-        const {errors} = this.state;
         return (
-            <div className="container">
+            <div className="container sign">
                 <form
                     onSubmit={this.handleSubmit}
-                    noValidate
-                    className="admin">
+                    className="admin"
+                    id="signIn-form">
                     <div className="wrapper-input">
-                        <input
-                            type="text"
-                            placeholder="Your email"
-                            className="admin-input"
-                            id="email"
-                            name="email"
+                        <Input
+                            id={"email"}
+                            name={"email"}
+                            type={"email"}
+                            placeholder={"Your email"}
                             value={this.state.email}
-                            onChange={this.handleChange}
-                            noValidate
+                            required
+                            handleChange={this.handleInput}
                         />
-                        {errors.email.length > 0 &&
-                        <span>{errors.email}</span>}
+                        {this.state.emailError ?
+                            <span className="error">Please Enter valid email address</span> : ''}
                     </div>
                     <div className="wrapper-input">
-                        <input
-                            type="password"
-                            placeholder="Your password"
-                            className="admin-input"
-                            name="password"
+                        <Input
+                            id={"password"}
+                            name={"password"}
+                            type={"password"}
+                            placeholder={"Your password"}
                             value={this.state.password}
-                            onChange={this.handleChange}
-                            noValidate
+                            required
+                            handleChange={this.handleInput}
                         />
-                        {errors.password.length > 0 &&
-                        <span>{errors.password}</span>}
+                        {this.state.passwordError ?
+                            <span className="error">Please enter some   value</span> : ''}
                     </div>
                     <div className="admin-btn">
-                        <input
-                            type="submit"
-                            value="Sign in"
-                            className="admin-submit"
+                        <Button
+                            action={this.handleSubmit}
+                            title={"Sign in"}
                         />
                         <Link to="/signUp">Create an account</Link>
                     </div>

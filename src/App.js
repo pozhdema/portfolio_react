@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style.css';
+import './styles/style.css';
 import Nav from './components/nav';
 import Gallery from './pages/gallery';
 import Contacts from './pages/contacts';
@@ -7,13 +7,10 @@ import SignIn from './pages/signIn';
 import SignUp from "./pages/signUp";
 import Footer from "./components/footer";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import  logo from './images/crow-new.png'
-import image1 from './images/IMG_0624-min.jpg';
-import image2 from './images/IMG_2598-compressor.jpg';
-import image3 from './images/IMG_0437-compressor.jpg';
-import image4 from './images/20190303165950_IMG_2463-compressor.jpg';
-import image5 from './images/20180922062108_IMG_1751-compressor.jpg';
-import BackgroundSlider from 'react-background-slider'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Home from "./pages/home";
+import Settings from "./pages/settings";
 
 class App extends Component{
 
@@ -23,12 +20,14 @@ class App extends Component{
                 <div className="App">
                     <Nav/>
                     <Switch>
-                        <Route path="/" exact component={Home}/>
+                        <Route path="/" exact component={HomeLoad}/>
                         <Route path="/gallery" component={Gallery}/>
                         <Route path="/contacts" component={Contacts}/>
                         <Route path="/signIn" component={SignIn}/>
                         <Route path="/signUp" component={SignUp}/>
+                        <Route path="/settings" component={Settings}/>
                     </Switch>
+                    <ToastContainer />
                     <Footer/>
                 </div>
             </Router>
@@ -36,13 +35,8 @@ class App extends Component{
     }
 }
 
-const Home = () => (
-    <div className="home">
-        <BackgroundSlider
-            images={[image1, image2, image3, image4, image5]}
-            duration={10} transition={2} />
-        <img src={logo}/>
-    </div>
+const HomeLoad = () => (
+    <Home/>
 );
 
 export default App

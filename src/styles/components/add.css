@@ -1,0 +1,59 @@
+#add-btn, #add-btn-photo {
+    border: 1px solid #454545;
+    border-radius: 25px;
+    background: transparent;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+    font-weight: 100;
+    color: #F5F5DC;
+}
+
+#add-btn-photo {
+    height: 80px;
+}
+
+#add-btn:hover, #add-btn-photo:hover {
+    background: #c6baba;
+    color: #2e2b29;
+}
+
+#modal-add-category, #modal-edit-category, #modal-add-photo{
+    width: 50%;
+    text-align: center;
+    background: #c6baba;
+}
+
+#modal-add-category-header, #modal-edit-category-header, #modal-add-photo-header {
+    background: #b2a094;
+    color: #331c1e;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+
+}
+
+#modal-add-category-content, #modal-edit-category-content,  #modal-add-photo-content {
+    background: #b2a094;
+    color: #331c1e;
+}
+
+#modal-add-category-inputOne, #modal-add-category-inputTwo,
+#modal-edit-category-inputOne, #modal-edit-category-inputTwo,
+#modal-add-photo-inputOne{
+    background: transparent;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+#modal-add-category-btn, #modal-edit-category-btn, #modal-add-photo-btn {
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+    font-weight: 100;
+    margin-top: 10px;
+}
+
+#modal-add-category-btn:hover, #modal-edit-category-btn:hover, #modal-add-photo-btn:hover {
+    color: #b2a094;
+    background: #331c1e;
+}
+

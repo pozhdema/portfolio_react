@@ -1,11 +1,11 @@
 import React from 'react'
-import './nav.css'
+import '../styles/components/nav.css'
 import {Link} from 'react-router-dom'
 
-function Nav(){
-    return(
+function Nav() {
+    return (
         <nav>
-            <h1>Pozhdema Nataliia <span> photographer</span> </h1>
+            <h1>Pozhdema Nataliia <span> photographer</span></h1>
             <ul className="navigations">
                 <Link to="/" className="link">
                     <li>Home</li>
@@ -19,12 +19,12 @@ function Nav(){
                 <Link to="/signIn" className="link">
                     <li>Sign In</li>
                 </Link>
-                <Link to="/signUp" className="link">
-                    <li>Sign Up</li>
+                <Link to="/settings" className="link">
+                    <li>Settings</li>
                 </Link>
             </ul>
-            <button>Login In</button>
         </nav>
     )
 }
+
 export default Nav

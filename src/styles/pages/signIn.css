@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 722px;
-    background: #2C2C2C;
+    background: #2e2b29;
+}
+
+.sign {
+    justify-content: center;
+    margin-top: 100px;
 }
 
 .admin {
@@ -20,17 +23,6 @@
     border-radius: 50px;
 }
 
-input {
-    border: 1px solid #454545;
-    border-radius: 25px;
-    background: transparent;
-    font-family: Caveat, CormorantInfant, SourceSansPro;
-    font-size: 20px;
-    color: #F5F5DC;
-    outline: none;
-    cursor: pointer;
-}
-
 .wrapper-input {
     display: flex;
     flex-wrap: wrap;
@@ -38,31 +30,18 @@ input {
     align-items: center;
 }
 
-.admin-input {
-    width: 300px;
-    height: 35px;
-    padding-left: 20px;
-    margin-bottom: 5px;
-}
 
 .admin-btn {
     display: flex;
     justify-content: space-between;
 }
 
-.admin-submit {
-    width: 125px;
-    height: 35px;
-}
-
-.admin-submit:hover {
-    background: #F5F5DC;
-    color: #2C2C2C;
-
-}
-
 .admin-btn a {
     text-decoration: none;
-    color: #F5F5DC;
+    color: #e5dac3;
     margin-top: 5px;
+}
+
+.error {
+    color: #f87956
 }

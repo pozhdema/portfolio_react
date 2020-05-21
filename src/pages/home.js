@@ -1,32 +1,29 @@
-import React, {Component} from 'react'
-import Filter from "../components/filter";
-import '../styles/pages/gallery.css'
+import React, {Component} from "react";
 import {toast} from "react-toastify";
+import logo from '../images/crow-new.png'
+import BackgroundSlider from 'react-background-slider'
+import '../styles/style.css';
 
-class Gallery extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            categories: [],
+            imagesName: [],
             isLoading: false,
             error: null,
-            clicked: false
         };
     }
-
-    onFilterChange = (id) => {
-        this.setState({clicked: id})
-    };
 
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('http://qwe.loc/categories/list')
+        fetch('http://qwe.loc/')
             .then(response => response.json())
             .then(response => {
+                console.log(response);
                 if (response["status"] === "success") {
-                    this.setState({categories: response["data"], isLoading: false});
+                    this.setState({imagesName: response["data"], isLoading: false});
                 } else {
                     toast(response["message"], {
                         autoClose: 5000,
@@ -38,27 +35,24 @@ class Gallery extends Component {
             .catch(error => this.setState({error, isLoading: false}));
     }
 
-
     render() {
-        const {categories, isLoading, error, clicked} = this.state;
+        const {imagesName, isLoading, error} = this.state;
         if (isLoading) {
             return <p>Loading...</p>;
         }
         if (error) {
             return <p>{error.message}</p>;
         }
-        if (categories !== []) {
-            return (
-                <div className="container filter">
-                    <Filter
-                        categories={categories}
-                        onFilterChange={this.onFilterChange}
-                        clicked={clicked}
-                    />
-                </div>
-            )
-        }
+
+        return (
+            <div className="home">
+                <BackgroundSlider
+                    images={imagesName}
+                    duration={10} transition={2}/>
+                <img src={logo}/>
+            </div>
+        )
     }
 }
 
-export default Gallery
+export default Home;

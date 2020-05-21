@@ -1,6 +1,4 @@
 nav {
-    position: absolute;
-    top: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -8,13 +6,13 @@ nav {
     width: 100%;
     min-height: 150px;
     background: transparent;
-    /* background: linear-gradient(0deg, rgba(196, 201, 201, 0) 0%, rgba(204, 204, 201, 0.14639359161633403) 25%, rgba(149, 149, 148, 0.40129555240064774) 50%, rgba(112, 112, 112, 0.5049370089832808) 73%, rgba(92, 91, 91, 1) 100%);*/
 }
 
 h1 {
     display: flex;
     flex-wrap: wrap;
-    width: 20%;
+    width: 19%;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 40px;
     font-weight: 100;
 }
@@ -35,11 +33,10 @@ h1 span {
     text-decoration: none;
     font-size: 30px;
     font-weight: 100;
-    color: #F5F5DC;
+    color: #e5dac3;
 }
 
 .link:hover {
-    /*color: #202020;*/
-    color: #FAD7A0;
+    color:#ffccbb;
 }
 

@@ -1,16 +1,16 @@
 @font-face {
     font-family: Caveat;
-    src: url('fonts/Caveat-Regular.ttf') format("truetype");
+    src: url('../fonts/Caveat-Regular.ttf') format("truetype");
 }
 
 @font-face {
     font-family: CormorantInfant;
-    src: url('fonts/CormorantInfant-LightItalic.ttf') format("truetype");
+    src: url('../fonts/CormorantInfant-LightItalic.ttf') format("truetype");
 }
 
 @font-face {
     font-family: SourceSansPro;
-    src: url('fonts/SourceSansPro-LightItalic.ttf') format("truetype");
+    src: url('../fonts/SourceSansPro-LightItalic.ttf') format("truetype");
 }
 
 * {
@@ -21,8 +21,10 @@
 
 body {
     position: relative;
+    height: 100vh;
     font-family: Caveat, CormorantInfant, SourceSansPro;
-    color: #F5F5DC;
+    color: #e5dac3;
+    background: #2e2b29;
 }
 
 .home {
@@ -32,6 +34,6 @@ body {
 
 .home img {
     width: 15%;
-    margin: 15% 0 16%;
+    margin: 9% 0 16%;
 }
 

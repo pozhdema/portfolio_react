@@ -1,0 +1,23 @@
+.btn-input {
+    width: 135px;
+    height: 40px;
+    margin-right: 5px;
+    background: transparent;
+    border: 1px solid #454545;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+}
+
+.all {
+    color: #e5dac3;
+    font-family: Caveat;
+    font-size: 20px;
+}
+
+.active {
+    background: #ffccbb;
+    color: #2C2C2C;
+    font-family: Caveat;
+    font-size: 20px;
+}
