@@ -5,7 +5,7 @@ import View from "../components/view";
 import {toast} from "react-toastify";
 import CardPhoto from "../components/cardPhoto";
 import '../styles/pages/settings.css'
-import AddPhoto from "../components/addPhoto";
+
 
 class Settings extends Component {
     initialState = {
@@ -82,7 +82,7 @@ class Settings extends Component {
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
-                    toast("Category successful added", {
+                    toast("Category successful edit", {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
@@ -92,7 +92,7 @@ class Settings extends Component {
                     });
                     this.onClose()
                 } else {
-                    toast("Category didn't add", {
+                    toast("Category didn't edit", {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -186,8 +186,7 @@ class Settings extends Component {
                         />
                     </div>
                 </Tab.Pane>,
-            },
-
+            }
         ];
 
         const TabExampleSecondaryPointing = () => (

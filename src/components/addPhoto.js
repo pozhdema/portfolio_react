@@ -39,6 +39,7 @@ class AddPhoto extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        this.setState({isLoading: true});
 
         const formData = new FormData();
         formData.append("file", this.state.file);
@@ -59,7 +60,7 @@ class AddPhoto extends Component {
                         type: toast.TYPE.SUCCESS,
                     });
                     this.values=[];
-                    this.props.getListOfPhoto();
+                    this.props.addCard(data["data"]);
                     this.onClose()
                 } else {
                     toast(data["message"], {
