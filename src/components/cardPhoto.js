@@ -22,8 +22,6 @@ class CardPhoto extends Component {
         console.log(this.state.images)
     };
 
-    updateCard
-
     deleteCard = id => {
         const {images} = this.state;
         fetch('http://qwe.loc/photo/delete', {

@@ -46,7 +46,10 @@
 
 #modal-add-category-inputOne, #modal-add-category-inputTwo,
 #modal-edit-category-inputOne, #modal-edit-category-inputTwo,
-#modal-add-photo-inputOne{
+#modal-add-photo-inputOne,
+#modal-add-photo-title-ua, #modal-add-photo-title-en,
+#modal-add-photo-description-ua, #modal-add-photo-description-en,
+#modal-add-photo-multiselect{
     background: transparent;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 20px;

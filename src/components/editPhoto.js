@@ -12,8 +12,13 @@ class EditPhoto extends Component {
             visible: false,
             value: '',
             isOpen: false,
-            categories: []
-        }
+            categories: [],
+            title_ua: "",
+            title_en: "",
+            description_ua: "",
+            description_en: ""
+        };
+        this.values = [];
     }
 
     onClose = () => {
@@ -31,9 +36,14 @@ class EditPhoto extends Component {
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
+                    this.values = data.data.categories;
                     this.setState({
                         visible: data.data.visible === "1",
                         slider: data.data.slider === "1",
+                        title_ua: data.data.title_ua,
+                        title_en: data.data.title_en,
+                        description_ua: data.data.description_ua,
+                        description_en: data.data.description_en,
                         categories: data.data.categories
                     });
                 } else {
@@ -49,15 +59,23 @@ class EditPhoto extends Component {
     };
 
     handleSelect = (e, {value}) => {
-        this.values = {value};
+        this.values = value;
     };
 
     handleVisible = () => {
-        this.setState((prevState) => ({visible : !prevState.visible }))
+        this.setState((prevState) => ({visible: !prevState.visible}))
     };
 
     handleVSlider = () => {
-        this.setState((prevState) => ({slider : !prevState.slider }))
+        this.setState((prevState) => ({slider: !prevState.slider}))
+    };
+
+    handleChange = e => {
+        const {name, value} = e.target;
+
+        this.setState({
+            [name]: value
+        })
     };
 
     handleSubmit = e => {
@@ -70,8 +88,12 @@ class EditPhoto extends Component {
             body: JSON.stringify({
                 visible: this.state.visible === true ? 1 : 0,
                 slider: this.state.slider === true ? 1 : 0,
-                categories:  this.values.value,
-                id: this.props.id
+                categories: this.values,
+                id: this.props.id,
+                title_ua: this.state.title_ua,
+                title_en: this.state.title_en,
+                description_ua: this.state.description_ua,
+                description_en: this.state.description_en
             })
         })
             .then(response => response.json())
@@ -147,6 +169,42 @@ class EditPhoto extends Component {
                                 checked={this.state.visible}
                                 label='Is visible'
                                 onChange={this.handleVisible}
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="title_ua"
+                                name="title_ua"
+                                value={this.state.title_ua}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-title-ua"
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="title_en"
+                                name="title_en"
+                                value={this.state.title_en}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-title-en"
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="description_ua"
+                                name="description_ua"
+                                value={this.state.description_ua}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-description-ua"
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="description_en"
+                                name="description_en"
+                                value={this.state.description_en}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-description-en"
                             />
                         </Form.Field>
                         <DropdownMultipleSelection/>
