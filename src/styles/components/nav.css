@@ -1,3 +1,6 @@
+.nav {
+}
+
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -37,6 +40,22 @@ h1 span {
 }
 
 .link:hover {
-    color:#ffccbb;
+    color: #ffccbb;
+}
+
+.lang {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 9%;
+    position: relative;
+    left: 88%;
+    top: -122px;
+}
+
+#lang-fa {
+    font-size: 150%;
+    line-height: 100px;
+    color: #e5dac3;
 }
 

@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/home";
 import Settings from "./pages/settings";
 
+
 class App extends Component{
 
     render() {
