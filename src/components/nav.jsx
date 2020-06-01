@@ -3,28 +3,21 @@ import '../styles/components/nav.css'
 import {Link} from 'react-router-dom'
 import {Checkbox} from 'semantic-ui-react'
 import FontAwesome from 'react-fontawesome'
-import Cookies from 'universal-cookie';
+import Helper from "./helper";
 
 class Nav extends Component {
     constructor(props) {
         super(props);
-        const cookies = new Cookies();
-        if (cookies.get("lang") === "EN") {
-            this.state = {
-                lang: true,
-            };
-        } else {
-            this.state = {
-                lang: false,
-            };
-        }
+
+        this.state = {
+            lang: false,
+        };
     }
 
+
     handleChange = () => {
-        const cookies = new Cookies();
         this.setState((prevState) => ({lang: !prevState.lang}));
 
-        cookies.set("lang", this.state.lang ? "UA" : "EN", {path: '/'});
     };
 
     render() {

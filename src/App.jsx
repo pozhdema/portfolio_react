@@ -7,17 +7,19 @@ import SignIn from './pages/signIn';
 import SignUp from "./pages/signUp";
 import Footer from "./components/footer";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/home";
 import Settings from "./pages/settings";
+import Helper from "./components/helper";
 
 
-class App extends Component{
+class App extends Component {
 
     render() {
         return (
             <Router>
+                <Helper/>
                 <div className="App">
                     <Nav/>
                     <Switch>
@@ -28,7 +30,7 @@ class App extends Component{
                         <Route path="/signUp" component={SignUp}/>
                         <Route path="/settings" component={Settings}/>
                     </Switch>
-                    <ToastContainer />
+                    <ToastContainer/>
                     <Footer/>
                 </div>
             </Router>

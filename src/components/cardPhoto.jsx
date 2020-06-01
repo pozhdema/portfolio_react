@@ -19,7 +19,6 @@ class CardPhoto extends Component {
     addCard = item => {
         const {images} = this.state;
         this.setState({images: [...images, item]});
-        console.log(this.state.images)
     };
 
     deleteCard = id => {
