@@ -3,7 +3,7 @@ import '../styles/components/nav.css'
 import {Link} from 'react-router-dom'
 import {Checkbox} from 'semantic-ui-react'
 import FontAwesome from 'react-fontawesome'
-import Helper from "./helper";
+
 
 class Nav extends Component {
     constructor(props) {
