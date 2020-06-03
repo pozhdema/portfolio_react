@@ -96,7 +96,7 @@ class Gallery extends Component {
                 })
             }
             return (
-                <div className="container filter">
+                <div className="container">
                     <Filter
                         categories={categories}
                         onFilterChange={this.onFilterChange}

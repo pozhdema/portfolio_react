@@ -5,7 +5,7 @@ import '../styles/components/footer.css'
 function Footer() {
     return (
         <footer>
-            <ul className="navigations">
+            <ul className="navigations footer">
                 <li><a  href="https://www.facebook.com/profile.php?id=100005189898824"> <FontAwesome name="facebook"
                     className="fa-facebook-f"/></a></li>
                 <li><a  href="https://www.instagram.com/pozhdema/?hl=uk"> <FontAwesome name="instagram"

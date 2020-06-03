@@ -41,7 +41,7 @@
 #card-btn-edit, #card-btn-delete {
     width: 100px;
     font-family: Caveat, CormorantInfant, SourceSansPro;
-    font-size: 20px;
+    font-size: 15px;
     color: #F5F5DC;
     background: transparent;
     border: 1px solid #454545;
@@ -52,4 +52,10 @@
 #card-btn-edit:hover, #card-btn-delete:hover {
     background: #c6baba;
     color: #2e2b29;
+}
+
+@media screen and (min-width: 1200px) {
+    #card-btn-edit, #card-btn-delete {
+        font-size: 20px;
+    }
 }

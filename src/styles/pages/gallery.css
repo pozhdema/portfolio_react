@@ -1,27 +1,58 @@
-.container-img{
-    width: 200px;
+.container-img {
+    width: 95%;
     height: 200px;
-    border: 1px solid #454545;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
+    margin-bottom: 5%;
 }
 
 .img-circle {
     width: auto;
     height: 100%;
-    margin: 0 auto;
 }
 
-#root > div > div.container.filter > div.lightbox-container {
+#root > div > div.container > div.lightbox-container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 600px;
-    margin-top: 40px;
+    height: 450px;
     overflow-y: scroll;
 }
 
-body > div:nth-child(5) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5) {
+body > div:nth-child(5) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5),
+body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5) > svg > path{
     display: none;
+}
+
+@media screen and (min-width: 576px) {
+    .container-img {
+        top: 464px;
+        height: 300px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #root > div > div.container > div.lightbox-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .container-img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #454545;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .img-circle {
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #root > div > div.container > div.lightbox-container {
+        height: 600px;
+    }
 }

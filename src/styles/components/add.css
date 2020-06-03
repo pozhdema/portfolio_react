@@ -3,7 +3,7 @@
     border-radius: 25px;
     background: transparent;
     font-family: Caveat, CormorantInfant, SourceSansPro;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 100;
     color: #F5F5DC;
 }
@@ -17,8 +17,8 @@
     color: #2e2b29;
 }
 
-#modal-add-category, #modal-edit-category, #modal-add-photo, #modal-edit-photo{
-    width: 50%;
+#modal-add-category, #modal-edit-category, #modal-add-photo, #modal-edit-photo {
+    width: 90%;
     text-align: center;
     background: #c6baba;
 }
@@ -31,7 +31,7 @@
 
 }
 
-#modal-add-category-content, #modal-edit-category-content,  #modal-add-photo-content, #modal-edit-photo-content {
+#modal-add-category-content, #modal-edit-category-content, #modal-add-photo-content, #modal-edit-photo-content {
     background: #b2a094;
     color: #331c1e;
 }
@@ -49,7 +49,7 @@
 #modal-add-photo-inputOne,
 #modal-add-photo-title-ua, #modal-add-photo-title-en,
 #modal-add-photo-description-ua, #modal-add-photo-description-en,
-#modal-add-photo-multiselect{
+#modal-add-photo-multiselect {
     background: transparent;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 20px;
@@ -66,5 +66,15 @@
 #modal-add-category-btn:hover, #modal-edit-category-btn:hover, #modal-add-photo-btn:hover, #modal-edit-photo-btn:hover {
     color: #b2a094;
     background: #331c1e;
+}
+
+@media screen and (min-width: 1200px) {
+    #add-btn, #add-btn-photo {
+        font-size: 20px;
+    }
+
+    #modal-add-category, #modal-edit-category, #modal-add-photo, #modal-edit-photo {
+        width: 50%;
+    }
 }
 

@@ -19,7 +19,7 @@ export default class Filter extends Component {
             )
         });
         return (
-            <div>
+            <div className="filter">
                 {buttons}
             </div>
         );

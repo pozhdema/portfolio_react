@@ -1,4 +1,10 @@
 .admin-up {
     height: 300px;
-    border-radius: 70px;
+    border-radius: 25px;
+}
+
+@media screen and (min-width: 1200px) {
+    .admin-up {
+        border-radius: 70px;
+    }
 }

@@ -115,7 +115,7 @@ class Contacts extends Component {
                         <textarea
                             id={"text"}
                             name={"text"}
-                            className="text"
+                            className="text-contact"
                             placeholder="Your message"
                             value={this.state.text}
                             onChange={this.handleInput}
