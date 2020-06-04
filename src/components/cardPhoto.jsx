@@ -4,6 +4,7 @@ import '../styles/components/cardPhoto.css'
 import {toast} from "react-toastify";
 import AddPhoto from "./addPhoto";
 import EditPhoto from "./editPhoto";
+import Loader from "react-loader-spinner";
 
 
 class CardPhoto extends Component {
@@ -73,10 +74,16 @@ class CardPhoto extends Component {
     render() {
         const {category} = this.props;
         if (this.state.isLoading) {
-            return <p>Loading...</p>;
+            return <Loader
+                type="Puff"
+                color="#c6baba"
+                height={80}
+                width={80}
+                className="loader"
+            />;
         }
         if (this.state.error) {
-            return <p>{this.state.error.message}</p>;
+            return <p className="error-message">{this.state.error.message}</p>;
         }
         return (
             <div className="settings-photo">

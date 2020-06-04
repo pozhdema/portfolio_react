@@ -25,16 +25,19 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
 
 @media screen and (min-width: 576px) {
     .container-img {
-        top: 464px;
         height: 300px;
+        display: flex;
+        justify-content: center;
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
     #root > div > div.container > div.lightbox-container {
         flex-direction: row;
-        justify-content: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
         align-items: flex-start;
+        height: 600px;
     }
 
     .container-img {
@@ -51,8 +54,10 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
         height: 100%;
         margin: 0 auto;
     }
+}
 
+@media screen and (min-width: 1200px) {
     #root > div > div.container > div.lightbox-container {
-        height: 600px;
+        justify-content: center;
     }
 }

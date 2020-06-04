@@ -4,6 +4,7 @@ import '../styles/pages/gallery.css'
 import {toast} from "react-toastify";
 import Lightbox from 'react-lightbox-component';
 import 'react-lightbox-component/build/css/index.css'
+import Loader from "react-loader-spinner";
 
 class Gallery extends Component {
     constructor(props) {
@@ -81,10 +82,16 @@ class Gallery extends Component {
         const {categories, isLoading, error, clicked, images} = this.state;
 
         if (isLoading) {
-            return <p>Loading...</p>;
+            return <Loader
+                type="Puff"
+                color="#c6baba"
+                height={80}
+                width={80}
+                className="loader"
+            />;
         }
         if (error) {
-            return <p>{error.message}</p>;
+            return <p className="error-message">{error.message}</p>;
         }
         if (categories !== []) {
             let preparedImages = [];

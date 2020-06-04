@@ -46,11 +46,20 @@
     color: #f87956
 }
 
-@media screen and (min-width: 1200px) {
-    .sign {
-        margin-top: 100px;
-    }
 
+@media screen and (min-width: 576px) {
+    .admin {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .admin {
+        width: 55%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
     .admin {
         width: 500px;
         border-radius: 50px;

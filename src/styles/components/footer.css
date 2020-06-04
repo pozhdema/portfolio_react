@@ -40,15 +40,16 @@ footer li a:hover {
     .footer {
         justify-content: space-evenly;
     }
+}
 
+@media screen and (min-width: 768px) {
+    .copyright {
+        font-size: 25px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     footer {
         height: 150px;
-    }
-
-    .copyright {
-        font-size: 25px;
     }
 }

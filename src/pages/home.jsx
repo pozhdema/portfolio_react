@@ -3,6 +3,8 @@ import {toast} from "react-toastify";
 import logo from '../images/crow-new.png'
 import BackgroundSlider from 'react-background-slider'
 import '../styles/style.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 class Home extends Component {
     constructor(props) {
@@ -38,10 +40,16 @@ class Home extends Component {
     render() {
         const {imagesName, isLoading, error} = this.state;
         if (isLoading) {
-            return <p>Loading...</p>;
+            return <Loader
+                type="Puff"
+                color="#c6baba"
+                height={80}
+                width={80}
+                className="loader"
+            />;
         }
         if (error) {
-            return <p>{error.message}</p>;
+            return <p className="error-message">{error.message}</p>;
         }
 
         return (

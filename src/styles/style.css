@@ -22,6 +22,7 @@
 body {
     position: relative;
     height: 105vh;
+    min-width: 320px;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     color: #e5dac3;
     background: #2e2b29;
@@ -38,23 +39,42 @@ body {
     width: 70%;
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.error-message {
+    text-align: center;
+}
+
 @media screen and (min-width: 576px) {
     .home img {
         width: 45%;
     }
 }
 
-@media screen and (min-width: 1200px) {
-    body {
-        height: 100vh;
+@media screen and (min-width: 768px) {
+    .home img {
+        width: 25%;
     }
 
     .home {
         height: 600px;
     }
+}
 
+@media screen and (min-width: 992px) {
     .home img {
         width: 15%;
         margin: 0 16%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        height: 100vh;
     }
 }

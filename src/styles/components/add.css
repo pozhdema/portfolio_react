@@ -68,11 +68,17 @@
     background: #331c1e;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
+    #modal-add-category, #modal-edit-category, #modal-add-photo, #modal-edit-photo {
+        width: 60%;
+    }
+
     #add-btn, #add-btn-photo {
         font-size: 20px;
     }
+}
 
+@media screen and (min-width: 1200px) {
     #modal-add-category, #modal-edit-category, #modal-add-photo, #modal-edit-photo {
         width: 50%;
     }

@@ -69,11 +69,20 @@
     justify-content: center;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 576px) {
+    .text-contact {
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 768px) {
     #contact {
         flex-direction: row;
+        justify-content: space-evenly;
     }
+}
 
+@media screen and (min-width: 1200px) {
     .text-contact {
         width: 300px;
     }
