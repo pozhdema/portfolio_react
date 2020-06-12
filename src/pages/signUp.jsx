@@ -7,6 +7,7 @@ import Button from "../components/btn";
 import ValidateEmail from "../components/validationEmail";
 import ValidatePassword from "../components/validatePassword";
 import ValidatePasswordConfirm from "../components/validatePasswordRe";
+import ValidateUsername from "../components/validateUsername";
 import {toast} from "react-toastify";
 
 
@@ -16,6 +17,7 @@ class SignUp extends React.Component {
 
         this.state = {
             email: "",
+            username: "",
             password: "",
             confirmPassword: "",
             isDisabled: true
@@ -26,6 +28,7 @@ class SignUp extends React.Component {
 }
 
 validateEmail = ValidateEmail;
+validateUsername = ValidateUsername;
 validatePassword = ValidatePassword;
 validatePasswordConfirm = ValidatePasswordConfirm;
 
@@ -40,13 +43,16 @@ handleInputUp = (e) => {
     if (target.name === 'email') {
         this.validateEmail(target.value);
     }
+    if (target.name === 'username') {
+        this.validateUsername(target.value);
+    }
     if (target.name === 'password') {
         this.validatePassword(target.value);
     }
     if (target.name === 'confirmPassword') {
         this.validatePasswordConfirm(document.getElementById("password").value, target.value);
     }
-    if (this.state.emailError === false && this.state.passwordError === false && this.state.passwordConfirmError === false) {
+    if (this.state.emailError === false && this.state.usernameError === false && this.state.passwordError === false && this.state.passwordConfirmError === false) {
         this.setState({
             isDisabled: false
         })
@@ -66,12 +72,12 @@ handleSubmitUp = (e) => {
     e.preventDefault();
     let form = e.target;
 
-    fetch('http://qwe.loc/login.php', {
+    fetch('http://qwe.loc/user/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({email:this.state.email, password:this.state.password, confirmPassword:this.state.confirmPassword})
+        body: JSON.stringify({email:this.state.email, username:this.state.username, password:this.state.password, confirmPassword:this.state.confirmPassword})
     })
         .then(response => response.json())
         .then((data) => {
@@ -99,6 +105,19 @@ render()
                 id="signIn-form">
                 <div className="wrapper-input">
                     <Input
+                        id={"username"}
+                        name={"username"}
+                        type={"text"}
+                        placeholder={"Your username"}
+                        value={this.state.username}
+                        required
+                        handleChange={this.handleInputUp}
+                    />
+                    {this.state.usernameError ?
+                        <span className="error">Please Enter valid username can contain uppercase and lowercase letters, numbers, hyphens, and underscores</span> : ''}
+                </div>
+                <div className="wrapper-input">
+                    <Input
                         id={"email"}
                         name={"email"}
                         type={"email"}
@@ -121,7 +140,7 @@ render()
                         handleChange={this.handleInputUp}
                     />
                     {this.state.passwordError ?
-                        <span className="error">Please enter some   value</span> : ''}
+                        <span className="error">Please enter some value</span> : ''}
                 </div>
                 <div className="wrapper-input">
                     <Input
@@ -134,7 +153,7 @@ render()
                         handleChange={this.handleInputUp}
                     />
                     {this.state.passwordConfirmError ?
-                        <span className="error">Please enter some   value</span> : ''}
+                        <span className="error">Please enter some value</span> : ''}
                 </div>
                 <div className="admin-btn">
                     <Button

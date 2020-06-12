@@ -7,7 +7,7 @@ import SignIn from './pages/signIn';
 import SignUp from "./pages/signUp";
 import Footer from "./components/footer";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {ToastContainer} from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/home";
 import Settings from "./pages/settings";
@@ -15,6 +15,32 @@ import Helper from "./components/helper";
 
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: false,
+            roles: ""
+        }
+    }
+
+    componentDidMount() {
+        this.setState({isLoading: true});
+        fetch('http://qwe.loc/user/get')
+            .then(response => response.json())
+            .then(response => {
+                if (response["status"] === "success") {
+                    this.setState({roles: response["data"]["role"], isLoading: false});
+                    console.log(this.state);
+                } else {
+                    toast(response["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => this.setState({error, isLoading: false}));
+    }
 
     render() {
         return (

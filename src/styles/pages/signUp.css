@@ -6,5 +6,6 @@
 @media screen and (min-width: 1200px) {
     .admin-up {
         border-radius: 70px;
+        height: 350px;
     }
 }

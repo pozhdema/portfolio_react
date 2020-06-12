@@ -62,7 +62,7 @@ class SignIn extends React.Component {
         e.preventDefault();
         let form = e.target;
 
-        fetch('http://qwe.loc/login.php', {
+        fetch('http://qwe.loc/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ class SignIn extends React.Component {
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
-                    this.props.history.push('/gallery')
+                    this.props.history.push('/settings')
                 } else {
                     toast("Login or password incorrect", {
                         autoClose: 5000,

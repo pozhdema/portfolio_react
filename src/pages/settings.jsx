@@ -150,8 +150,6 @@ class Settings extends Component {
                 }
             })
             .catch(error => this.setState({error, isLoading: false}));
-
-
     }
 
     render() {
