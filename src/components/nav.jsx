@@ -3,7 +3,7 @@ import '../styles/components/nav.css'
 import {Link, Route, Switch} from 'react-router-dom'
 import {Checkbox} from 'semantic-ui-react'
 import FontAwesome from 'react-fontawesome'
-import Settings from "../pages/settings";
+
 
 
 class Nav extends Component {
@@ -29,7 +29,6 @@ class Nav extends Component {
                 checked={this.state.lang}
                 name="lang"
             />;
-        const Access = false;
 
         return (
             <div className="nav">

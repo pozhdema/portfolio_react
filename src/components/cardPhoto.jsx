@@ -24,7 +24,7 @@ class CardPhoto extends Component {
 
     deleteCard = id => {
         const {images} = this.state;
-        fetch('http://qwe.loc/photo/delete', {
+        fetch('https:api.pozhdema.in.ua/photo/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ class CardPhoto extends Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-        fetch('http://qwe.loc/photo/list')
+        fetch('https:api.pozhdema.in.ua/list')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {

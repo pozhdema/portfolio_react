@@ -20,7 +20,7 @@ class Home extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('http://qwe.loc/')
+        fetch('https:api.pozhdema.in.ua/')
             .then(response => response.json())
             .then(response => {
                 console.log(response);

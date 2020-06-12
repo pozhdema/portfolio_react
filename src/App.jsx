@@ -25,7 +25,7 @@ class App extends Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-        fetch('http://qwe.loc/user/get')
+        fetch('https:api.pozhdema.in.ua/user/get')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {

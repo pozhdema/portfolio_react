@@ -26,7 +26,7 @@ class EditPhoto extends Component {
     };
 
     onOpen = (id) => {
-        fetch("http://qwe.loc/photo/getPhoto", {
+        fetch("https:api.pozhdema.in.ua/photo/getPhoto", {
             method: "post",
             headers: {
                 'Content-Type': 'application/json',

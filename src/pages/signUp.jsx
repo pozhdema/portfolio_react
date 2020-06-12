@@ -70,7 +70,7 @@ handleInputUp = (e) => {
 
 handleSubmit = e => {
     let form = e.target;
-    fetch('http://qwe.loc/user/create', {
+    fetch('https:api.pozhdema.in.ua/user/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
