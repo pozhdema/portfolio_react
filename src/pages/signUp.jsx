@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import '../styles/pages/signIn.css';
 import '../styles/pages/signUp.css'
 import Input from "../components/input";
-import Button from "../components/btn";
+import {Button} from "semantic-ui-react";
 import ValidateEmail from "../components/validationEmail";
 import ValidatePassword from "../components/validatePassword";
 import ValidatePasswordConfirm from "../components/validatePasswordRe";
@@ -24,7 +24,7 @@ class SignUp extends React.Component {
     };
 
     this.handleInputUp = this.handleInputUp.bind(this);
-    this.handleSubmitUp = this.handleSubmitUp.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 validateEmail = ValidateEmail;
@@ -68,10 +68,8 @@ handleInputUp = (e) => {
     )
 };
 
-handleSubmitUp = (e) => {
-    e.preventDefault();
+handleSubmit = e => {
     let form = e.target;
-
     fetch('http://qwe.loc/user/create', {
         method: 'POST',
         headers: {
@@ -100,7 +98,6 @@ render()
     return (
         <div className="container sign">
             <form
-                onSubmit={this.handleSubmit}
                 className="admin admin-up"
                 id="signIn-form">
                 <div className="wrapper-input">
@@ -157,8 +154,9 @@ render()
                 </div>
                 <div className="admin-btn">
                     <Button
-                        action={this.handleSubmitUp}
-                        title={"Sign up"}
+                        onClick={this.handleSubmit}
+                        content="Sign up"
+                        type="submit"
                     />
                     <Link to="/signIn">I'm already member</Link>
                 </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import '../styles/pages/signIn.css';
 import Input from "../components/input";
-import Button from "../components/btn";
+import {Button} from "semantic-ui-react";
 import {toast} from 'react-toastify';
 import ValidateEmail from "../components/validationEmail";
 import ValidatePassword from "../components/validatePassword";
@@ -58,8 +58,7 @@ class SignIn extends React.Component {
         )
     };
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+    handleSubmit = e => {
         let form = e.target;
 
         fetch('http://qwe.loc/user/login', {
@@ -89,7 +88,6 @@ class SignIn extends React.Component {
         return (
             <div className="container sign">
                 <form
-                    onSubmit={this.handleSubmit}
                     className="admin"
                     id="signIn-form">
                     <div className="wrapper-input">
@@ -120,8 +118,9 @@ class SignIn extends React.Component {
                     </div>
                     <div className="admin-btn">
                         <Button
-                            action={this.handleSubmit}
-                            title={"Sign in"}
+                            onClick={this.handleSubmit}
+                            content="Sign in"
+                            type="submit"
                         />
                         <Link to="/signUp">Create an account</Link>
                     </div>
