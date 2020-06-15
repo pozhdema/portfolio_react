@@ -25,7 +25,7 @@ class App extends Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-        fetch('https:api.pozhdema.in.ua/user/get')
+        fetch('https://api.pozhdema.in.ua/user/get')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
@@ -54,7 +54,7 @@ class App extends Component {
                         <Route path="/contacts" component={Contacts}/>
                         <Route path="/signIn" component={SignIn}/>
                         <Route path="/signUp" component={SignUp}/>
-                        <Route path="/settings" component={Settings}/>
+                        {this.state.role==="admin"?<Route path="/settings" component={Settings}/>: null}
                     </Switch>
                     <ToastContainer/>
                     <Footer/>

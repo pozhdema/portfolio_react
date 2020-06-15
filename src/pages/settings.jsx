@@ -41,7 +41,7 @@ class Settings extends Component {
 
     addRow = categoryItem => {
         const {categories} = this.state;
-        fetch('https:api.pozhdema.in.ua/categories/add', {
+        fetch('https://api.pozhdema.in.ua/categories/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ class Settings extends Component {
 
     updateRow = (id, updatedCategoryItem) => {
         const {categories} = this.state;
-        fetch('https:api.pozhdema.in.ua/categories/update', {
+        fetch('https://api.pozhdema.in.ua/categories/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ class Settings extends Component {
 
     deleteRow = id => {
         const {categories} = this.state;
-        fetch('https:api.pozhdema.in.ua/categories/delete', {
+        fetch('https://api.pozhdema.in.ua/categories/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ class Settings extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('https:api.pozhdema.in.ua/categories/list')
+        fetch('https://api.pozhdema.in.ua/categories/list')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {

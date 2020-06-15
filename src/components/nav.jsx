@@ -12,6 +12,7 @@ class Nav extends Component {
 
         this.state = {
             lang: false,
+            role:""
         };
     }
 
@@ -29,7 +30,6 @@ class Nav extends Component {
                 checked={this.state.lang}
                 name="lang"
             />;
-
         return (
             <div className="nav">
                 <nav>
@@ -47,9 +47,9 @@ class Nav extends Component {
                         <Link to="/signIn" className="link">
                             <li>Sign In</li>
                         </Link>
-                        <Link to="/settings" className="link">
+                        {this.state.role==="admin"?<Link to="/settings" className="link">
                             <li>Settings</li>
-                        </Link>
+                        </Link>: null}
                     </ul>
                 </nav>
                 <div className="lang">

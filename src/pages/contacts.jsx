@@ -41,7 +41,7 @@ class Contacts extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('https:api.pozhdema.in.ua/contact', {
+        fetch('https://api.pozhdema.in.ua/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
