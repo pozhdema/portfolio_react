@@ -1,1 +1,63 @@
+.container-img {
+    width: 95%;
+    height: 200px;
+    margin-bottom: 5%;
+}
 
+.img-circle {
+    width: auto;
+    height: 100%;
+}
+
+#root > div > div.container > div.lightbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 450px;
+    overflow-y: scroll;
+}
+
+body > div:nth-child(5) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5),
+body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5) > svg > path{
+    display: none;
+}
+
+@media screen and (min-width: 576px) {
+    .container-img {
+        height: 300px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #root > div > div.container > div.lightbox-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 600px;
+    }
+
+    .container-img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #454545;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .img-circle {
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #root > div > div.container > div.lightbox-container {
+        justify-content: center;
+    }
+}

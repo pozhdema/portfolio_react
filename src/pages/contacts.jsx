@@ -1,32 +1,26 @@
-import React from 'react'
-import {Link} from "react-router-dom";
-import '../styles/pages/signIn.css';
+import React, {Component} from 'react'
+import '../styles/pages/contacts.css'
 import Input from "../components/input";
 import Button from "../components/btn";
-import {toast} from 'react-toastify';
-import ValidateEmail from "../components/validationEmail";
-import ValidatePassword from "../components/validatePassword";
+import {toast} from "react-toastify";
 
 
-class SignIn extends React.Component {
+class Contacts extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             email: "",
-            password:"",
-            isDisabled: true
+            names: "",
+            text: ""
         };
 
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    validateEmail = ValidateEmail;
-    validatePassword = ValidatePassword;
 
-
-    handleInput =(e) => {
+    handleInput = (e) => {
 
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -34,23 +28,9 @@ class SignIn extends React.Component {
 
         this.state[name] = value;
 
-
-        if (target.name === 'email') {
-            this.validateEmail(target.value);
-        }
-        if (target.name === 'password') {
-            this.validatePassword(target.value);
-        }
-        if (this.state.emailError === false && this.state.passwordError === false) {
-            this.setState({
-                isDisabled: false
-            })
-        }
-
-
         this.setState(prevState => {
                 return {
-                    newUser: {
+                    newMessage: {
                         ...prevState, [name]: value
                     }
                 }
@@ -60,21 +40,29 @@ class SignIn extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let form = e.target;
 
-        fetch('http://qwe.loc/login.php', {
+        fetch('https://api.pozhdema.in.ua/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({email:this.state.email, password:this.state.password})
+            body: JSON.stringify({email: this.state.email, names: this.state.names, text: this.state.text})
         })
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
-                    this.props.history.push('/gallery')
+                    toast("Your message submit", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.SUCCESS,
+                    });
+                    this.setState({
+                        email: "",
+                        names: "",
+                        text: ""
+                    })
                 } else {
-                    toast("Login or password incorrect", {
+                    toast("Your message don't submit", {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -82,16 +70,25 @@ class SignIn extends React.Component {
                 }
             })
             .catch(error => console.error(error));
-        form.reset();
     };
 
     render() {
         return (
-            <div className="container sign">
+            <div className="container" id="contact">
+                <div className="contact-social">
+                    <div className="wrapper-social">
+                        <span>PHONE</span>
+                        <span><a href="tel: +380-73-046-94-75">+380-73-046-94-75</a></span>
+                    </div>
+                    <div className="wrapper-social">
+                        <span>EMAIL</span>
+                        <span><a href="mailto: pozhdema107@gmail.com">pozhdema107@gmail.com</a></span>
+                    </div>
+                </div>
                 <form
                     onSubmit={this.handleSubmit}
-                    className="admin"
-                    id="signIn-form">
+                    className="form-contact"
+                >
                     <div className="wrapper-input">
                         <Input
                             id={"email"}
@@ -102,28 +99,33 @@ class SignIn extends React.Component {
                             required
                             handleChange={this.handleInput}
                         />
-                        {this.state.emailError ?
-                            <span className="error">Please Enter valid email address</span> : ''}
                     </div>
                     <div className="wrapper-input">
                         <Input
-                            id={"password"}
-                            name={"password"}
-                            type={"password"}
-                            placeholder={"Your password"}
-                            value={this.state.password}
+                            id={"names"}
+                            name={"names"}
+                            type={"names"}
+                            placeholder={"Your name"}
+                            value={this.state.names}
                             required
                             handleChange={this.handleInput}
                         />
-                        {this.state.passwordError ?
-                            <span className="error">Please enter some   value</span> : ''}
                     </div>
-                    <div className="admin-btn">
+                    <div className="wrapper-input">
+                        <textarea
+                            id={"text"}
+                            name={"text"}
+                            className="text-contact"
+                            placeholder="Your message"
+                            value={this.state.text}
+                            onChange={this.handleInput}
+                        />
+                    </div>
+                    <div className="admin-btn" id="btn-contact">
                         <Button
                             action={this.handleSubmit}
-                            title={"Sign in"}
+                            title={"Submit"}
                         />
-                        <Link to="/signUp">Create an account</Link>
                     </div>
                 </form>
             </div>
@@ -131,4 +133,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn
+export default Contacts

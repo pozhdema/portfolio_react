@@ -5,7 +5,7 @@ import View from "../components/view";
 import {toast} from "react-toastify";
 import CardPhoto from "../components/cardPhoto";
 import '../styles/pages/settings.css'
-import AddPhoto from "../components/addPhoto";
+
 
 class Settings extends Component {
     initialState = {
@@ -41,7 +41,7 @@ class Settings extends Component {
 
     addRow = categoryItem => {
         const {categories} = this.state;
-        fetch('http://qwe.loc/categories/add', {
+        fetch('https://api.pozhdema.in.ua/categories/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ class Settings extends Component {
 
     updateRow = (id, updatedCategoryItem) => {
         const {categories} = this.state;
-        fetch('http://qwe.loc/categories/update', {
+        fetch('https://api.pozhdema.in.ua/categories/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ class Settings extends Component {
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
-                    toast("Category successful added", {
+                    toast("Category successful edit", {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
@@ -92,7 +92,7 @@ class Settings extends Component {
                     });
                     this.onClose()
                 } else {
-                    toast("Category didn't add", {
+                    toast("Category didn't edit", {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -104,7 +104,7 @@ class Settings extends Component {
 
     deleteRow = id => {
         const {categories} = this.state;
-        fetch('http://qwe.loc/categories/delete', {
+        fetch('https://api.pozhdema.in.ua/categories/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ class Settings extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('http://qwe.loc/categories/list')
+        fetch('https://api.pozhdema.in.ua/categories/list')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
@@ -150,8 +150,6 @@ class Settings extends Component {
                 }
             })
             .catch(error => this.setState({error, isLoading: false}));
-
-
     }
 
     render() {
@@ -186,8 +184,7 @@ class Settings extends Component {
                         />
                     </div>
                 </Tab.Pane>,
-            },
-
+            }
         ];
 
         const TabExampleSecondaryPointing = () => (

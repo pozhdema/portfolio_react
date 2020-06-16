@@ -1,7 +1,17 @@
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    padding: 5% 0;
+}
+
 .btn-input {
     width: 135px;
     height: 40px;
     margin-right: 5px;
+    margin-bottom: 5px;
     background: transparent;
     border: 1px solid #454545;
     border-radius: 25px;
@@ -20,4 +30,10 @@
     color: #2C2C2C;
     font-family: Caveat;
     font-size: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+    .filter {
+        padding: 0;
+    }
 }

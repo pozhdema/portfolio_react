@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "../styles/components/filter.css"
+import "../styles/components/btn.css"
 
 export default class Filter extends Component {
 
@@ -17,9 +18,8 @@ export default class Filter extends Component {
                 </button>
             )
         });
-
         return (
-            <div>
+            <div className="filter">
                 {buttons}
             </div>
         );

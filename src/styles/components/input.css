@@ -10,8 +10,20 @@ input {
 }
 
 .admin-input {
-    width: 300px;
+    width: 215px;
     height: 35px;
     padding-left: 20px;
     margin-bottom: 5px;
+}
+
+@media screen and (min-width: 576px) {
+    .admin-input {
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+   .admin-input {
+       width: 400px;
+   }
 }

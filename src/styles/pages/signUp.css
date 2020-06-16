@@ -1,4 +1,31 @@
 .admin-up {
     height: 300px;
-    border-radius: 70px;
+    border-radius: 25px;
+}
+
+#signIn-form > div.admin-btn > button {
+    border: 1px solid #454545;
+    border-radius: 25px;
+    background: transparent;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+    font-weight: 100;
+    color: #F5F5DC;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    width: 125px;
+    height: 35px;
+}
+
+#signIn-form > div.admin-btn > button:hover {
+    background: #c6baba;
+    color: #2e2b29;
+}
+
+@media screen and (min-width: 1200px) {
+    .admin-up {
+        border-radius: 70px;
+        height: 350px;
+    }
 }

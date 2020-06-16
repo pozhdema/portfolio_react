@@ -8,9 +8,13 @@ class AddPhoto extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            title_ua: "",
+            title_en: "",
+            description_ua: "",
+            description_en: "",
             value: '',
             file: null,
-            isOpen:false,
+            isOpen: false,
         };
         this.values = [];
         this.handleInput = this.handleInput.bind(this);
@@ -34,19 +38,32 @@ class AddPhoto extends Component {
     };
 
     handleSelect = (e, {value}) => {
-        this.values={value};
+        this.values = {value};
+    };
+
+    handleChange = e => {
+        const {name, value} = e.target;
+
+        this.setState({
+            [name]: value
+        })
     };
 
     handleSubmit = e => {
         e.preventDefault();
+        this.setState({isLoading: true});
 
         const formData = new FormData();
         formData.append("file", this.state.file);
         this.values.value.map(item => {
-            formData.append('categories[]',item)
+            formData.append('categories[]', item)
         });
+        formData.append("title_ua", this.state.title_ua);
+        formData.append("title_en", this.state.title_en);
+        formData.append("description_ua", this.state.description_ua);
+        formData.append("description_en", this.state.description_en);
 
-        fetch("http://qwe.loc/photo/add", {
+        fetch("https:api.pozhdema.in.ua/photo/add", {
             method: "post",
             body: formData
         })
@@ -58,8 +75,14 @@ class AddPhoto extends Component {
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
                     });
-                    this.values=[];
-                    this.props.getListOfPhoto();
+                    this.values = [];
+                    this.props.addCard(data["data"]);
+                    this.setState({
+                        title_ua: "",
+                        title_en: "",
+                        description_ua: "",
+                        description_en: ""
+                    });
                     this.onClose()
                 } else {
                     toast(data["message"], {
@@ -88,6 +111,7 @@ class AddPhoto extends Component {
                 options={options}
                 onChange={this.handleSelect}
                 closeOnChange={true}
+                id="modal-add-photo-multiselect"
             />
         );
 
@@ -112,6 +136,42 @@ class AddPhoto extends Component {
                                 type="file"
                                 id="modal-add-photo-inputOne"
                                 onChange={this.handleInput}
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="title_ua"
+                                name="title_ua"
+                                value={this.state.title_ua}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-title-ua"
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="title_en"
+                                name="title_en"
+                                value={this.state.title_en}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-title-en"
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="description_ua"
+                                name="description_ua"
+                                value={this.state.description_ua}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-description-ua"
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Input
+                                placeholder="description_en"
+                                name="description_en"
+                                value={this.state.description_en}
+                                onChange={this.handleChange}
+                                id="modal-add-photo-description-en"
                             />
                         </Form.Field>
                         <DropdownMultipleSelection/>

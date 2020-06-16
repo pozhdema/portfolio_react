@@ -59,7 +59,7 @@ class Edit extends Component {
                 id="modal-edit-category"
             >
                 <Modal.Header id="modal-edit-category-header">Edit User</Modal.Header>
-                <Modal.Content id="modal-edit-category-header">
+                <Modal.Content id="modal-edit-category-content">
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Field>
                             <Form.Input
@@ -80,7 +80,6 @@ class Edit extends Component {
                         <Button
                             type="submit"
                             content="Submit"
-                            className="btn-input"
                             id="modal-edit-category-btn"
                         />
                     </Form>
