@@ -26,7 +26,7 @@ class EditPhoto extends Component {
     };
 
     onOpen = (id) => {
-        fetch("https://api.pozhdema.in.ua/photo/getPhoto", {
+        fetch("/api/photo/getPhoto", {
             method: "post",
             headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ class EditPhoto extends Component {
 
     handleSubmit = e => {
 
-        fetch('https://api.pozhdema.in.ua/photo/update', {
+        fetch('/api/photo/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

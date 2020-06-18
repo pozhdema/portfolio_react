@@ -20,11 +20,11 @@ class Gallery extends Component {
     }
 
     onFilterChange = (id) => {
-        let url = new URL('https://api.pozhdema.in.ua/photo/photo');
+        /*let url = new URL('/api/photo/photo');
         url.search = new URLSearchParams({
             category: id
-        });
-        fetch(url)
+        });*/
+        fetch(`/api/photo/photo?category=${id}`)
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
@@ -37,9 +37,9 @@ class Gallery extends Component {
         this.setState({isLoading: true});
         try {
             let result = await Promise.all([
-                fetch('https://api.pozhdema.in.ua/categories/list')
+                fetch('/api/categories/list')
                     .then(response => response.json()),
-                fetch('https://api.pozhdema.in.ua/photo/photo')
+                fetch('/api/photo/photo')
                     .then(response => response.json())
 
             ]);

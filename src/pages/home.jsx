@@ -20,7 +20,7 @@ class Home extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('https://api.pozhdema.in.ua/')
+        fetch('/api')
             .then(response => response.json())
             .then(response => {
                 console.log(response);

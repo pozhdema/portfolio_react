@@ -6,10 +6,7 @@
     font-size: 15px;
     font-weight: 100;
     color: #F5F5DC;
-}
-
-#add-btn-photo {
-    height: 70px;
+    height: 60px;
 }
 
 #add-btn:hover, #add-btn-photo:hover {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/components/nav.css'
-import {Link, Route, Switch} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Checkbox} from 'semantic-ui-react'
 import FontAwesome from 'react-fontawesome'
 
@@ -12,7 +12,6 @@ class Nav extends Component {
 
         this.state = {
             lang: false,
-            role:""
         };
     }
 
@@ -47,7 +46,7 @@ class Nav extends Component {
                         <Link to="/signIn" className="link">
                             <li>Sign In</li>
                         </Link>
-                        {this.state.role==="admin"?<Link to="/settings" className="link">
+                        {this.props.roles==="admin"?<Link to="/settings" className="link">
                             <li>Settings</li>
                         </Link>: null}
                     </ul>

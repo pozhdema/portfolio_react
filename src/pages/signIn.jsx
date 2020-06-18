@@ -61,7 +61,7 @@ class SignIn extends React.Component {
     handleSubmit = e => {
         let form = e.target;
 
-        fetch('https://api.pozhdema.in.ua/user/login', {
+        fetch('/api/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
