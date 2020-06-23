@@ -23,7 +23,6 @@ class Home extends Component {
         fetch('/api')
             .then(response => response.json())
             .then(response => {
-                console.log(response);
                 if (response["status"] === "success") {
                     this.setState({imagesName: response["data"], isLoading: false});
                 } else {

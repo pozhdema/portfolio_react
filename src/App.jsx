@@ -69,7 +69,6 @@ class App extends Component {
             .then(response => {
                 if (response["status"] === "success") {
                     this.setState({roles: response["data"]["role"], isLoading: false});
-                    console.log(this.state);
                 } else {
                     toast(response["message"], {
                         autoClose: 5000,

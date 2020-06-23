@@ -20,10 +20,6 @@ class Gallery extends Component {
     }
 
     onFilterChange = (id) => {
-        /*let url = new URL('/api/photo/photo');
-        url.search = new URLSearchParams({
-            category: id
-        });*/
         fetch(`/api/photo/photo?category=${id}`)
             .then(response => response.json())
             .then(response => {
@@ -109,7 +105,7 @@ class Gallery extends Component {
                             return (
                                 <div className="container-img">
                                     <img
-                                        key={idx}
+                                        key={'photo'+idx}
                                         src={image.src}
                                         alt={image.title}
                                         className='img-circle'
