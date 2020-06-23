@@ -6,6 +6,7 @@ import {Button} from "semantic-ui-react";
 import {toast} from 'react-toastify';
 import ValidateEmail from "../components/validationEmail";
 import ValidatePassword from "../components/validatePassword";
+import Translate from "react-translate-component";
 
 
 class SignIn extends React.Component {
@@ -91,38 +92,41 @@ class SignIn extends React.Component {
                     className="admin"
                     id="signIn-form">
                     <div className="wrapper-input">
-                        <Input
+                        <Translate
+                            component={Input}
                             id={"email"}
                             name={"email"}
                             type={"email"}
-                            placeholder={"Your email"}
+                            attributes={{placeholder:"contactEmail"}}
                             value={this.state.email}
                             required
                             handleChange={this.handleInput}
                         />
                         {this.state.emailError ?
-                            <span className="error">Please Enter valid email address</span> : ''}
+                            <Translate content="errorEmail" component="span" className="error"/> : ''}
                     </div>
                     <div className="wrapper-input">
-                        <Input
+                        <Translate
+                            component={Input}
                             id={"password"}
                             name={"password"}
                             type={"password"}
-                            placeholder={"Your password"}
+                            attributes={{placeholder:"contactPassword"}}
                             value={this.state.password}
                             required
                             handleChange={this.handleInput}
                         />
                         {this.state.passwordError ?
-                            <span className="error">Please enter some   value</span> : ''}
+                            <Translate content="errorPassword" component="span" className="error"/>: ''}
                     </div>
                     <div className="admin-btn">
-                        <Button
+                        <Translate
+                            component={Button}
                             onClick={this.handleSubmit}
-                            content="Sign in"
+                            content="nav.signIn"
                             type="submit"
                         />
-                        <Link to="/signUp">Create an account</Link>
+                        <Link to="/signUp"><Translate content="signUPContent"/></Link>
                     </div>
                 </form>
             </div>

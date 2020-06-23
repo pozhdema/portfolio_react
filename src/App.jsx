@@ -11,20 +11,59 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/home";
 import Settings from "./pages/settings";
-import Helper from "./components/helper";
+import counterpart from "counterpart";
+import en from "./lang/en";
+import uk from "./lang/uk";
+import Cookies from 'universal-cookie';
+import CookieConsent from "react-cookie-consent";
 
+counterpart.registerTranslations('en', en);
+counterpart.registerTranslations('uk', uk);
 
 class App extends Component {
+
     constructor(props) {
         super(props);
+
         this.state = {
             isLoading: false,
-            roles: ""
+            roles: "",
+            lang: ''
         }
+
+    }
+
+    handleChange = (e) => {
+        const cookies = new Cookies();
+
+        cookies.set('lang', e.target.value, { path: '/', maxAge:90*24*3600  });
+
+        this.setState({lang: e.target.value});
+        this.refreshPage()
+        counterpart.setLocale("uk");
+    };
+
+    refreshPage() {
+        window.location.reload(false);
     }
 
     componentDidMount() {
-        this.setState({isLoading: true});
+        const cookies = new Cookies();
+
+        let language = cookies.get('lang');
+
+        if (language !== undefined){
+            counterpart.setLocale(language);
+
+        }else{
+            counterpart.setLocale("uk");
+            cookies.set('lang', "uk", { path: '/', maxAge:90*24*3600  });
+        }
+
+        this.setState({
+            isLoading: true,
+            lang: language
+        });
         fetch('/api/user/get')
             .then(response => response.json())
             .then(response => {
@@ -45,9 +84,16 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <Helper/>
                 <div className="App">
-                    <Nav roles={this.state.roles}/>
+                    <CookieConsent
+                        location="bottom"
+                        cookieName="myAwesomeCookieName3"
+                        expires={999}
+                        overlay
+                    >
+                        This website uses cookies to enhance the user experience.
+                    </CookieConsent>
+                    <Nav roles={this.state.roles} lang={this.state.lang} handleChange={this.handleChange}/>
                     <Switch>
                         <Route path="/" exact component={HomeLoad}/>
                         <Route path="/gallery" component={Gallery}/>

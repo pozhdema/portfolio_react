@@ -187,12 +187,12 @@ class Settings extends Component {
             }
         ];
 
-        const TabExampleSecondaryPointing = () => (
+        const TabSecondaryPointing = () => (
             <Tab menu={{secondary: true, pointing: true}} panes={panes}/>
         );
 
         return (
-            <TabExampleSecondaryPointing/>
+            <TabSecondaryPointing/>
         )
     }
 }

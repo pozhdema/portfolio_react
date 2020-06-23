@@ -13,18 +13,21 @@ nav {
     background: transparent;
 }
 
-h1 {
+.title {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+h1 {
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 30px;
     font-weight: 100;
     margin: 0;
 }
 
-h1 span {
+.nav-title {
     font-size: 20px;
 }
 
@@ -37,9 +40,10 @@ h1 span {
 
 .link {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 100;
     color: #e5dac3;
+    padding-right: 5px;
 }
 
 .link:hover {
@@ -56,6 +60,22 @@ h1 span {
     top: -125px;
 }
 
+.lang-select {
+    border: 1px solid #454545;
+    border-radius: 5px;
+    background: transparent;
+    width: 50px;
+    height: 30px;
+    color: #e5dac3;
+    outline: none;
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+}
+
+.lang-option {
+    background: #454545;
+    border: 1px solid #454545;
+}
+
 #lang-fa {
     font-size: 150%;
     line-height: 100px;
@@ -67,7 +87,7 @@ h1 span {
         font-size: 30px;
     }
 
-    h1 span {
+    .nav-title {
         font-size: 25px;
     }
 
@@ -88,13 +108,15 @@ h1 span {
         padding-left: 0;
     }
 
-    h1 {
+    .title {
         width: 21%;
         justify-content: start;
+    }
+    h1 {
         font-size: 40px;
     }
 
-    h1 span {
+    .nav-title {
         font-size: 30px;
     }
 
@@ -106,6 +128,7 @@ h1 span {
 
     .link {
         font-size: 30px;
+        padding-right: 0;
     }
 
     .lang {

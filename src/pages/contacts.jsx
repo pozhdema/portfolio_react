@@ -3,6 +3,7 @@ import '../styles/pages/contacts.css'
 import Input from "../components/input";
 import Button from "../components/btn";
 import {toast} from "react-toastify";
+import Translate from "react-translate-component";
 
 
 class Contacts extends Component {
@@ -77,11 +78,11 @@ class Contacts extends Component {
             <div className="container" id="contact">
                 <div className="contact-social">
                     <div className="wrapper-social">
-                        <span>PHONE</span>
+                        <Translate content="phone" component="span"/>
                         <span><a href="tel: +380-73-046-94-75">+380-73-046-94-75</a></span>
                     </div>
                     <div className="wrapper-social">
-                        <span>EMAIL</span>
+                        <Translate content="email" component="span"/>
                         <span><a href="mailto: pozhdema107@gmail.com">pozhdema107@gmail.com</a></span>
                     </div>
                 </div>
@@ -90,41 +91,45 @@ class Contacts extends Component {
                     className="form-contact"
                 >
                     <div className="wrapper-input">
-                        <Input
+                        <Translate
+                            component={Input}
+                            required
+                            handleChange={this.handleInput}
                             id={"email"}
                             name={"email"}
                             type={"email"}
-                            placeholder={"Your email"}
+                            attributes={{placeholder:"contactEmail"}}
                             value={this.state.email}
-                            required
-                            handleChange={this.handleInput}
                         />
                     </div>
                     <div className="wrapper-input">
-                        <Input
+                        <Translate
+                            component={Input}
+                            required
+                            handleChange={this.handleInput}
                             id={"names"}
                             name={"names"}
-                            type={"names"}
-                            placeholder={"Your name"}
+                            type={"text"}
+                            attributes={{placeholder:"contactName"}}
                             value={this.state.names}
-                            required
-                            handleChange={this.handleInput}
                         />
                     </div>
                     <div className="wrapper-input">
-                        <textarea
+                        <Translate
+                            component="textarea"
                             id={"text"}
                             name={"text"}
                             className="text-contact"
-                            placeholder="Your message"
+                            attributes={{placeholder:"contactText"}}
                             value={this.state.text}
                             onChange={this.handleInput}
                         />
                     </div>
                     <div className="admin-btn" id="btn-contact">
-                        <Button
+                        <Translate
+                            component={Button}
                             action={this.handleSubmit}
-                            title={"Submit"}
+                            attributes={{title:"submit"}}
                         />
                     </div>
                 </form>

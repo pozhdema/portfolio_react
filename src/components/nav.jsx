@@ -1,60 +1,47 @@
 import React, {Component} from 'react'
 import '../styles/components/nav.css'
 import {Link} from 'react-router-dom'
-import {Checkbox} from 'semantic-ui-react'
 import FontAwesome from 'react-fontawesome'
-
+import Translate from 'react-translate-component';
 
 
 class Nav extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            lang: false,
-        };
-    }
-
-
-    handleChange = () => {
-        this.setState((prevState) => ({lang: !prevState.lang}));
-
-    };
 
     render() {
-        const CheckboxSlider = () =>
-            <Checkbox
-                slider
-                onChange={this.handleChange}
-                checked={this.state.lang}
-                name="lang"
-            />;
         return (
             <div className="nav">
                 <nav>
-                    <h1>Pozhdema Nataliia <span> photographer</span></h1>
+                    <div className="title">
+                        <Translate content="title.h1" component="h1" />
+                        <Translate content="title.span" component="span" className="nav-title"/>
+                    </div>
                     <ul className="navigations">
                         <Link to="/" className="link">
-                            <li>Home</li>
+                            <Translate content="nav.home" component="li"/>
                         </Link>
                         <Link to="/gallery" className="link">
-                            <li>Gallery</li>
+                            <Translate content="nav.gallery" component="li"/>
                         </Link>
                         <Link to="/contacts" className="link">
-                            <li>Contacts</li>
+                            <Translate content="nav.contacts" component="li"/>
                         </Link>
                         <Link to="/signIn" className="link">
-                            <li>Sign In</li>
+                            <Translate content="nav.signIn" component="li"/>
                         </Link>
                         {this.props.roles==="admin"?<Link to="/settings" className="link">
-                            <li>Settings</li>
+                            <Translate content="nav.settings" component="li"/>
                         </Link>: null}
                     </ul>
                 </nav>
                 <div className="lang">
-                    <CheckboxSlider
-                        id="lang-check"
-                    />
+                    <select
+                        className="lang-select"
+                        value={this.props.lang}
+                        onChange={this.props.handleChange}
+                    >
+                        <option value="uk" className="lang-option">UK</option>
+                        <option value="en" className="lang-option">EN</option>
+                    </select>
                     <FontAwesome id="lang-fa" name="language" className="fa-language"/>
                 </div>
             </div>

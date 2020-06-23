@@ -48,12 +48,6 @@ class Gallery extends Component {
             let photo = result[1];
 
             if (category["status"] === "success" && photo["status"] === "success") {
-                category["data"].push({
-                    id: 0,
-                    title_en: "All",
-                    title_ua: "Всі",
-                });
-
                 this.setState({
                     categories: category["data"],
                     isLoading: false,
@@ -117,6 +111,7 @@ class Gallery extends Component {
                                     <img
                                         key={idx}
                                         src={image.src}
+                                        alt={image.title}
                                         className='img-circle'
                                         onClick={toggleLightbox.bind(null, idx)}
                                     />

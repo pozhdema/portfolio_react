@@ -9,6 +9,7 @@ import ValidatePassword from "../components/validatePassword";
 import ValidatePasswordConfirm from "../components/validatePasswordRe";
 import ValidateUsername from "../components/validateUsername";
 import {toast} from "react-toastify";
+import Translate from "react-translate-component";
 
 
 class SignUp extends React.Component {
@@ -101,64 +102,69 @@ render()
                 className="admin admin-up"
                 id="signIn-form">
                 <div className="wrapper-input">
-                    <Input
+                    <Translate
+                        component={Input}
+                        required
+                        handleChange={this.handleInputUp}
                         id={"username"}
                         name={"username"}
                         type={"text"}
-                        placeholder={"Your username"}
+                        attributes={{placeholder:"username"}}
                         value={this.state.username}
-                        required
-                        handleChange={this.handleInputUp}
                     />
                     {this.state.usernameError ?
-                        <span className="error">Please Enter valid username can contain uppercase and lowercase letters, numbers, hyphens, and underscores</span> : ''}
+                        <Translate content="errorUsername" component="span" className="error"/> : ''}
                 </div>
                 <div className="wrapper-input">
-                    <Input
+                    <Translate
+                        component={Input}
                         id={"email"}
                         name={"email"}
                         type={"email"}
-                        placeholder={"Your email"}
+                        attributes={{placeholder:"contactEmail"}}
                         value={this.state.email}
                         required
                         handleChange={this.handleInputUp}
                     />
                     {this.state.emailError ?
-                        <span className="error">Please Enter valid email address</span> : ''}
+                        <Translate content="errorEmail" component="span" className="error"/> : ''}
                 </div>
                 <div className="wrapper-input">
-                    <Input
+                    <Translate
+                        component={Input}
                         id={"password"}
                         name={"password"}
                         type={"password"}
-                        placeholder={"Your password"}
+                        attributes={{placeholder:"contactPassword"}}
                         value={this.state.password}
                         required
                         handleChange={this.handleInputUp}
                     />
                     {this.state.passwordError ?
-                        <span className="error">Please enter some value</span> : ''}
+                        <Translate content="errorPassword" component="span" className="error"/> : ''}
                 </div>
                 <div className="wrapper-input">
-                    <Input
+                    <Translate
+                        component={Input}
                         id={"confirmPassword"}
                         name={"confirmPassword"}
                         type={"password"}
-                        placeholder={"Repeat the your password"}
                         value={this.state.confirmPassword}
                         required
                         handleChange={this.handleInputUp}
+                        attributes={{placeholder:"confirmPassword"}}
                     />
                     {this.state.passwordConfirmError ?
-                        <span className="error">Please enter some value</span> : ''}
+                        <Translate content="errorPassword" component="span" className="error"/> : ''}
                 </div>
                 <div className="admin-btn">
-                    <Button
+                    <Translate
+                        component={Button}
                         onClick={this.handleSubmit}
-                        content="Sign up"
+                        content="nav.signUp"
                         type="submit"
                     />
-                    <Link to="/signIn">I'm already member</Link>
+                    <Link to="/signIn"><Translate content="signINContent"/></Link>
                 </div>
             </form>
         </div>

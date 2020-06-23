@@ -63,7 +63,7 @@ class AddPhoto extends Component {
         formData.append("description_ua", this.state.description_ua);
         formData.append("description_en", this.state.description_en);
 
-        fetch("https:api.pozhdema.in.ua/photo/add", {
+        fetch("/api/photo/add", {
             method: "post",
             body: formData
         })

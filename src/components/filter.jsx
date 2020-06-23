@@ -6,7 +6,7 @@ export default class Filter extends Component {
 
     render() {
         const {categories, onFilterChange, clicked} = this.props;
-        const buttons = categories.map(({id, title_en}) => {
+        const buttons = categories.map(({id, title}) => {
             const clazz = id === clicked ? 'btn-input active' : 'btn-input all';
             return (
                 <button type="button"
@@ -14,7 +14,7 @@ export default class Filter extends Component {
                         key={id}
                         onClick={() => onFilterChange(id)}
                 >
-                    {title_en}
+                    {title}
                 </button>
             )
         });

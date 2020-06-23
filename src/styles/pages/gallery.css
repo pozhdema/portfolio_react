@@ -46,7 +46,7 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
         border: 1px solid #454545;
         border-radius: 50%;
         overflow: hidden;
-        margin: 0 auto;
+        margin: 15px 50px;
     }
 
     .img-circle {
