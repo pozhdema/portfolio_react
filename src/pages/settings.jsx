@@ -60,7 +60,7 @@ class Settings extends Component {
                     this.setState({categories: [...categories, categoryItem]});
                     this.onClose()
                 } else {
-                    toast("Category didn't add", {
+                    toast(data["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -92,7 +92,7 @@ class Settings extends Component {
                     });
                     this.onClose()
                 } else {
-                    toast("Category didn't edit", {
+                    toast(data["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -123,7 +123,7 @@ class Settings extends Component {
                         categories: categories.filter(item => item.id !== id)
                     })
                 } else {
-                    toast("Category didn't delete", {
+                    toast(data["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -136,7 +136,7 @@ class Settings extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('/api/categories/list')
+        fetch('/api/categories/fullList')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {

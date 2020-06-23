@@ -14,7 +14,7 @@ class Gallery extends Component {
             categories: [],
             isLoading: false,
             error: null,
-            clicked: 0,
+            clicked: "0",
             images: []
         };
     }
@@ -47,9 +47,8 @@ class Gallery extends Component {
                 this.setState({
                     categories: category["data"],
                     isLoading: false,
-                    images: photo["data"]
+                    images: photo["data"],
                 });
-
             } else {
                 toast(category["status"] === "error" ? category["message"] : photo["message"], {
                     autoClose: 5000,
@@ -105,7 +104,7 @@ class Gallery extends Component {
                             return (
                                 <div className="container-img">
                                     <img
-                                        key={'photo'+idx}
+                                        key={idx}
                                         src={image.src}
                                         alt={image.title}
                                         className='img-circle'

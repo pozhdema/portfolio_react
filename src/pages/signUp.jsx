@@ -70,7 +70,7 @@ handleInputUp = (e) => {
 };
 
 handleSubmit = e => {
-    let form = e.target;
+    e.preventDefault();
     fetch('/api/user/create', {
         method: 'POST',
         headers: {
@@ -82,8 +82,13 @@ handleSubmit = e => {
         .then((data) => {
             if (data["status"] === "success") {
                 this.props.history.push('/gallery')
+                toast("Sign Up", {
+                    autoClose: 5000,
+                    closeButton: true,
+                    type: toast.TYPE.SUCCESS,
+                });
             } else {
-                toast("Login or password incorrect", {
+                toast(data["message"], {
                     autoClose: 5000,
                     closeButton: true,
                     type: toast.TYPE.ERROR,
@@ -91,7 +96,6 @@ handleSubmit = e => {
             }
         })
         .catch(error => console.error(error));
-    form.reset();
 };
 
 render()

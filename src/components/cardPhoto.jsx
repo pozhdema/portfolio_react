@@ -43,7 +43,7 @@ class CardPhoto extends Component {
                         images: images.filter(item => item.id !== id)
                     })
                 } else {
-                    toast("Photo didn't delete", {
+                    toast(data["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,

@@ -60,8 +60,7 @@ class SignIn extends React.Component {
     };
 
     handleSubmit = e => {
-        let form = e.target;
-
+        e.preventDefault();
         fetch('/api/user/login', {
             method: 'POST',
             headers: {
@@ -73,8 +72,13 @@ class SignIn extends React.Component {
             .then((data) => {
                 if (data["status"] === "success") {
                     this.props.history.push('/settings')
+                    toast("Sign In", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.SUCCESS,
+                    });
                 } else {
-                    toast("Login or password incorrect", {
+                    toast(data["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -82,7 +86,6 @@ class SignIn extends React.Component {
                 }
             })
             .catch(error => console.error(error));
-        form.reset();
     };
 
     render() {
@@ -90,7 +93,8 @@ class SignIn extends React.Component {
             <div className="container sign">
                 <form
                     className="admin"
-                    id="signIn-form">
+                    id="signIn-form"
+                >
                     <div className="wrapper-input">
                         <Translate
                             component={Input}

@@ -107,7 +107,7 @@ class EditPhoto extends Component {
 
                     this.onClose()
                 } else {
-                    toast("Photo didn't edit", {
+                    toast(data["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
