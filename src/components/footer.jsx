@@ -5,15 +5,15 @@ import Translate from "react-translate-component";
 
 function Footer() {
     return (
-        <footer>
+        <footer className="footer-global">
             <ul className="navigations footer">
-                <li><a href="https://www.facebook.com/profile.php?id=100005189898824">
+                <li><a href="https://www.facebook.com/profile.php?id=100005189898824" aria-label="Facebook" target="_blank">
                     <FontAwesome name="facebook" className="fa-facebook-f"/></a>
                 </li>
-                <li><a href="https://www.instagram.com/nataliia_pozhdema/">
+                <li><a href="https://www.instagram.com/nataliia_pozhdema/" aria-label="Instagram" target="_blank">
                     <FontAwesome name="instagram" className="fa-instagram"/></a>
                 </li>
-                <li><a href="mailto:pozhdema107@gmail.com">
+                <li><a href="mailto:pozhdema107@gmail.com" aria-label="Gmail" target="_blank">
                     <FontAwesome name="gmail" className="fa-envelope"/></a>
                 </li>
             </ul>

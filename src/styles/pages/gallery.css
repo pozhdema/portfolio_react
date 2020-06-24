@@ -20,6 +20,14 @@
     overflow-y: scroll;
 }
 
+body > div:nth-child(6) > div > div.lightbox-title-content > div.lightbox-title,
+body > div:nth-child(6) > div > div.lightbox-title-content > div.lightbox-description > div {
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 22px;
+}
+
 body > div:nth-child(5) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5),
 body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5) > svg > path{
     display: none;
@@ -28,8 +36,6 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
 @media screen and (min-width: 576px) {
     .container-img {
         height: 300px;
-        display: flex;
-        justify-content: center;
     }
 }
 
@@ -43,7 +49,6 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
     }
 
     .container-img {
-        display: block;
         width: 200px;
         height: 200px;
         border: 1px solid #454545;

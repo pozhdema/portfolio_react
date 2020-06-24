@@ -59,6 +59,10 @@ class SignIn extends React.Component {
         )
     };
 
+    refreshPage() {
+        window.location.reload(false);
+    }
+
     handleSubmit = e => {
         e.preventDefault();
         fetch('/api/user/login', {
@@ -71,12 +75,13 @@ class SignIn extends React.Component {
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
-                    this.props.history.push('/settings')
                     toast("Sign In", {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
                     });
+                    this.props.history.push('/gallery')
+                    this.refreshPage()
                 } else {
                     toast(data["message"], {
                         autoClose: 5000,

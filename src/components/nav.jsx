@@ -3,16 +3,43 @@ import '../styles/components/nav.css'
 import {Link} from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
 import Translate from 'react-translate-component';
+import {Button} from "semantic-ui-react";
+import {toast} from "react-toastify";
 
 
 class Nav extends Component {
+    refreshPage() {
+        window.location.reload(false);
+    }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        fetch('/api/user/logout')
+            .then(response => response.json())
+            .then((data) => {
+                if (data["status"] === "success") {
+                    toast(data["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.SUCCESS,
+                    });
+                    this.refreshPage()
+                } else {
+                    toast("Your don't exit", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => console.error(error));
+    };
     render() {
         return (
             <div className="nav">
-                <nav>
+                <nav className="global-nav">
                     <div className="title">
-                        <Translate content="title.h1" component="h1" />
+                        <Translate content="title.h1" component="h1" className="h1"/>
                         <Translate content="title.span" component="span" className="nav-title"/>
                     </div>
                     <ul className="navigations">
@@ -25,12 +52,20 @@ class Nav extends Component {
                         <Link to="/contacts" className="link">
                             <Translate content="nav.contacts" component="li"/>
                         </Link>
-                        <Link to="/signIn" className="link">
-                            <Translate content="nav.signIn" component="li"/>
-                        </Link>
-                        {this.props.roles==="admin"?<Link to="/settings" className="link">
+                        {this.props.roles === "admin" || this.props.roles === "user" ?
+                            <Translate
+                                component={Button}
+                                onClick={this.handleSubmit}
+                                content="exit"
+                                type="submit"
+                                id="exit"
+                            />
+                            : <Link to="/signIn" className="link">
+                                <Translate content="nav.signIn" component="li"/>
+                            </Link>}
+                        {this.props.roles === "admin" ? <Link to="/settings" className="link">
                             <Translate content="nav.settings" component="li"/>
-                        </Link>: null}
+                        </Link> : null}
                     </ul>
                 </nav>
                 <div className="lang">

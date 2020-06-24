@@ -20,6 +20,7 @@
     "react-scripts": "3.4.1",
     "react-toastify": "5.5.0",
     "react-translate-component": "^0.15.1",
+    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
     "universal-cookie": "^4.0.3"
   },

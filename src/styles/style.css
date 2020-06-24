@@ -19,7 +19,7 @@
     box-sizing: border-box;
 }
 
-body {
+.body {
     position: relative;
     height: 105vh;
     min-width: 320px;
@@ -84,7 +84,7 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
-    body {
+    .body {
         height: 100vh;
     }
 }

@@ -30,6 +30,10 @@
     align-items: center;
 }
 
+#password, #confirmPassword, #username {
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+}
 
 .admin-btn {
     display: flex;
@@ -40,6 +44,10 @@
     text-decoration: none;
     color: #e5dac3;
     margin-top: 5px;
+}
+
+.admin-btn a:hover {
+    color: #ffccbb;
 }
 
 .error {

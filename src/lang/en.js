@@ -11,7 +11,7 @@ export default {
         signUp: "Sign Up",
         settings: "Settings"
     },
-    footer: "Pozhdema Nataliia. All rights reserved.",
+    footer: " Pozhdema Nataliia. All rights reserved.",
     copyright: "Copyright",
     phone: "PHONE",
     email: "EMAIL",
@@ -27,4 +27,5 @@ export default {
     contactPassword: "Your password",
     confirmPassword: "Repeat the your password",
     username: "Your username",
+    exit: "Exit"
 }

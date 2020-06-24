@@ -50,6 +50,11 @@
     height: 400px;
 }
 
+#names, #email {
+    font-family: Caveat, CormorantInfant, SourceSansPro;
+    font-size: 20px;
+}
+
 .text-contact {
     width: 215px;
     height: 200px;

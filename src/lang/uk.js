@@ -11,7 +11,7 @@ export default {
         signUp: "Зареєструватись",
         settings: "Налаштування"
     },
-    footer: "Пождема Наталія. Всі права захищені.",
+    footer: " Пождема Наталія. Всі права захищені.",
     copyright: "",
     phone: "ТЕЛЕФОН",
     email: "ПОШТА",
@@ -27,4 +27,5 @@ export default {
     contactPassword: "Ваш пароль",
     confirmPassword: "Повторіть свій пароль",
     username: "Ваш логін",
+    exit: "Вихід"
 }
