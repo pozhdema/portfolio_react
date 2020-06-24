@@ -1,4 +1,6 @@
 .container-img {
+    display: flex;
+    justify-content: center;
     width: 95%;
     height: 200px;
     margin-bottom: 5%;
@@ -35,12 +37,13 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
     #root > div > div.container > div.lightbox-container {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         align-items: flex-start;
         height: 600px;
     }
 
     .container-img {
+        display: block;
         width: 200px;
         height: 200px;
         border: 1px solid #454545;
@@ -56,8 +59,3 @@ body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button
     }
 }
 
-@media screen and (min-width: 1200px) {
-    #root > div > div.container > div.lightbox-container {
-        justify-content: center;
-    }
-}
