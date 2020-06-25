@@ -16,6 +16,8 @@ import en from "./lang/en";
 import uk from "./lang/uk";
 import Cookies from 'universal-cookie';
 import CookieConsent from "react-cookie-consent";
+import SimpleReactLightbox from "simple-react-lightbox";
+
 
 counterpart.registerTranslations('en', en);
 counterpart.registerTranslations('uk', uk);
@@ -82,6 +84,7 @@ class App extends Component {
 
     render() {
         return (
+            <SimpleReactLightbox>
             <Router>
                 <div className="App">
                     <CookieConsent
@@ -105,6 +108,7 @@ class App extends Component {
                     <Footer/>
                 </div>
             </Router>
+            </SimpleReactLightbox>
         )
     }
 }

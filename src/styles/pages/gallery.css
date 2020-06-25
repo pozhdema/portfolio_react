@@ -1,66 +1,67 @@
-.container-img {
+.container-photo {
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 400px;
     width: 100%;
-    height: 200px;
-    margin-bottom: 5%;
-}
-
-.img-circle {
-    width: auto;
-    height: 100%;
-}
-
-#root > div > div.container > div.lightbox-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 450px;
     overflow-y: scroll;
 }
 
-body > div:nth-child(6) > div > div.lightbox-title-content > div.lightbox-title,
-body > div:nth-child(6) > div > div.lightbox-title-content > div.lightbox-description > div {
+.photo {
+    margin-bottom: 20px;
+}
+
+img {
+    width: 90%;
+    margin: 0 5%;
+}
+
+.container-loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#loader {
+    background: transparent;
+    border: 1px solid #454545;
     font-family: Caveat, CormorantInfant, SourceSansPro;
     font-size: 20px;
     font-weight: 100;
-    line-height: 22px;
-}
-
-body > div:nth-child(5) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5),
-body > div:nth-child(6) > div > span > div > div.lightbox-modifiers-box > button:nth-child(5) > svg > path{
-    display: none;
+    color: #F5F5DC;
+    padding: 9px 35px;
 }
 
 @media screen and (min-width: 576px) {
-    .container-img {
-        height: 300px;
+    img {
+        width: 100%;
     }
 }
 
 @media screen and (min-width: 768px) {
-    #root > div > div.container > div.lightbox-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        height: 600px;
-    }
-
-    .container-img {
-        width: 200px;
-        height: 200px;
-        border: 1px solid #454545;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 15px 50px;
-    }
-
-    .img-circle {
-        width: auto;
-        height: 100%;
-        margin: 0 auto;
+    .container-photo {
+        height: 450px;
     }
 }
+@media screen and (min-width: 1200px) {
+    .container-photo{
+        width: 100%;
+        min-width: 1000px;
+        height: 430px;
+        margin-top: 20px;
+    }
+
+    img {
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .container-photo {
+        min-width: 1600px;
+        height: 550px;
+    }
+}
+
 

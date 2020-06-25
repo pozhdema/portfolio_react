@@ -10,8 +10,6 @@ class AddPhoto extends Component {
         this.state = {
             title_ua: "",
             title_en: "",
-            description_ua: "",
-            description_en: "",
             value: '',
             file: null,
             isOpen: false,
@@ -60,8 +58,6 @@ class AddPhoto extends Component {
         });
         formData.append("title_ua", this.state.title_ua);
         formData.append("title_en", this.state.title_en);
-        formData.append("description_ua", this.state.description_ua);
-        formData.append("description_en", this.state.description_en);
 
         fetch("/api/photo/add", {
             method: "post",
@@ -80,8 +76,6 @@ class AddPhoto extends Component {
                     this.setState({
                         title_ua: "",
                         title_en: "",
-                        description_ua: "",
-                        description_en: ""
                     });
                     this.onClose()
                 } else {
@@ -154,24 +148,6 @@ class AddPhoto extends Component {
                                 value={this.state.title_en}
                                 onChange={this.handleChange}
                                 id="modal-add-photo-title-en"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <Form.Input
-                                placeholder="description_ua"
-                                name="description_ua"
-                                value={this.state.description_ua}
-                                onChange={this.handleChange}
-                                id="modal-add-photo-description-ua"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <Form.Input
-                                placeholder="description_en"
-                                name="description_en"
-                                value={this.state.description_en}
-                                onChange={this.handleChange}
-                                id="modal-add-photo-description-en"
                             />
                         </Form.Field>
                         <DropdownMultipleSelection/>
