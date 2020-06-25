@@ -16,27 +16,13 @@ class Contacts extends Component {
             text: ""
         };
 
-        this.handleInput = this.handleInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
-    handleInput = (e) => {
-
-        const target = e.target;
+    handleInput = ({target}) => {
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
 
-        this.state[name] = value;
-
-        this.setState(prevState => {
-                return {
-                    newMessage: {
-                        ...prevState, [name]: value
-                    }
-                }
-            }
-        )
+        this.setState({[target.name]: value})
     };
 
     handleSubmit = (e) => {
@@ -98,7 +84,7 @@ class Contacts extends Component {
                             id={"email"}
                             name={"email"}
                             type={"email"}
-                            attributes={{placeholder:"contactEmail"}}
+                            attributes={{placeholder: "contactEmail"}}
                             value={this.state.email}
                         />
                     </div>
@@ -110,7 +96,7 @@ class Contacts extends Component {
                             id={"names"}
                             name={"names"}
                             type={"text"}
-                            attributes={{placeholder:"contactName"}}
+                            attributes={{placeholder: "contactName"}}
                             value={this.state.names}
                         />
                     </div>
@@ -120,7 +106,7 @@ class Contacts extends Component {
                             id={"text"}
                             name={"text"}
                             className="text-contact"
-                            attributes={{placeholder:"contactText"}}
+                            attributes={{placeholder: "contactText"}}
                             value={this.state.text}
                             onChange={this.handleInput}
                         />
@@ -129,7 +115,7 @@ class Contacts extends Component {
                         <Translate
                             component={Button}
                             action={this.handleSubmit}
-                            attributes={{title:"submit"}}
+                            attributes={{title: "submit"}}
                         />
                     </div>
                 </form>

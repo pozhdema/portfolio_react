@@ -7,17 +7,14 @@ import 'react-lightbox-component/build/css/index.css'
 import Loader from "react-loader-spinner";
 
 class Gallery extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        categories: [],
+        isLoading: false,
+        error: null,
+        clicked: "0",
+        images: []
+    };
 
-        this.state = {
-            categories: [],
-            isLoading: false,
-            error: null,
-            clicked: "0",
-            images: []
-        };
-    }
 
     onFilterChange = (id) => {
         fetch(`/api/photo/photo?category=${id}`)
@@ -82,7 +79,7 @@ class Gallery extends Component {
         if (error) {
             return <p className="error-message">{error.message}</p>;
         }
-        if (categories !== []) {
+        if (categories.length) {
             let preparedImages = [];
             for (let img in images) {
                 preparedImages.push({
@@ -115,6 +112,8 @@ class Gallery extends Component {
                         }}/>
                 </div>
             )
+        }else{
+            return null
         }
     }
 }

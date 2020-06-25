@@ -7,13 +7,13 @@ function Footer() {
     return (
         <footer className="footer-global">
             <ul className="navigations footer">
-                <li><a href="https://www.facebook.com/profile.php?id=100005189898824" aria-label="Facebook" target="_blank">
+                <li><a href="https://www.facebook.com/profile.php?id=100005189898824" aria-label="Facebook" target="_blank" rel="noopener">
                     <FontAwesome name="facebook" className="fa-facebook-f"/></a>
                 </li>
-                <li><a href="https://www.instagram.com/nataliia_pozhdema/" aria-label="Instagram" target="_blank">
+                <li><a href="https://www.instagram.com/nataliia_pozhdema/" aria-label="Instagram" target="_blank" rel="noopener">
                     <FontAwesome name="instagram" className="fa-instagram"/></a>
                 </li>
-                <li><a href="mailto:pozhdema107@gmail.com" aria-label="Gmail" target="_blank">
+                <li><a href="mailto:pozhdema107@gmail.com" aria-label="Gmail" target="_blank" rel="noopener">
                     <FontAwesome name="gmail" className="fa-envelope"/></a>
                 </li>
             </ul>

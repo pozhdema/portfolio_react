@@ -23,23 +23,18 @@ class SignUp extends React.Component {
             confirmPassword: "",
             isDisabled: true
         };
-
-        this.handleInputUp = this.handleInputUp.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
 
     validateEmail = ValidateEmail;
     validateUsername = ValidateUsername;
     validatePassword = ValidatePassword;
     validatePasswordConfirm = ValidatePasswordConfirm;
 
-    handleInputUp = (e) => {
-
-        const target = e.target;
+    handleInputUp = ({target}) => {
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
 
-        this.state[name] = value;
+        this.state [target.name] = value;
 
         if (target.name === 'email') {
             this.validateEmail(target.value);
@@ -59,14 +54,7 @@ class SignUp extends React.Component {
             })
         }
 
-        this.setState(prevState => {
-                return {
-                    newUser: {
-                        ...prevState, [name]: value
-                    }
-                }
-            }
-        )
+        this.setState({[target.name]: value})
     };
 
     refreshPage() {

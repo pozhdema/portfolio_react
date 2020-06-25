@@ -18,22 +18,17 @@ class SignIn extends React.Component {
             password:"",
             isDisabled: true
         };
-
-        this.handleInput = this.handleInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     validateEmail = ValidateEmail;
     validatePassword = ValidatePassword;
 
 
-    handleInput =(e) => {
+    handleInput =({target}) => {
 
-        const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
 
-        this.state[name] = value;
+        this.state[target.name] = value;
 
 
         if (target.name === 'email') {
@@ -48,15 +43,7 @@ class SignIn extends React.Component {
             })
         }
 
-
-        this.setState(prevState => {
-                return {
-                    newUser: {
-                        ...prevState, [name]: value
-                    }
-                }
-            }
-        )
+        this.setState({[target.name]: value})
     };
 
     refreshPage() {
