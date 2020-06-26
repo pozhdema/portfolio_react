@@ -5,6 +5,7 @@ import {toast} from "react-toastify";
 import Loader from "react-loader-spinner";
 import {SRLWrapper} from "simple-react-lightbox";
 import {Button} from "semantic-ui-react";
+import Translate from "react-translate-component";
 
 class Gallery extends Component {
     state = {
@@ -148,10 +149,11 @@ class Gallery extends Component {
                             ))}
                         </div>
                         <div className="container-loader">
-                            <Button
-                                content="More"
+                            <Translate
+                                component={Button}
+                                id={"loader"}
+                                content="more"
                                 onClick={this.onLoader}
-                                id="loader"
                             />
                         </div>
                     </SRLWrapper>

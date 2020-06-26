@@ -27,5 +27,6 @@ export default {
     contactPassword: "Ваш пароль",
     confirmPassword: "Повторіть свій пароль",
     username: "Ваш логін",
-    exit: "Вихід"
+    exit: "Вихід",
+    more: "Більше"
 }

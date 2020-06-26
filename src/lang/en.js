@@ -27,5 +27,6 @@ export default {
     contactPassword: "Your password",
     confirmPassword: "Repeat the your password",
     username: "Your username",
-    exit: "Exit"
+    exit: "Exit",
+    more: "More"
 }
