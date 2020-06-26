@@ -69,7 +69,7 @@ class Contacts extends Component {
                     </div>
                     <div className="wrapper-social">
                         <Translate content="email" component="span"/>
-                        <span><a href="mailto: pozhdema107@gmail.com">pozhdema107@gmail.com</a></span>
+                        <span><a href="mailto: n.pozhdema@gmail.com">pozhdema107@gmail.com</a></span>
                     </div>
                 </div>
                 <form

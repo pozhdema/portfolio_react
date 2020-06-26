@@ -13,7 +13,7 @@ function Footer() {
                 <li><a href="https://www.instagram.com/nataliia_pozhdema/" aria-label="Instagram" target="_blank" rel="noopener">
                     <FontAwesome name="instagram" className="fa-instagram"/></a>
                 </li>
-                <li><a href="mailto:pozhdema107@gmail.com" aria-label="Gmail" target="_blank" rel="noopener">
+                <li><a href="mailto:n.pozhdema@gmail.com" aria-label="Gmail" target="_blank" rel="noopener">
                     <FontAwesome name="gmail" className="fa-envelope"/></a>
                 </li>
             </ul>
