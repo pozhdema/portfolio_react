@@ -140,8 +140,8 @@ class Gallery extends Component {
                     />
                     <SRLWrapper options={options}>
                         <div className="container-photo" >
-                            {preparedImages.map(({id, src, thumbnail, caption}) => (
-                                <div key={id} className="photo">
+                            {preparedImages.map(({id, src, thumbnail, caption}, index) => (
+                                <div key={index} className="photo">
                                     <a href={src}  data-attribute="SRL" key={id}>
                                         <img src={thumbnail} alt={caption} key={id} loading="lazy"/>
                                     </a>
