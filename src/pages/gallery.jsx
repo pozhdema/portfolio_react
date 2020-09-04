@@ -72,6 +72,23 @@ class Gallery extends Component {
                     images: photo["data"],
                     offset: this.state.offset+this.state.limit
                 });
+
+                document.querySelector('#root').addEventListener('contextmenu', (event) => {
+                    if (event.target.tagName.toLowerCase()==='img'){
+                        event.preventDefault();
+                        event.stopPropagation();
+                        toast('© Pozhdema Nataliia , 2020. ' +
+                            'Unauthorized use and/or duplication of this material without express and written ' +
+                            'permission from this blog’s author and/or owner is strictly prohibited. Excerpts and ' +
+                            'links may be used, provided that full and clear credit is given to Pozhdema Nataliia' +
+                            ' with appropriate and specific direction to the original content.', {
+                            autoClose: 10000,
+                            closeButton: true,
+                            type: toast.TYPE.WARNING,
+                        });
+                        return false;
+                    }
+                });
             } else {
                 toast(category["status"] === "error" ? category["message"] : photo["message"], {
                     autoClose: 5000,

@@ -20,6 +20,10 @@ img {
     margin: 0 5%;
 }
 
+#SRLLightbox > div > div.SRLContainer.css-1b678za > div.SRLElementContainer.css-1xk5efh > div > img {
+    pointer-events: none;
+}
+
 .container-loader {
     display: flex;
     justify-content: center;
