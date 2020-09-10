@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 88%;
+    list-style: none;
+}
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link:hover {
+    transform: scale(1.5);
+    color: #be94a0;
+}
+

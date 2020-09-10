@@ -1,0 +1,15 @@
+.change-theme {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    cursor: pointer;
+}
+
+.change-theme label {
+    margin: -5px 0 0 5px;
+    cursor: pointer;
+}
+
+.change-theme input {
+    cursor: pointer;
+}

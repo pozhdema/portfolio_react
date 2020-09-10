@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "contact": "Contacts"
+  },
+  "theme": "Use Dark Theme",
+  "form": {
+    "username": "username",
+    "email": "email",
+    "password": "password",
+    "submit": "Submit",
+    "error" : {
+      "username" : "Must be 15 characters or less",
+      "email" : "Invalid email address",
+      "password" : "Invalid password",
+      "required" : "Required"
+    }
+  },
+  "copyright" : "© Pozhdema Nataliia , 2020. Unauthorized use and/or duplication of this material without express and written permission from this blog’s author and/or owner is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to Pozhdema Nataliia with appropriate and specific direction to the original content.",
+  "caption" : "Caption"
+}

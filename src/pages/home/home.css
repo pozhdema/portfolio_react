@@ -1,0 +1,12 @@
+.pages {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    height: 80vh;
+}
+
+h1 {
+    font-weight: 100;
+}

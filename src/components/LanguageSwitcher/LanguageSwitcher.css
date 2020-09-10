@@ -1,0 +1,22 @@
+.LanguageSwitcher {
+    width: 2%;
+    height: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding-left: 8px;
+    font-family: Caveat;
+}
+
+.LanguageSwitcher option {
+    background-color: #be94a0;
+}
+
+
+
+
+

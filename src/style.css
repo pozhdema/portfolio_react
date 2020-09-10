@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Caveat;
+    src: url('fonts/Caveatregular.ttf') format('truetype'),
+    url('fonts/Caveatregular.woff2') format('woff2'),
+    url('fonts/Caveatregular.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: unset;
+}
+
+
+
+
+
