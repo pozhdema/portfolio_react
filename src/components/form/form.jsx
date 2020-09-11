@@ -2,27 +2,7 @@ import React from "react";
 import {Field, reduxForm} from 'redux-form'
 import {withNamespaces} from "react-i18next";
 import './form.css';
-
-const validate = values => {
-    const errors ={};
-
-    if (!values.username) {
-        errors.username ='form.error.required'
-    }else if (values.username.length > 15){
-        errors.username = 'form.error.username'
-    }
-    if (!values.email) {
-        errors.email = 'form.error.required'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'form.error.email'
-    }
-    if (!values.password) {
-        errors.password = 'form.error.required'
-    } else if (!/^(?=.*[a-z])(?=.*[A-Z])((?=.*[0-9])|(?=.*[!@#$%\^&\*]))(?=.{8,20})/i.test(values.password)) {
-        errors.password = 'form.error.password'
-    }
-    return errors
-};
+import validate from '../validate/validate'
 
 const renderField = ({input, placeholder, type, t, meta: { touched, error }}) => (
     <div className='wrapper-input'>
@@ -50,11 +30,10 @@ const Form = React.memo(props => {
                 t={t}
             />
             <Field
-                name='password'
-                type='password'
-                component={renderField}
-                placeholder={t('form.password')}
-                t={t}
+                name='notes'
+                className='notes'
+                component='textarea'
+                placeholder={t('form.message')}
             />
             <button type="submit" disabled={submitting} className='form-btn'>{t('form.submit')}</button>
         </form>

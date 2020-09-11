@@ -13,10 +13,18 @@ const GalleryPhoto = React.memo(props => {
     const [like, setLike] = useState(0);
 
     useEffect(() => {
-        fetch("/photos.json")
+        fetch("http://qwe.loc/api/photo/photo")
             .then(response => response.json())
-            .then(data => {
-                setImages(data);
+            .then(response => {
+                if ( response["status"] === "success") {
+                    setImages(response["data"]);
+                } else {
+                    toast( response["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
             })
     }, []);
 
@@ -36,7 +44,7 @@ const GalleryPhoto = React.memo(props => {
             "src": "",
             "id": "",
             "alt": "",
-            "caption": "",
+            "title": "",
             "like": ""
         };
 
@@ -77,10 +85,10 @@ const GalleryPhoto = React.memo(props => {
                 </button>
                 <section className='modal-main'>
                     <img
-                        id={currentPhoto.id}
-                        src={`${currentPhoto.src}`}
-                        alt={currentPhoto.alt}
-                        className={currentPhoto.width === 200 ? " vertical" : " horizon"}
+                        id={currentPhoto["id"]}
+                        src={currentPhoto["path"] + currentPhoto["full"] + currentPhoto["name"]}
+                        alt={currentPhoto["title_en"]}
+                        className={currentPhoto["vertical"] === '1' ? " vertical" : " horizon"}
                         onContextMenu={imgStillRestrict}
                     />
                     <button onClick={liked} className='like'>
@@ -91,7 +99,7 @@ const GalleryPhoto = React.memo(props => {
                         />
                         <span className='like-span'>{like}</span>
                     </button>
-                    <span>{currentPhoto.caption = t('caption')}</span>
+                    <span>{t(currentPhoto["title"])}</span>
                 </section>
             </div>
         );
@@ -140,11 +148,9 @@ const GalleryPhoto = React.memo(props => {
                         showModal(event, images, index)
                     }}>
                         <img
-                            id={image.id}
-                            src={`${image.src}`}
-                            width={image.width}
-                            height={image.height}
-                            alt={image.alt}
+                            id={image["id"]}
+                            src={image["path"] + image["min"] + image["name"]}
+                            alt={image["title_en"]}
                             onContextMenu={imgStillRestrict}
                         />
                     </div>

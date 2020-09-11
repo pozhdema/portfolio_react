@@ -1,0 +1,41 @@
+.contact {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.contact-social {
+    margin-top: 5%;
+}
+
+.wrapper-social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.wrapper-social span:first-child {
+    line-height: 1.5;
+    border-top: 1px solid;
+    margin-bottom: 20px;
+}
+
+.wrapper-social span {
+    margin-bottom: 5px;
+}
+
+.wrapper-social span a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.wrapper-social span a:hover {
+    color: #be94a0;
+}
+
+.wrapper-social span:last-child {
+    margin-bottom: 30px;
+}

@@ -1,0 +1,50 @@
+.settings-category {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.category-table {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.category-table tr:nth-child(even) {
+    background: #A6ACAF;
+}
+
+.category-table thead {
+    font-weight: 700;
+    background: #be94a0;
+}
+
+/*.category-table tbody {*/
+/*    height: 250px;*/
+/*    overflow-y: scroll;*/
+/*}*/
+
+.category-table tbody tr, .category-table thead tr {
+    height: 50px;
+}
+
+.settings-btn, .btn-edit {
+    width: 15%;
+    height: 30px;
+    border: 1px solid #020101;
+    border-radius: 10px;
+    font-family: Caveat;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+}
+
+.btn-edit {
+    width: 30%;
+}
+
+.settings-btn:hover, .btn-edit:hover {
+    background: #be94a0;
+}

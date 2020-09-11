@@ -1,0 +1,20 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 87px;
+}
+
+.navigations {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    list-style-type: none;
+}
+
+.nav-footer span:hover {
+    transform: scale(1.5);
+    color: #be94a0;
+}

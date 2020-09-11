@@ -1,0 +1,27 @@
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.tab {
+    width: 10%;
+    background-color: transparent;
+    border: transparent;
+    outline: none;
+    font-family: Caveat;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.tab:hover {
+    color: #be94a0;
+}
+
+.active-tab {
+    border-bottom: 1px solid #A6ACAF;
+}
+
+.content-tab {
+    width: 100%;
+}
