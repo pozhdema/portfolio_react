@@ -1,0 +1,17 @@
+.wrapper-photo {
+    align-self: flex-start;
+    margin-left: 70px;
+    font-family: Caveat;
+    font-size: 20px;
+    color: #020101;
+}
+
+.wrapper-photo label input, .wrapper-photo label {
+    cursor: pointer;
+}
+
+.select-photo-settings {
+    width: 70%;
+    font-family: Caveat;
+    color: #020101;
+}

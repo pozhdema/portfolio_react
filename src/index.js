@@ -33,7 +33,7 @@ const i18n = configureI18n({
 });
 
 ReactDOM.render(
-    <React.StrictMode>
+    <React.Fragment>
         <Provider store={store}>
             <Router history={history}>
                 <I18nextProvider i18n={i18n}>
@@ -43,7 +43,7 @@ ReactDOM.render(
                 </I18nextProvider>
             </Router>
         </Provider>
-    </React.StrictMode>,
+    </React.Fragment>,
     document.getElementById('root')
 );
 

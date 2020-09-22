@@ -1,3 +1,7 @@
+.form-sing {
+    height: 200px;
+}
+
 .admin-btn {
     display: flex;
     justify-content: space-between;

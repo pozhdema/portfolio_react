@@ -1,0 +1,16 @@
+.photo-form {
+    justify-content: space-evenly;
+    height: 450px;
+}
+
+.select-photo {
+    width: 30%;
+    height: 30px;
+    font-size: 20px;
+    color: #020101;
+    outline: none;
+}
+
+#download-photo {
+    border: none;
+}

@@ -33,6 +33,8 @@
     "edit" : "Edit",
     "delete" : "Delete",
     "addCategory" : "Add category",
-    "addPhoto" : "Add photo"
+    "addPhoto" : "Add photo",
+    "category" : "Category",
+    "gallery" : "Gallery"
   }
 }

@@ -1,35 +1,16 @@
-.settings-category {
+.settings-category, .settings-gallery {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
 }
 
-.category-table {
+.settings-table {
     width: 100%;
-    text-align: center;
-    margin-top: 25px;
+    height: 600px;
+    overflow-y: auto;
 }
 
-.category-table tr:nth-child(even) {
-    background: #A6ACAF;
-}
-
-.category-table thead {
-    font-weight: 700;
-    background: #be94a0;
-}
-
-/*.category-table tbody {*/
-/*    height: 250px;*/
-/*    overflow-y: scroll;*/
-/*}*/
-
-.category-table tbody tr, .category-table thead tr {
-    height: 50px;
-}
-
-.settings-btn, .btn-edit {
+.settings-btn {
     width: 15%;
     height: 30px;
     border: 1px solid #020101;
@@ -41,10 +22,6 @@
     background: transparent;
 }
 
-.btn-edit {
-    width: 30%;
-}
-
-.settings-btn:hover, .btn-edit:hover {
+.settings-btn:hover {
     background: #be94a0;
 }

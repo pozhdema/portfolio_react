@@ -1,0 +1,86 @@
+.category-table {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.category-table tr:nth-child(even) {
+    background: #A6ACAF;
+}
+
+.category-table thead, .category-table thead tr th {
+    font-weight: 700;
+    background: #be94a0;
+}
+
+.category-table thead tr th {
+    position: sticky;
+    top: 0;
+}
+
+.category-table tbody tr, .category-table thead tr {
+    height: 50px;
+}
+
+.btn-edit {
+    width: 15%;
+    height: 30px;
+    border: 1px solid #020101;
+    border-radius: 10px;
+    font-family: Caveat;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+}
+
+.btn-edit {
+    width: 30%;
+}
+
+.btn-edit:hover, .btn-category:hover {
+    background: #be94a0;
+}
+
+.category-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 250px;
+    background: #f5deb3;
+    border-radius: 10px;
+}
+
+.category-input {
+    font-family: Caveat;
+    font-size: 20px;
+    color: #020101;
+}
+
+.category-span {
+    font-family: Caveat;
+    color: #FF8765;
+}
+
+.btn-category {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #020101;
+    border-radius: 10px;
+    font-family: Caveat;
+    font-size: 20px;
+    color: #020101;
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+}
+
+.photo {
+    width: 60%;
+}
+
+.photo-edit {
+    width: 20%;
+}
