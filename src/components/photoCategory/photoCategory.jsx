@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import {withNamespaces} from "react-i18next";
 import {toast} from "react-toastify";
 import useModal from "../useModal/useModal";
@@ -8,8 +8,7 @@ import Select from 'react-select';
 
 
 const PhotoSettings = React.memo(props => {
-    const {t, category} = props;
-    const [photo, setPhoto] = useState([]);
+    const {t, category, photo, setPhoto} = props;
     const [visible, setVisible] = useState(false);
     const [slider, setSlider] = useState(false);
     const [titleUa, setTitleUa] = useState('');
@@ -20,21 +19,7 @@ const PhotoSettings = React.memo(props => {
     const [photoId, setPhotoId] = useState(0);
     const {show, toggle} = useModal();
 
-    useEffect(() => {
-        fetch("http://qwe.loc/api/photo/list")
-            .then(response => response.json())
-            .then(response => {
-                if (response["status"] === "success") {
-                    setPhoto(response["data"]);
-                } else {
-                    toast(response["message"], {
-                        autoClose: 5000,
-                        closeButton: true,
-                        type: toast.TYPE.ERROR,
-                    });
-                }
-            })
-    }, []);
+
 
     const deletePhoto = (val) => {
         let id = val.target.dataset.id;
@@ -77,8 +62,8 @@ const PhotoSettings = React.memo(props => {
             .then((data) => {
                 if (data["status"] === "success") {
                     setValues(data.data.categories);
-                    data.data.visible === '1' ? setVisible(true) : setVisible (false);
-                    data.data.slider === '1' ? setSlider(true) : setSlider (false);
+                    setVisible(data.data.visible === '1');
+                    setSlider(data.data.slider === '1');
                     setTitleUa(data.data.title_ua);
                     setTitleEn(data.data.title_en);
                     setDescriptionUa(data.data.description_ua);
@@ -179,7 +164,7 @@ const PhotoSettings = React.memo(props => {
                             src={card.path}
                             id={card.id}
                             className="card-photo"
-                            alt='photo'
+                            alt='gallery'
                         />
                     </td>
                     <td>

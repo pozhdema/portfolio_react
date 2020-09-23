@@ -21,6 +21,18 @@ const validate = values => {
     } else if (values.password !== values.confirmPassword) {
         errors.confirmPassword = 'form.error.password'
     }
+    if (!values.title_ua) {
+        errors.title_ua ='form.error.required'
+    }
+    if (!values.title_en) {
+        errors.title_en ='form.error.required'
+    }
+    if (!values.description_ua) {
+        errors.description_ua ='form.error.required'
+    }
+    if (!values.description_en) {
+        errors.description_en ='form.error.required'
+    }
     return errors
 };
 

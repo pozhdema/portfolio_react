@@ -11,6 +11,7 @@ const AddCategory = React.memo(props => {
     const {show, toggle} = useModal();
 
     const addCategory = (categoryItem, dispatch )=> {
+        console.log(categoryItem)
         fetch('http://qwe.loc/api/categories/add', {
             method: 'POST',
             headers: {
@@ -41,9 +42,10 @@ const AddCategory = React.memo(props => {
         toggle();
     };
 
-    const renderField = ({input, placeholder, type}) => (
+    const renderField = ({input, placeholder, type, t, meta: { touched, error }}) => (
         <div className='wrapper-input'>
             <input {...input} placeholder={placeholder} type={type} className='form-input category-input'/>
+            {touched && error && <span className='form-span'>{t(error)}</span>}
         </div>
     );
 
@@ -71,9 +73,7 @@ const AddCategory = React.memo(props => {
                         placeholder="title_en"
                         t={t}
                     />
-                    <div>
-                        <button type="submit" disabled={submitting} className='btn-category'>{t('form.submit')}</button>
-                    </div>
+                    <button type="submit" disabled={submitting} className='btn-category'>{t('form.submit')}</button>
                 </form>
             </Modal>
         </>

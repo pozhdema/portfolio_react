@@ -10,6 +10,7 @@
 .img {
     display: flex;
     margin: 5px 0;
+    cursor: pointer;
 }
 
 .modal {
@@ -110,7 +111,7 @@
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    background-color: #be94a0;
+    background-color: #baae97;
     background-position: center;
     background-repeat: no-repeat;
 }

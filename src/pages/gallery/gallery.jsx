@@ -64,7 +64,7 @@ const GalleryPhoto = React.memo(props => {
                         className="fas fa-times"
                         name="close"
                         size="3x"
-                        style={{color: '#be94a0'}}
+                        style={{color: '#baae97'}}
                     />
                 </button>
                 <button onClick={goToPrevious} className='btn-go-to left'>
@@ -72,7 +72,7 @@ const GalleryPhoto = React.memo(props => {
                         className="fas fa-chevron-left"
                         name="chevron-left"
                         size="3x"
-                        style={{color: '#be94a0'}}
+                        style={{color: '#baae97'}}
                     />
                 </button>
                 <button onClick={gotoNext} className='btn-go-to right'>
@@ -80,7 +80,7 @@ const GalleryPhoto = React.memo(props => {
                         className="fas fa-chevron-right"
                         name="chevron-right"
                         size="3x"
-                        style={{color: '#be94a0'}}
+                        style={{color: '#baae97'}}
                     />
                 </button>
                 <section className='modal-main'>

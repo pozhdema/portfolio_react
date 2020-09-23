@@ -36,5 +36,6 @@
     "addPhoto" : "Add photo",
     "category" : "Category",
     "gallery" : "Gallery"
-  }
+  },
+  "upload" : "Custom Upload"
 }

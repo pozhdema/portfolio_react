@@ -7,62 +7,66 @@ import useModal from "../useModal/useModal";
 import {toast} from "react-toastify";
 import './addPhoto.css'
 import Select from "react-select";
+import FontAwesome from "react-fontawesome";
 
 const AddPhoto = React.memo(props => {
-    const {t, handleSubmit, submitting, category} = props;
+    const {t, handleSubmit, submitting, category, photo, setPhoto} = props;
     const {show, toggle} = useModal();
+    const [categories, setCategories] = useState([]);
+    const [file, setFile] = useState(null);
 
-    const addPhoto = () => {
+    const addPhoto = (photoItem, dispatch) => {
+        const formData = new FormData();
+        categories.map(item => {
+            formData.append('categories[]', item)
+        });
+        formData.append("file", file);
+        formData.append("title_ua", photoItem.title_ua);
+        formData.append("title_en", photoItem.title_en);
+        formData.append("description_ua", photoItem.description_ua);
+        formData.append("description_en", photoItem.description_en);
 
-        // const formData = new FormData();
-        // formData.append("file", this.state.file);
-        // this.values.value.map(item => {
-        //     formData.append('categories[]', item)
-        // });
-        // formData.append("title_ua", this.state.title_ua);
-        // formData.append("title_en", this.state.title_en);
-        // formData.append("description_ua", this.state.description_ua);
-        // formData.append("description_en", this.state.description_en);
-        //
-        // fetch("http://qwe.loc/api/photo/add", {
-        //     method: "post",
-        //     body: formData
-        // })
-        //     .then(response => response.json())
-        //     .then((data) => {
-        //         if (data["status"] === "success") {
-        //             toast("Photo and category added", {
-        //                 autoClose: 5000,
-        //                 closeButton: true,
-        //                 type: toast.TYPE.SUCCESS,
-        //             });
-        //             this.values = [];
-        //             this.props.addCard(data["data"]);
-        //             this.setState({
-        //                 title_ua: "",
-        //                 title_en: "",
-        //                 description_ua: "",
-        //                 description_en: ""
-        //             });
-        //             this.onClose()
-        //         } else {
-        //             toast(data["message"], {
-        //                 autoClose: 5000,
-        //                 closeButton: true,
-        //                 type: toast.TYPE.ERROR,
-        //             });
-        //         }
-        //     })
-        //     .catch(error => console.error(error));
-        // dispatch(reset('syncValidation'));
+        fetch("http://qwe.loc/api/photo/add", {
+            method: "post",
+            body: formData
+        })
+            .then(response => response.json())
+            .then((data) => {
+                if (data["status"] === "success") {
+                    toast("Photo and category added", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.SUCCESS,
+                    });
+                    photoItem(data["data"]);
+                    setPhoto([...photo, photoItem])
+                } else {
+                    toast(data["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => console.error(error));
+        dispatch(reset('syncValidation'));
         toggle();
     };
 
-    const renderField = ({input, type, placeholder, id}) => (
+    const renderField = ({input, type, placeholder, t, meta: { touched, error }}) => (
         <div className='wrapper-input'>
-            <input {...input} placeholder={placeholder} id={id} type={type} className='form-input category-input'/>
+            <input {...input} placeholder={placeholder} type={type} className='form-input category-input'/>
+            {touched && error && <span className='form-span'>{t(error)}</span>}
         </div>
     );
+
+    const handleSelect = (options) => {
+        let listCategories = [];
+        options.forEach((option)=>{
+            listCategories.push(option.value)
+        })
+        setCategories(listCategories)
+    };
 
     let options = [];
     for (let i in category) {
@@ -79,11 +83,16 @@ const AddPhoto = React.memo(props => {
                 hide={toggle}
             >
                 <form onSubmit={handleSubmit(addPhoto)} className='category-form photo-form'>
-                    <Field
-                        name='picture'
+                    <label htmlFor="file-upload" className="custom-file-upload">
+                        <FontAwesome name="upload" className="fa-upload"/> {t("upload")}
+                    </label>
+                    <input
+                        id="file-upload"
+                        name='file'
                         type='file'
-                        component={renderField}
-                        id='download-photo'
+                        onChange={(event)=>{
+                            setFile(event.target.files[0])
+                        }}
                     />
                     <Field
                         name='title_ua'
@@ -114,15 +123,13 @@ const AddPhoto = React.memo(props => {
                         t={t}
                     />
                     <Select
-                        defaultValue="Category"
                         isMulti
                         options={options}
                         className="basic-multi-select select-photo-settings"
                         classNamePrefix="select"
+                        onChange={handleSelect}
                     />
-                    <div>
-                        <button type="submit" disabled={submitting} className='btn-category'>{t('form.submit')}</button>
-                    </div>
+                    <button type="submit" disabled={submitting} className='btn-category'>{t('form.submit')}</button>
                 </form>
             </Modal>
         </>

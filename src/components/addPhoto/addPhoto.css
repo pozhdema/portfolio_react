@@ -11,6 +11,18 @@
     outline: none;
 }
 
-#download-photo {
-    border: none;
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    width: 70%;
+    border: 1px solid #32312e;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: Caveat;
+    color: #020101;
+    text-align: center;
 }

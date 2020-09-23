@@ -5,12 +5,12 @@
 }
 
 .category-table tr:nth-child(even) {
-    background: #A6ACAF;
+    background: #fde482;
 }
 
 .category-table thead, .category-table thead tr th {
     font-weight: 700;
-    background: #be94a0;
+    background: #baae97;
 }
 
 .category-table thead tr th {
@@ -23,7 +23,7 @@
 }
 
 .btn-edit {
-    width: 15%;
+    width: 50%;
     height: 30px;
     border: 1px solid #020101;
     border-radius: 10px;
@@ -34,12 +34,8 @@
     background: transparent;
 }
 
-.btn-edit {
-    width: 30%;
-}
-
 .btn-edit:hover, .btn-category:hover {
-    background: #be94a0;
+    background: #baae97;
 }
 
 .category-form {
@@ -49,7 +45,7 @@
     justify-content: center;
     width: 500px;
     height: 250px;
-    background: #f5deb3;
+    background: #fde482;
     border-radius: 10px;
 }
 
@@ -65,7 +61,7 @@
 }
 
 .btn-category {
-    width: 100px;
+    width: 70%;
     height: 30px;
     border: 1px solid #020101;
     border-radius: 10px;

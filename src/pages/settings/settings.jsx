@@ -12,6 +12,7 @@ import {toast} from "react-toastify";
 const Setting = React.memo(props => {
     const {t} = props;
     const [listCategory, setListCategory] = useState([]);
+    const [photo, setPhoto] = useState([]);
 
     useEffect(() => {
         fetch("http://qwe.loc/api/categories/fullList")
@@ -19,6 +20,22 @@ const Setting = React.memo(props => {
             .then(response => {
                 if (response["status"] === "success") {
                     setListCategory(response["data"]);
+                } else {
+                    toast(response["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+    }, []);
+
+    useEffect(() => {
+        fetch("http://qwe.loc/api/photo/list")
+            .then(response => response.json())
+            .then(response => {
+                if (response["status"] === "success") {
+                    setPhoto(response["data"]);
                 } else {
                     toast(response["message"], {
                         autoClose: 5000,
@@ -42,9 +59,9 @@ const Setting = React.memo(props => {
                 </div>
                 {t('settings.gallery')}
                 <div className='settings-gallery'>
-                    <AddPhotos category={listCategory}/>
+                    <AddPhotos category={listCategory} photo={photo} setPhoto={setPhoto}/>
                     <div className='settings-table'>
-                        <PhotoSettings category={listCategory}/>
+                        <PhotoSettings category={listCategory} photo={photo} setPhoto={setPhoto}/>
                     </div>
                 </div>
             </Tabs>

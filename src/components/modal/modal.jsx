@@ -15,7 +15,7 @@ const Modal = ({show, hide, children}) => show ? ReactDOM.createPortal(
                     className="fas fa-times"
                     name="close"
                     size="3x"
-                    style={{color: '#be94a0'}}
+                    style={{color: '#baae97'}}
                 />
             </button>
             <section className='modal-main'>
