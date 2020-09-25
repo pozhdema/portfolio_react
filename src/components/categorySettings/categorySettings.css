@@ -5,12 +5,12 @@
 }
 
 .category-table tr:nth-child(even) {
-    background: #fde482;
+    background: #baae97;
 }
 
 .category-table thead, .category-table thead tr th {
     font-weight: 700;
-    background: #baae97;
+    background: #fde482;
 }
 
 .category-table thead tr th {
@@ -35,7 +35,7 @@
 }
 
 .btn-edit:hover, .btn-category:hover {
-    background: #baae97;
+    background: #fde482;
 }
 
 .category-form {

@@ -11,7 +11,6 @@ const AddCategory = React.memo(props => {
     const {show, toggle} = useModal();
 
     const addCategory = (categoryItem, dispatch )=> {
-        console.log(categoryItem)
         fetch('http://qwe.loc/api/categories/add', {
             method: 'POST',
             headers: {

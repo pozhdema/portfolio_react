@@ -28,10 +28,40 @@ const GalleryPhoto = React.memo(props => {
             })
     }, []);
 
+    const liked = (event) => {
+        console.log(event.target.dataset.id)
+        fetch('http://qwe.loc/api/photo/setLike', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({id : event.target.dataset.id})
+        })
+            .then(response => response.json())
+            .then((data) => {
+                if (data["status"] === "success") {
+                    toast("Liked", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.SUCCESS,
+                    });
+                    setLike(parseInt(like+1))
+                } else {
+                    toast(data["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => console.error(error));
+        console.log(like)
+    }
 
     const showModal = (event, images, currentImgIdx) => {
         setShow(true);
         setCurrentImgIdx(currentImgIdx);
+        setLike(images[currentImgIdx]["like"])
     };
 
     const hideModal = () => {
@@ -91,13 +121,14 @@ const GalleryPhoto = React.memo(props => {
                         className={currentPhoto["vertical"] === '1' ? " vertical" : " horizon"}
                         onContextMenu={imgStillRestrict}
                     />
-                    <button onClick={liked} className='like'>
+                    <button  onClick={liked} className='like'>
                         <FontAwesome
                             className="far fa-heart"
                             name="like"
                             size="2x"
+                            data-id={currentPhoto.id}
                         />
-                        <span className='like-span'>{like}</span>
+                        <span data-id={currentPhoto.id} className='like-span'>{like}</span>
                     </button>
                     <span>{t(currentPhoto["title"])}</span>
                 </section>
@@ -108,9 +139,11 @@ const GalleryPhoto = React.memo(props => {
     const goToPrevious = () => {
         if (currentImgIdx <= 0) {
             setCurrentImgIdx(images.length - 1)
+            setLike(images[images.length - 1]["like"])
         } else {
             let newIdx = currentImgIdx - 1;
             setCurrentImgIdx(newIdx);
+            setLike(images[newIdx]["like"])
         }
     };
 
@@ -118,8 +151,10 @@ const GalleryPhoto = React.memo(props => {
         if (currentImgIdx < images.length - 1) {
             let newIdx = currentImgIdx + 1;
             setCurrentImgIdx(newIdx);
+            setLike(images[newIdx]["like"])
         } else {
             setCurrentImgIdx(0);
+            setLike(images[0]["like"])
         }
     };
 
@@ -132,10 +167,6 @@ const GalleryPhoto = React.memo(props => {
             type: toast.TYPE.WARNING,
         });
         return false;
-    };
-
-    const liked = () => {
-        setLike(like+1)
     };
 
     return (
