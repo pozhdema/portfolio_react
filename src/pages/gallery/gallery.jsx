@@ -4,22 +4,25 @@ import {withNamespaces} from "react-i18next";
 import './gallery.css'
 import FontAwesome from 'react-fontawesome'
 import {toast} from "react-toastify";
+import Filter from "../../components/filter/filter";
 
 const GalleryPhoto = React.memo(props => {
     const {t} = props;
     const [images, setImages] = useState([]);
+    const [categories, setCategories] = useState([])
     const [show, setShow] = useState(false);
     const [currentImgIdx, setCurrentImgIdx] = useState(false);
     const [like, setLike] = useState(0);
+    const [clicked, setClicked] = useState("0")
 
     useEffect(() => {
         fetch("http://qwe.loc/api/photo/photo")
             .then(response => response.json())
             .then(response => {
-                if ( response["status"] === "success") {
+                if (response["status"] === "success") {
                     setImages(response["data"]);
                 } else {
-                    toast( response["message"], {
+                    toast(response["message"], {
                         autoClose: 5000,
                         closeButton: true,
                         type: toast.TYPE.ERROR,
@@ -28,6 +31,34 @@ const GalleryPhoto = React.memo(props => {
             })
     }, []);
 
+    useEffect(() => {
+        fetch('http://qwe.loc/api/categories/list')
+            .then(response => response.json())
+            .then(response => {
+
+                if (response["status"] === "success") {
+                    setCategories(response["data"]);
+                } else {
+                    toast(response["message"], {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+    }, [])
+
+    const onFilterChange = (id) => {
+        fetch(`http://qwe.loc/api/photo/photo?category=${id}`)
+            .then(response => response.json())
+            .then(response => {
+                if (response["status"] === "success") {
+                    setImages(response["data"])
+                    setClicked(id)
+                }
+            })
+    };
+
     const liked = (event) => {
         console.log(event.target.dataset.id)
         fetch('http://qwe.loc/api/photo/setLike', {
@@ -35,7 +66,7 @@ const GalleryPhoto = React.memo(props => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({id : event.target.dataset.id})
+            body: JSON.stringify({id: event.target.dataset.id})
         })
             .then(response => response.json())
             .then((data) => {
@@ -45,7 +76,7 @@ const GalleryPhoto = React.memo(props => {
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
                     });
-                    setLike(parseInt(like+1))
+                    setLike(parseInt(like + 1))
                 } else {
                     toast(data["message"], {
                         autoClose: 5000,
@@ -121,16 +152,18 @@ const GalleryPhoto = React.memo(props => {
                         className={currentPhoto["vertical"] === '1' ? " vertical" : " horizon"}
                         onContextMenu={imgStillRestrict}
                     />
-                    <button  onClick={liked} className='like'>
-                        <FontAwesome
-                            className="far fa-heart"
-                            name="like"
-                            size="2x"
-                            data-id={currentPhoto.id}
-                        />
-                        <span data-id={currentPhoto.id} className='like-span'>{like}</span>
-                    </button>
-                    <span>{t(currentPhoto["title"])}</span>
+                    <div className='modal-info'>
+                        <span>{t(currentPhoto["title"])}</span>
+                        <button onClick={liked} className='like'>
+                            <FontAwesome
+                                className="far fa-heart"
+                                name="like"
+                                size="lg"
+                                data-id={currentPhoto.id}
+                            />
+                            <span data-id={currentPhoto.id} className='like-span'>{like}</span>
+                        </button>
+                    </div>
                 </section>
             </div>
         );
@@ -169,10 +202,16 @@ const GalleryPhoto = React.memo(props => {
         return false;
     };
 
+
     return (
         <div className='pages'>
             <h1>{t('nav.gallery')}</h1>
             <Modal show={show} handleClose={hideModal} images={images} currentImgIdx={currentImgIdx}/>
+            <Filter
+                categories={categories}
+                onFilterChange={onFilterChange}
+                clicked={clicked}
+            />
             <div className='wrapper-images'>
                 {images.map((image, index) => (
                     <div className='img' key={index} onClick={(event) => {
@@ -183,6 +222,8 @@ const GalleryPhoto = React.memo(props => {
                             src={image["path"] + image["min"] + image["name"]}
                             alt={image["title_en"]}
                             onContextMenu={imgStillRestrict}
+                            width={image["vertical"]=== '0' ? 320 : 160}
+                            height='240'
                         />
                     </div>
                 ))}

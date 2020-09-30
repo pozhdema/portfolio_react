@@ -6,9 +6,25 @@ import Backend from "i18next-chained-backend";
 import Locize from 'i18next-locize-backend';
 import XHR from 'i18next-xhr-backend';
 
-
 const Detector = new LanguageDetector();
 Detector.addDetector(ReduxDetector);
+
+const getCookie = (name) => {
+    let cookie = {};
+    document.cookie.split(';').forEach(function (el) {
+        let [k, v] = el.split('=');
+        cookie[k.trim()] = v;
+    })
+    return cookie[name];
+}
+
+const getLanguage = () => {
+    let lngCode = getCookie('lang')
+    if (typeof lngCode === 'undefined') {
+        lngCode = 'uk'
+    }
+    return lngCode
+}
 
 export default function configureI18n({i18nextConfig, redux}) {
     i18n
@@ -33,8 +49,9 @@ export default function configureI18n({i18nextConfig, redux}) {
                 caches: ['redux'],
                 excludeCacheFor: ['cimode']
             },
+            lng: getLanguage(),
             whitelist: i18nextConfig.whitelist,
-            fallbackLng: i18nextConfig.fallbackLng,
+            fallbackLng: 'en-US',
             ns: i18nextConfig.ns,
             defaultNS: i18nextConfig.defaultNS,
             debug: false,

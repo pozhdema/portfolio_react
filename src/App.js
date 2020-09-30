@@ -9,6 +9,7 @@ import DarkThemeProvider from "./components/darkThemeProvider/darkThemeProvider"
 import Layout from "./components/layout/layout";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalCookie from "./components/modalCookie/modalCookie";
 
 export const backgroundColor = theme("theme", {
     light: "#fff",
@@ -40,6 +41,7 @@ const App = () => {
                     <Router>
                         <Layout/>
                     </Router>
+                    <ModalCookie/>
                 </Container>
                 <ToastContainer/>
             </DarkThemeProvider>

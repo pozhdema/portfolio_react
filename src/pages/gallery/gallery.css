@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     height: 65vh;
+    width: 100%;
     overflow-y: scroll;
     padding: 0 1%;
 }
@@ -36,11 +37,14 @@
 }
 
 .modal-btn-close, .btn-go-to, .like {
-    position: fixed;
     border-color: transparent;
     background: transparent;
     outline: none;
     cursor: pointer;
+}
+
+.modal-btn-close, .btn-go-to {
+    position: fixed;
 }
 
 .modal-btn-close {
@@ -60,9 +64,11 @@
     right: 0;
 }
 
-.like {
-    bottom: -4%;
-    left: 45%;
+.modal-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .like-span {
