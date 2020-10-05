@@ -5,7 +5,6 @@ import './LanguageSwitcher.css'
 import FontAwesome from 'react-fontawesome'
 
 const LanguageSwitcher = React.memo(props => {
-    const {t} = props;
     const onChange = (lng, i18n) => {
         i18n.changeLanguage(lng);
     };
@@ -18,7 +17,7 @@ const LanguageSwitcher = React.memo(props => {
                     <select
                         className="LanguageSwitcher"
                         defaultValue={props.lng}
-                        onChange={e => onChange(e.target.value, i18n)}
+                        onChange={event => onChange(event.target.value, i18n)}
                     >
                         <option></option>
                         <option value="uk">UK</option>

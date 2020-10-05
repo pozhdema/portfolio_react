@@ -4,14 +4,19 @@ import {Link} from 'react-router-dom'
 import DarkThemeToggle from "../darkThemeToggle/darkThemeToggle";
 import {withNamespaces} from 'react-i18next';
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import {toast} from 'react-toastify';
 
 const Nav = React.memo(props => {
-    const {t, lng} = props;
+    const {t, lng, roles} = props;
+
+    const refreshPage = () => {
+        window.location.reload(false);
+    }
 
     const setCookie = () => {
         let age = '; maxAge=' + 90 * 24 * 3600
         document.cookie = 'lang' + '=' + lng + age + '; path=/'
-    }
+    };
 
     const getCookie = (name) => {
         let cookie = {};
@@ -20,15 +25,32 @@ const Nav = React.memo(props => {
             cookie[k.trim()] = v;
         })
         return cookie[name];
-    }
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetch('http://qwe.loc/api/user/logout')
+            .then(response => response.json())
+            .then((data) => {
+                if (data["status"] === "success") {
+                    refreshPage()
+                } else {
+                    toast("Your don't exit", {
+                        autoClose: 5000,
+                        closeButton: true,
+                        type: toast.TYPE.ERROR,
+                    });
+                }
+            })
+            .catch(error => console.error(error));
+    };
 
     useEffect(() => {
         if (getCookie('lang')!==lng) {
             setCookie()
-            window.location.reload(false);
+            refreshPage()
         }
-
-    })
+    });
 
     return (
         <nav className='header'>
@@ -36,8 +58,10 @@ const Nav = React.memo(props => {
                 <Link to='/' className='link'>{t('nav.home')}</Link>
                 <Link to='/gallery' className='link'>{t('nav.gallery')}</Link>
                 <Link to='/contact' className='link'>{t('nav.contact')}</Link>
-                <Link to="/signIn" className="link">{t('nav.signIn')}</Link>
-                <Link to="/settings" className="link">{t('nav.settings')}</Link>
+                {roles === "admin" || roles === "user" ?
+                    <button type='submit' onClick={handleSubmit} className='exit'>{t('exit')}</button>
+                    :  <Link to='/signIn' className='link'>{t('nav.signIn')}</Link>}
+                {roles === "admin" ? <Link to='/settings' className='link'>{t('nav.settings')}</Link> : null}
             </ul>
             <LanguageSwitcher />
             <DarkThemeToggle/>

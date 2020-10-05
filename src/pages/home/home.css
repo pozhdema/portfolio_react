@@ -10,3 +10,16 @@
 h1 {
     font-weight: 100;
 }
+
+.name-site, h1 {
+    align-self: flex-start;
+    padding-left: 25px;
+}
+
+.crow {
+    margin-top: 5%;
+}
+
+.crow, h1, .name-site {
+    z-index: 999;
+}

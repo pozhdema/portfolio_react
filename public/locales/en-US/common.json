@@ -1,6 +1,6 @@
 {
   "nav": {
-    "home": "Home",
+    "home" : "Home",
     "gallery": "Gallery",
     "contact": "Contacts",
     "signIn": "Sign In",
@@ -40,5 +40,8 @@
   "upload" : "Custom Upload",
   "lng" : "Language",
   "cookie" : "This website uses cookies to enhance the user experience.",
-  "understand" : "Understand"
+  "understand" : "Understand",
+  "exit" : "Exit",
+  "nameSite" : "Pozhdema Nataliia",
+  "photographer" : "photographer"
 }

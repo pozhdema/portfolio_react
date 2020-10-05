@@ -25,7 +25,8 @@ const submit = (values, dispatch, props) => {
         .then(response => response.json())
         .then((data) => {
             if (data["status"] === "success") {
-                props.history.push('/settings')
+                props.history.push('/gallery')
+                window.location.reload(false);
             } else {
                 toast("Login or password incorrect", {
                     autoClose: 5000,
