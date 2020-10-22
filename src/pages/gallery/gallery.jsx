@@ -5,6 +5,8 @@ import './gallery.css'
 import FontAwesome from 'react-fontawesome'
 import {toast} from "react-toastify";
 import Filter from "../../components/filter/filter";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
 
 const GalleryPhoto = React.memo(props => {
     const {t} = props;
@@ -15,12 +17,15 @@ const GalleryPhoto = React.memo(props => {
     const [like, setLike] = useState(0);
     const [clicked, setClicked] = useState("0");
     const [element, setElement] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         fetch('/api/categories/list')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
+                    setIsLoading(false);
                     setCategories(response["data"]);
                 } else {
                     toast(response["message"], {
@@ -37,6 +42,7 @@ const GalleryPhoto = React.memo(props => {
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
+                    setIsLoading(false);
                     setCurrentImgIdx(false);
                     setImages(response["data"]);
                     setClicked(id);
@@ -55,6 +61,7 @@ const GalleryPhoto = React.memo(props => {
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {
+                    setIsLoading(false);
                     toast("Liked", {
                         autoClose: 5000,
                         closeButton: true,
@@ -240,6 +247,16 @@ const GalleryPhoto = React.memo(props => {
             }
         };
     }, [element]);
+
+    if (isLoading) {
+        return <Loader
+            type="Puff"
+            color="#c6baba"
+            height={80}
+            width={80}
+            className="loader"
+        />;
+    }
 
     return (
         <div className='pages'>

@@ -9,6 +9,7 @@ import Settings from "../../pages/settings/settings";
 
 const Content = (props) => {
     const {roles} = props;
+
     return(
         <Switch>
             <Route path="/" exact component={Home}/>
