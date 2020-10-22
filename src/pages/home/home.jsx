@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import './home.css';
 import {withNamespaces} from "react-i18next";
 import {toast} from "react-toastify";
@@ -8,6 +8,7 @@ import Carousel from "../../components/carousel/carousel";
 const Home = React.memo(props => {
     const {t} = props;
     const [slider, setSlider] = useState([]);
+    let intervalID = useRef(0);
 
     useEffect(() => {
         fetch('http://qwe.loc/api')
@@ -18,7 +19,7 @@ const Home = React.memo(props => {
                     let visibleImage = 0;
                     const sliderElements = document.getElementsByClassName('item-slider');
                     sliderElements[0].style.opacity = 1;
-                    setInterval(() => {
+                    intervalID.current = setInterval(() => {
                         if (visibleImage >= sliderElements.length - 1) {
                             sliderElements[visibleImage].style.opacity = 0;
                             visibleImage = 0;
@@ -38,6 +39,9 @@ const Home = React.memo(props => {
                 }
             })
             .catch(error => error => console.error(error));
+        return () => {
+            clearInterval(intervalID.current);
+        }
     }, [])
 
     return (

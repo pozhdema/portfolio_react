@@ -2,6 +2,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 99999;
 }
 
 .cookie-content {
@@ -19,22 +20,22 @@
     align-items: center;
     padding: 0 5%;
     width: 100%;
-    height: 10%;
+    height: 20%;
     background: #32312e;
 }
 
 .cookie-text {
     color: #fde482;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .cookie-btn {
-    width: 10%;
+    width: 50%;
     height: 40px;
     border: 1px solid #020101;
     border-radius: 10px;
     font-family: Caveat;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     outline: none;
     background: transparent;
@@ -42,5 +43,32 @@
 
 .cookie-btn:hover {
     background: #fde482;
+}
+
+@media screen and (min-width: 576px) {
+    .cookie-btn {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cookie-modal {
+        height: 10%;
+    }
+
+    .cookie-btn {
+        width: 15%;
+        font-size: 20px;
+    }
+
+    .cookie-text {
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cookie-btn {
+        width: 10%;
+    }
 }
 

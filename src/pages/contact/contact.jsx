@@ -38,7 +38,7 @@ const Contact = React.memo(props => {
 
     return (
         <div className='pages'>
-            <h1>{t('nav.contact')}</h1>
+            <h2>{t('nav.contact')}</h2>
             <div className='contact'>
                 <div className="contact-social">
                     <div className="wrapper-social">

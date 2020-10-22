@@ -9,7 +9,7 @@ const ModalCookie = React.memo(props => {
 
     const setCookieModal = () => {
         let age = '; maxAge=' + 90 * 24 * 3600
-        document.cookie = 'banner' + '=' + banner + age + '; path=/'
+        document.cookie = 'banner=' + banner + age + '; path=/'
     }
     const bannerHideClassName = !banner ? "cookie display-none" : "cookie display-block";
 
@@ -32,7 +32,7 @@ const ModalCookie = React.memo(props => {
         } else {
             setBanner(false)
         }
-    })
+    }, [])
 
     return (
         <div className={bannerHideClassName}>

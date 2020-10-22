@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback, useRef} from "react";
 import '../home/home.css';
 import {withNamespaces} from "react-i18next";
 import './gallery.css'
@@ -13,29 +13,13 @@ const GalleryPhoto = React.memo(props => {
     const [show, setShow] = useState(false);
     const [currentImgIdx, setCurrentImgIdx] = useState(false);
     const [like, setLike] = useState(0);
-    const [clicked, setClicked] = useState("0")
-
-    useEffect(() => {
-        fetch("http://qwe.loc/api/photo/photo")
-            .then(response => response.json())
-            .then(response => {
-                if (response["status"] === "success") {
-                    setImages(response["data"]);
-                } else {
-                    toast(response["message"], {
-                        autoClose: 5000,
-                        closeButton: true,
-                        type: toast.TYPE.ERROR,
-                    });
-                }
-            })
-    }, []);
+    const [clicked, setClicked] = useState("0");
+    const [element, setElement] = useState(null);
 
     useEffect(() => {
         fetch('http://qwe.loc/api/categories/list')
             .then(response => response.json())
             .then(response => {
-
                 if (response["status"] === "success") {
                     setCategories(response["data"]);
                 } else {
@@ -53,14 +37,14 @@ const GalleryPhoto = React.memo(props => {
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
-                    setImages(response["data"])
-                    setClicked(id)
+                    setCurrentImgIdx(false);
+                    setImages(response["data"]);
+                    setClicked(id);
                 }
             })
     };
 
     const liked = (event) => {
-        console.log(event.target.dataset.id)
         fetch('http://qwe.loc/api/photo/setLike', {
             method: 'POST',
             headers: {
@@ -76,7 +60,7 @@ const GalleryPhoto = React.memo(props => {
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
                     });
-                    setLike(parseInt(like + 1))
+                    setLike(parseInt(like + 1));
                 } else {
                     toast(data["message"], {
                         autoClose: 5000,
@@ -86,13 +70,12 @@ const GalleryPhoto = React.memo(props => {
                 }
             })
             .catch(error => console.error(error));
-        console.log(like)
     }
 
     const showModal = (event, images, currentImgIdx) => {
         setShow(true);
         setCurrentImgIdx(currentImgIdx);
-        setLike(images[currentImgIdx]["like"])
+        setLike(images[currentImgIdx]["like"]);
     };
 
     const hideModal = () => {
@@ -112,7 +95,6 @@ const GalleryPhoto = React.memo(props => {
         if (currentImgIdx !== false) {
             currentPhoto = images[currentImgIdx];
         }
-
 
         return (
             <div className={showHideClassName} onClick={(event) => {
@@ -145,13 +127,13 @@ const GalleryPhoto = React.memo(props => {
                     />
                 </button>
                 <section className='modal-main'>
-                    <img
+                    {currentPhoto.src!==''?<img
                         id={currentPhoto["id"]}
                         src={currentPhoto["path"] + currentPhoto["full"] + currentPhoto["name"]}
                         alt={currentPhoto["title_en"]}
                         className={currentPhoto["vertical"] === '1' ? " vertical" : " horizon"}
                         onContextMenu={imgStillRestrict}
-                    />
+                    />: null}
                     <div className='modal-info'>
                         <span>{t(currentPhoto["title"])}</span>
                         <button onClick={liked} className='like'>
@@ -202,10 +184,66 @@ const GalleryPhoto = React.memo(props => {
         return false;
     };
 
+    const page = useRef(0);
+    const prevY = useRef(0);
+    const observer = useRef(
+        new IntersectionObserver(
+            entries => {
+                const firstEntry = entries[0];
+                const y = firstEntry.boundingClientRect.y;
+
+                if (prevY.current > y) {
+                    loadMore();
+                }
+
+                prevY.current = y;
+            },
+            {threshold: 0.5}
+        )
+    );
+
+    const fetchData = useCallback(async (offset) => {
+        let response = await fetch(`http://qwe.loc/api/photo/photo?&offset=${offset}&limit=15`)
+            .then(response => response.json())
+        return response
+    }, []);
+
+    const handleInitial = useCallback(
+        async (page) => {
+            const newImages = await fetchData(page);
+            const {status, data} = newImages;
+            if (status === 'success') setImages(images => [...images, ...data]);
+        },
+        [fetchData]
+    );
+
+    const loadMore = () => {
+        page.current = page.current + 15;
+        handleInitial(page.current);
+    };
+
+    useEffect(() => {
+        handleInitial(page.current);
+    }, [handleInitial]);
+
+    useEffect(() => {
+        const currentElement = element;
+        const currentObserver = observer.current;
+
+        if (currentElement) {
+            currentObserver.observe(currentElement);
+        }
+
+        return () => {
+            if (currentElement) {
+                currentObserver.unobserve(currentElement);
+            }
+        };
+    }, [element]);
 
     return (
         <div className='pages'>
-            <h1>{t('nav.gallery')}</h1>
+            <h2>{t('nav.gallery')}</h2>
             <Modal show={show} handleClose={hideModal} images={images} currentImgIdx={currentImgIdx}/>
             <Filter
                 categories={categories}
@@ -213,20 +251,23 @@ const GalleryPhoto = React.memo(props => {
                 clicked={clicked}
             />
             <div className='wrapper-images'>
-                {images.map((image, index) => (
+                {images && (images.map((image, index) => (
                     <div className='img' key={index} onClick={(event) => {
                         showModal(event, images, index)
                     }}>
                         <img
-                            id={image["id"]}
+                            width={image["vertical"] === '0' ? 320 : 160}
+                            height='240'
                             src={image["path"] + image["min"] + image["name"]}
+                            id={image["id"]}
                             alt={image["title_en"]}
                             onContextMenu={imgStillRestrict}
-                            width={image["vertical"]=== '0' ? 320 : 160}
-                            height='240'
                         />
                     </div>
-                ))}
+                )))}
+                <div ref={setElement} className="buttonContainer">
+                    <button className="buttonStyle"></button>
+                </div>
             </div>
         </div>
     )

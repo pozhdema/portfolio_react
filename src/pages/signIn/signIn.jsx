@@ -43,7 +43,7 @@ const FormSignIn = React.memo(props => {
     const { handleSubmit,submitting, t} = props;
     return (
         <div className='pages'>
-            <h1>{t('nav.signIn')}</h1>
+            <h2>{t('nav.signIn')}</h2>
             <form onSubmit={handleSubmit(submit)} className='form form-sing'>
                 <Field
                     name='email'

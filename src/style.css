@@ -12,7 +12,20 @@
     color: unset;
 }
 
+#root {
+    min-height: 830px;
+    min-width: 320px;
+}
 
+h2 {
+    font-weight: 100;
+    font-size: 25px;
+}
 
+@media screen and (min-width: 768px) {
+    h2 {
+        font-size: 30px;
+    }
+}
 
 

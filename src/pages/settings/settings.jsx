@@ -48,7 +48,7 @@ const Setting = React.memo(props => {
 
     return (
         <div className='pages'>
-            <h1>{t('nav.settings')}</h1>
+            <h2>{t('nav.settings')}</h2>
             <Tabs>
                 {t('settings.category')}
                 <div className='settings-category'>

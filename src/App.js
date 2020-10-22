@@ -38,10 +38,10 @@ const App = () => {
         <ReduxProvider store={store}>
             <DarkThemeProvider>
                 <Container>
+                    <ModalCookie/>
                     <Router>
                         <Layout/>
                     </Router>
-                    <ModalCookie/>
                 </Container>
                 <ToastContainer/>
             </DarkThemeProvider>

@@ -19,3 +19,31 @@
 .signUp {
     height: 290px;
 }
+
+@media screen and (min-width: 768px) {
+    .form-sing {
+        width: 75%;
+        height: 200px;
+    }
+
+    .signUp {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .form-sing, .signUp {
+        width: 55%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form-sing {
+        width: 30%;
+        margin-top: 20px;
+    }
+
+    .signUp {
+        width: 30%;
+    }
+}

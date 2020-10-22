@@ -43,7 +43,7 @@ const FormSignUp = React.memo(props => {
     const {handleSubmit, submitting, t} = props;
     return (
         <div className='pages'>
-            <h1>{t('nav.signUp')}</h1>
+            <h2>{t('nav.signUp')}</h2>
             <form onSubmit={handleSubmit(submit)} className='form signUp'>
                 <Field
                     name='username'

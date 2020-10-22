@@ -19,6 +19,7 @@ const Carousel = (props) => {
                         }
                     }
                     className='item-slider'
+                    alt=''
                 />
             ))}
         </div>

@@ -5,7 +5,7 @@
 }
 
 .tab {
-    width: 10%;
+    width: 50%;
     background-color: transparent;
     border: transparent;
     outline: none;
@@ -24,4 +24,15 @@
 
 .content-tab {
     width: 100%;
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .tab {
+        width: 10%;
+    }
+
+    .content-tab {
+        margin-top: 0;
+    }
 }

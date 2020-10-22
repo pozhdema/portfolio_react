@@ -1,7 +1,7 @@
 .change-theme {
     display: flex;
     justify-content: center;
-    width: 10%;
+    width: 50%;
     cursor: pointer;
 }
 
@@ -12,4 +12,17 @@
 
 .change-theme input {
     cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .change-theme {
+        width: 10%;
+        margin-left: 35px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .change-theme {
+        margin-left: 70px;
+    }
 }

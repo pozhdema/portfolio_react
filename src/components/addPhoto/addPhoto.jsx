@@ -1,6 +1,6 @@
-import Modal from "../modal/modal";
 import {Field, reduxForm, reset} from "redux-form";
 import React, {useState} from "react";
+import Modal from "../modal/modal";
 import validate from "../validate/validate";
 import {withNamespaces} from "react-i18next";
 import useModal from "../useModal/useModal";
@@ -17,7 +17,7 @@ const AddPhoto = React.memo(props => {
 
     const addPhoto = (photoItem, dispatch) => {
         const formData = new FormData();
-        categories.map(item => {
+        categories.forEach(item => {
             formData.append('categories[]', item)
         });
         formData.append("file", file);

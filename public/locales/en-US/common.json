@@ -7,7 +7,7 @@
     "signUp" : "Sign Up",
     "settings" : "Settings"
   },
-  "theme": "Use Dark Theme",
+  "theme": "Dark Theme",
   "form": {
     "username": "username",
     "email": "email",

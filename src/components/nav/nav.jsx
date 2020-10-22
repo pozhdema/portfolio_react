@@ -15,7 +15,7 @@ const Nav = React.memo(props => {
 
     const setCookie = () => {
         let age = '; maxAge=' + 90 * 24 * 3600
-        document.cookie = 'lang' + '=' + lng + age + '; path=/'
+        document.cookie = 'lang=' + lng + age + '; path=/'
     };
 
     const getCookie = (name) => {
@@ -54,17 +54,23 @@ const Nav = React.memo(props => {
 
     return (
         <nav className='header'>
-            <ul className="nav">
-                <Link to='/' className='link'>{t('nav.home')}</Link>
-                <Link to='/gallery' className='link'>{t('nav.gallery')}</Link>
-                <Link to='/contact' className='link'>{t('nav.contact')}</Link>
-                {roles === "admin" || roles === "user" ?
-                    <button type='submit' onClick={handleSubmit} className='exit'>{t('exit')}</button>
-                    :  <Link to='/signIn' className='link'>{t('nav.signIn')}</Link>}
-                {roles === "admin" ? <Link to='/settings' className='link'>{t('nav.settings')}</Link> : null}
-            </ul>
-            <LanguageSwitcher />
-            <DarkThemeToggle/>
+            <div className='wrapper-nav'>
+                <input className="menu-btn" type="checkbox" id="menu-btn"/>
+                <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
+                <ul className="menu">
+                    <Link to='/' className='link'>{t('nav.home')}</Link>
+                    <Link to='/gallery' className='link'>{t('nav.gallery')}</Link>
+                    <Link to='/contact' className='link'>{t('nav.contact')}</Link>
+                    {roles === "admin" || roles === "user" ?
+                        <button type='submit' onClick={handleSubmit} className='exit'>{t('exit')}</button>
+                        :  <Link to='/signIn' className='link'>{t('nav.signIn')}</Link>}
+                    {roles === "admin" ? <Link to='/settings' className='link'>{t('nav.settings')}</Link> : null}
+                </ul>
+            </div>
+            <div className='wrapper-other-nav'>
+                <LanguageSwitcher />
+                <DarkThemeToggle/>
+            </div>
         </nav>
 
 
