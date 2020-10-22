@@ -3,18 +3,22 @@ import './home.css';
 import {withNamespaces} from "react-i18next";
 import {toast} from "react-toastify";
 import Carousel from "../../components/carousel/carousel";
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
 
 const Home = React.memo(props => {
     const {t} = props;
+    const [isLoading, setIsLoading] = useState(false);
     const [slider, setSlider] = useState([]);
     let intervalID = useRef(0);
 
     useEffect(() => {
+        setIsLoading(true);
         fetch('/api')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
+                    setIsLoading(false)
                     setSlider(response["data"]);
                     let visibleImage = 0;
                     const sliderElements = document.getElementsByClassName('item-slider');
@@ -43,6 +47,16 @@ const Home = React.memo(props => {
             clearInterval(intervalID.current);
         }
     }, [])
+
+    if (isLoading) {
+        return <Loader
+            type="Puff"
+            color="#c6baba"
+            height={80}
+            width={80}
+            className="loader"
+        />;
+    }
 
     return (
         <div className='pages'>
