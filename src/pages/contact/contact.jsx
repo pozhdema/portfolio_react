@@ -9,7 +9,7 @@ import {toast} from "react-toastify";
 const Contact = React.memo(props => {
     const { t } = props;
     const submit = (values, dispatch) => {
-        fetch('http://qwe.loc/api/contact', {
+        fetch('/api/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

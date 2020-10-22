@@ -17,7 +17,7 @@ const GalleryPhoto = React.memo(props => {
     const [element, setElement] = useState(null);
 
     useEffect(() => {
-        fetch('http://qwe.loc/api/categories/list')
+        fetch('/api/categories/list')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
@@ -33,7 +33,7 @@ const GalleryPhoto = React.memo(props => {
     }, [])
 
     const onFilterChange = (id) => {
-        fetch(`http://qwe.loc/api/photo/photo?category=${id}`)
+        fetch(`/api/photo/photo?category=${id}`)
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
@@ -45,7 +45,7 @@ const GalleryPhoto = React.memo(props => {
     };
 
     const liked = (event) => {
-        fetch('http://qwe.loc/api/photo/setLike', {
+        fetch('/api/photo/setLike', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -203,7 +203,7 @@ const GalleryPhoto = React.memo(props => {
     );
 
     const fetchData = useCallback(async (offset) => {
-        let response = await fetch(`http://qwe.loc/api/photo/photo?&offset=${offset}&limit=15`)
+        let response = await fetch(`/api/photo/photo?&offset=${offset}&limit=15`)
             .then(response => response.json())
         return response
     }, []);

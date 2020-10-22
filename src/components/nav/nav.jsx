@@ -29,7 +29,7 @@ const Nav = React.memo(props => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://qwe.loc/api/user/logout')
+        fetch('/api/user/logout')
             .then(response => response.json())
             .then((data) => {
                 if (data["status"] === "success") {

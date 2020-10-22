@@ -14,7 +14,7 @@ const CategorySettings = React.memo(props => {
 
     const deleteCategory = (val) => {
         let id = val.target.dataset.id;
-        fetch('http://qwe.loc/api/categories/delete', {
+        fetch('/api/categories/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const CategorySettings = React.memo(props => {
             "title_en": titleEn,
             "id": categoryId
         }
-        fetch('http://qwe.loc/api/categories/update', {
+        fetch('/api/categories/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

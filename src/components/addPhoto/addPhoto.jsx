@@ -26,7 +26,7 @@ const AddPhoto = React.memo(props => {
         formData.append("description_ua", photoItem.description_ua);
         formData.append("description_en", photoItem.description_en);
 
-        fetch("http://qwe.loc/api/photo/add", {
+        fetch("/api/photo/add", {
             method: "post",
             body: formData
         })
