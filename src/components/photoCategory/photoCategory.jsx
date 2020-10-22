@@ -23,7 +23,7 @@ const PhotoSettings = React.memo(props => {
 
     const deletePhoto = (val) => {
         let id = val.target.dataset.id;
-        fetch('http://qwe.loc/api/photo/delete', {
+        fetch('/api/photo/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const PhotoSettings = React.memo(props => {
     };
 
     const showEditPhotoModal = (id) => {
-        fetch("http://qwe.loc/api/photo/getPhoto", {
+        fetch("/api/photo/getPhoto", {
             method: "post",
             headers: {
                 'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const PhotoSettings = React.memo(props => {
     }
 
     const updatePhoto = () => {
-        fetch('http://qwe.loc/api/photo/update', {
+        fetch('/api/photo/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

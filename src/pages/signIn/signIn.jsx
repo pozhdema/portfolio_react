@@ -15,7 +15,7 @@ const renderField = ({input, placeholder, type, t, meta: {touched, error}}) => (
 
 
 const submit = (values, dispatch, props) => {
-    fetch('http://qwe.loc/api/user/login', {
+    fetch('/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const Setting = React.memo(props => {
     const [photo, setPhoto] = useState([]);
 
     useEffect(() => {
-        fetch("http://qwe.loc/api/categories/fullList")
+        fetch("/api/categories/fullList")
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
@@ -31,7 +31,7 @@ const Setting = React.memo(props => {
     }, []);
 
     useEffect(() => {
-        fetch("http://qwe.loc/api/photo/list")
+        fetch("/api/photo/list")
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {

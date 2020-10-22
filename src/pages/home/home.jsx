@@ -11,7 +11,7 @@ const Home = React.memo(props => {
     let intervalID = useRef(0);
 
     useEffect(() => {
-        fetch('http://qwe.loc/api')
+        fetch('/api')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {

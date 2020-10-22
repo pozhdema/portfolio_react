@@ -9,7 +9,7 @@ const Layout = () => {
     const [roles, setRoles] = useState('');
 
     useEffect(()=>{
-        fetch('http://qwe.loc/api/user/get')
+        fetch('/api/user/get')
             .then(response => response.json())
             .then(response => {
                 if (response["status"] === "success") {
