@@ -1,0 +1,49 @@
+.form-sing {
+    height: 200px;
+}
+
+.admin-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.link-admin {
+    text-decoration: none;
+}
+
+.link-admin:hover {
+    color: #fde482;
+}
+
+.signUp {
+    height: 290px;
+}
+
+@media screen and (min-width: 768px) {
+    .form-sing {
+        width: 75%;
+        height: 200px;
+    }
+
+    .signUp {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .form-sing, .signUp {
+        width: 55%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form-sing {
+        width: 30%;
+        margin-top: 20px;
+    }
+
+    .signUp {
+        width: 30%;
+    }
+}

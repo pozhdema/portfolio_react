@@ -1,0 +1,29 @@
+.photo-form {
+    justify-content: space-evenly;
+    height: 450px;
+}
+
+.select-photo {
+    width: 30%;
+    height: 30px;
+    font-size: 20px;
+    color: #020101;
+    outline: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    width: 70%;
+    border: 1px solid #32312e;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: Caveat;
+    color: #020101;
+    text-align: center;
+}
+

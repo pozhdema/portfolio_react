@@ -1,0 +1,41 @@
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+}
+
+.btn-input {
+    width: 135px;
+    height: 40px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background: transparent;
+    border: 1px solid #454545;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+}
+
+.all, .active {
+    font-family: Caveat;
+    font-size: 20px;
+}
+
+.active {
+    background: #fde482;
+}
+
+@media screen and (min-width: 576px) {
+    .filter {
+        height: 12%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .filter {
+        height: 7vh;
+    }
+}

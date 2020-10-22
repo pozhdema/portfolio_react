@@ -1,0 +1,40 @@
+.LanguageSwitcher {
+    width: 20%;
+    height: 35px;
+    background-color: transparent;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid transparent;
+    padding-left: 4px;
+    outline: none;
+    font-family: Caveat;
+    z-index: 999;
+}
+
+.LanguageSwitcher option {
+    background-color: #fde482;
+}
+
+#lang {
+    position: relative;
+    top: -2px;
+    left: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    #lang {
+        left: 20px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .LanguageSwitcher {
+        width: 10%;
+    }
+}
+
+
+
+

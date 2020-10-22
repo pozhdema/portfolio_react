@@ -1,0 +1,40 @@
+.settings-category, .settings-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings-table {
+    width: 100%;
+    height: 550px;
+    margin-top: 25px;
+    overflow-y: auto;
+}
+
+.settings-btn {
+    width: 40%;
+    height: 30px;
+    border: 1px solid #020101;
+    border-radius: 10px;
+    font-family: Caveat;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+}
+
+.settings-btn:hover {
+    background: #fde482;
+}
+
+@media screen and (min-width: 768px) {
+    .settings-btn {
+        width: 15%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .settings-table {
+        height: 600px;
+    }
+}

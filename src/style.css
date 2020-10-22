@@ -1,0 +1,31 @@
+@font-face {
+    font-family: Caveat;
+    src: url('fonts/Caveatregular.ttf') format('truetype'),
+    url('fonts/Caveatregular.woff2') format('woff2'),
+    url('fonts/Caveatregular.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: unset;
+}
+
+#root {
+    min-height: 830px;
+    min-width: 320px;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 25px;
+}
+
+@media screen and (min-width: 768px) {
+    h2 {
+        font-size: 30px;
+    }
+}
+
+
