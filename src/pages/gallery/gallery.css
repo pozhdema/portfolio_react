@@ -139,7 +139,7 @@
 
 @media screen and (min-width: 768px) {
     .wrapper-images {
-        height: 80vh;
+        height: 70vh;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 15px;
     }
@@ -147,7 +147,6 @@
 
 @media screen and (min-width: 992px) {
     .wrapper-images {
-        height: 70vh;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 1em;
     }
