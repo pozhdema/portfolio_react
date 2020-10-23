@@ -6,11 +6,12 @@
 }
 
 .change-theme label {
-    margin: -5px 0 0 5px;
+    margin: -20px 0 0 5px;
     cursor: pointer;
 }
 
 .change-theme input {
+    margin-top: -5px;
     cursor: pointer;
 }
 
