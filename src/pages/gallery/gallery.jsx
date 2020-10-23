@@ -67,7 +67,7 @@ const GalleryPhoto = React.memo(props => {
                         closeButton: true,
                         type: toast.TYPE.SUCCESS,
                     });
-                    setLike(parseInt(like + 1));
+                    setLike(parseInt(like)+1);
                 } else {
                     toast(data["message"], {
                         autoClose: 5000,
