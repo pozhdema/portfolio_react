@@ -26,7 +26,7 @@ const Container = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: Caveat;
   font-size: 20px;
   background-color: ${backgroundColor};

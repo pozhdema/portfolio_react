@@ -82,13 +82,12 @@
 }
 
 .horizon {
-    width: 150%;
+    width: 100%;
     height: auto;
-    transform: translate(-15%, 0);
 }
 
 .vertical {
-    width: 100%;
+    width: 50%;
     height: 100%;
 }
 
@@ -133,7 +132,7 @@
 
 @media screen and (min-width: 576px) {
     .wrapper-images {
-        height: 350px;
+        height: 60vh;
         margin-top: 25px;
     }
 }
@@ -172,8 +171,6 @@
 
     .horizon {
         width: 1000px;
-        height: auto;
-        transform: translate(0, 0);
     }
 
     .vertical {
