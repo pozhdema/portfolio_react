@@ -21,13 +21,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100px;
+    height: 60px;
 }
 
 .wrapper-social span:first-child {
     line-height: 1.5;
     border-top: 1px solid;
-    margin-bottom: 20px;
 }
 
 .wrapper-social span {
@@ -47,23 +46,28 @@
     margin-bottom: 30px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 568px) {
     .contact {
         flex-direction: row;
         justify-content: space-around;
     }
 
-    .contact-social {
-        padding: 0;
-    }
-
     .wrapper-social {
         align-items: center;
+        height: 100px;
     }
 }
 
 @media screen and (min-width: 768px) {
     .contact {
         margin-top: 67px;
+    }
+
+    .contact-social {
+        margin-top: 5%;
+    }
+
+    .wrapper-social span:first-child {
+        margin-bottom: 20px;
     }
 }
