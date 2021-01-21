@@ -1,3 +1,7 @@
+.sign {
+    height: 82vh;
+}
+
 .form-sing {
     height: 200px;
 }
@@ -17,7 +21,8 @@
 }
 
 .signUp {
-    height: 290px;
+    height: 250px;
+    width: 85%;
 }
 
 @media screen and (min-width: 568px) {
@@ -26,7 +31,7 @@
     }
 
     .signUp {
-        height: 80vh;
+        margin-top: 0;
     }
 }
 
@@ -37,21 +42,24 @@
     }
 
     .signUp {
-        width: 75%;
-        height: 50vh;
+        height: 280px;
     }
 }
 
 @media screen and (min-width: 992px) {
     .form-sing, .signUp {
         width: 55%;
+        margin-top: 10%;
     }
 }
 
 @media screen and (min-width: 1200px) {
     .form-sing {
         width: 30%;
-        margin-top: 20px;
+    }
+
+    .sign {
+        height: 84vh;
     }
 
     .signUp {

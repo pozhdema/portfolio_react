@@ -4,20 +4,20 @@
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
-    /*height: 500px;*/
+}
+
+.home {
     height: 80vh;
 }
 
 h1 {
     font-weight: 100;
     font-size: 30px;
-    /*margin-top: 100px;*/
 }
 
 .crow {
-    position: relative;
     width: 200px;
-    transform: translate(0%,25%);
+    transform: translate(0%,50%);
 }
 
 .crow, h1, .name-site {
@@ -33,7 +33,7 @@ h1 {
 }
 
 @media screen and (min-width: 568px) {
-    .pages {
+    .home {
         height: 90vh;
     }
 
@@ -43,39 +43,37 @@ h1 {
 }
 
 @media screen and (min-width: 768px) {
-    .pages {
+    .home {
         height: 110vh;
     }
 
     h1 {
         font-size: 40px;
-        margin-top: 0;
     }
 
     .name-site, h1 {
         align-self: flex-start;
         padding-left: 25px;
     }
-
-    .crow {
-        transform: translate(0%, 100%);
-    }
 }
 
 @media screen and (min-width: 992px) {
-    .pages {
+    .home {
         height: 87vh;
+    }
+
+    .crow {
+        transform: translate(0%, 50%);
     }
 }
 
 @media screen and (min-width: 1200px) {
-    .pages {
+    .home {
         height: 83.8vh;
     }
 
     .crow {
         width: 300px;
-        transform: translate(0%, 50%);
     }
 }
 

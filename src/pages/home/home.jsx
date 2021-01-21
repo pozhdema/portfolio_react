@@ -59,7 +59,7 @@ const Home = React.memo(props => {
     }
 
     return (
-        <div className='pages'>
+        <div className='pages home'>
             <h1>{t('nameSite')}</h1>
             <span className='name-site'>{t('photographer')}</span>
             <img src='crow-new.png' alt='icon' className='crow'/>

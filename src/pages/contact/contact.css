@@ -1,11 +1,12 @@
 .contact {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     width: 100%;
+    height: 81vh;
 }
 
 .contact-social {
-    margin-top: 5%;
     padding: 0 5%;
 }
 
@@ -50,6 +51,11 @@
     .contact {
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
+    }
+
+    .contact-social {
+        margin-top: 4%;
     }
 
     .wrapper-social {
@@ -59,15 +65,21 @@
 }
 
 @media screen and (min-width: 768px) {
-    .contact {
-        margin-top: 67px;
-    }
-
-    .contact-social {
-        margin-top: 5%;
-    }
-
     .wrapper-social span:first-child {
         margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .contact {
+        height: 60vh;
+        align-items: flex-start;
+        margin: 10% 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contact {
+        height: 47vh;
     }
 }

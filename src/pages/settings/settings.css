@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 768px) {
     .settings-table {
-        height: 95vh;
+        /*height: 95vh;*/
         margin-top: 25px;
     }
 

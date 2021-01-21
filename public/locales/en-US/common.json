@@ -18,7 +18,7 @@
     "create" : "Create an account",
     "member" : "I'm already member",
     "error" : {
-      "username" : "Must be 15 characters or less",
+      "username" : "Must be no more than 15 characters",
       "email" : "Invalid email address",
       "password" : "Invalid password",
       "required" : "Required"
