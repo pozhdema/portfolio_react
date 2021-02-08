@@ -2,8 +2,6 @@ import { createStore, combineReducers } from 'redux';
 import {createBrowserHistory}  from 'history';
 import { i18nextReducer } from 'i18next-redux-languagedetector';
 
-const middleware = [];
-const enhancers = [];
 const reducers = {
     i18next: i18nextReducer
 };
