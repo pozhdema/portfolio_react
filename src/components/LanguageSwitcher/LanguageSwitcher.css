@@ -14,7 +14,8 @@
 }
 
 .LanguageSwitcher option {
-    background-color: #fde482;
+    background-color: #32312e;
+    color: #fde482;
 }
 
 #lang {
